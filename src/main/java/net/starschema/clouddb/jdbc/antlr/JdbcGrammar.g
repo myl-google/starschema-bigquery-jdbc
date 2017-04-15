@@ -84,11 +84,16 @@ import JDBCTokens;
 }
 
 /**
-Rule for entry point for the parser makes the selectstatement as the root for the Tree
+Rule for entry point for the parser makes the sqlstatement as the root for the Tree
 */
 statement
 :
-  e=selectstatement^ (EOF | ';')!
+  e=sqlstatement^ (EOF | ';')!
+;
+
+sqlstatement
+:   selectstatement
+    | createtablestatement
 ;
 
 /**
@@ -98,6 +103,14 @@ selectstatement
 :   SELECTKEYWORD DISTINCT? expression fromexpression whereexpression? groupbyexpression? havingexpression? orderbyexpression? limitexpression?
     ->^(SELECTSTATEMENT SELECTKEYWORD expression fromexpression whereexpression? groupbyexpression? havingexpression? orderbyexpression? limitexpression?)
 
+;
+
+/**
+Rule for parsing an sql create table
+*/
+createtablestatement
+:   CREATEKEYWORD TABLEKEYWORD sourcetable LPARAM RPARAM
+    ->^(CREATETABLESTATEMENT sourcetable)
 ;
 
 fragment LIMITEXPRESSION:;

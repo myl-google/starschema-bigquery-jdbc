@@ -94,6 +94,11 @@ SELECTKEYWORD:  S E L E C T ;
 /** WHERE keyword, case insensitive */
 WHEREKEYWORD:   W H E R E;
 
+/** CREATE keyword, case insensitive */
+CREATEKEYWORD:   C R E A T E;
+
+/** TABLE keyword, case insensitive */
+TABLEKEYWORD:   T A B L E;
 
 
 //Other strings
@@ -214,6 +219,7 @@ fragment TABLENAME:;
 fragment TEXT:;
 fragment WHEREEXPRESSION:;
 fragment EXPRESSIONTEXT:;
+fragment CREATETABLESTATEMENT:;
 
 
 

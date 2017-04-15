@@ -253,9 +253,9 @@ public abstract class BQStatementRoot {
         }
         try {
             do {
-                if (BQSupportFuncts.getQueryState(referencedJob,
-                        this.connection.getBigquery(), this.ProjectId).equals(
-                        "DONE")) {
+                Job job = BQSupportFuncts.getQueryState(referencedJob,
+                        this.connection.getBigquery(), this.ProjectId);
+                if (job.getStatus().getState().equals("DONE")) {
                     if (resultSetType == ResultSet.TYPE_SCROLL_INSENSITIVE) {
                         return new BQScrollableResultSet(BQSupportFuncts.getQueryResults(
                                 this.connection.getBigquery(), this.ProjectId,
@@ -298,8 +298,57 @@ public abstract class BQStatementRoot {
      * @throws BQSQLException
      */
 
-    public int executeUpdate(String arg0) throws SQLException {
-        throw new BQSQLFeatureNotSupportedException("executeUpdate(string)");
+    public int executeUpdate(String updateSql) throws SQLException {
+        if (this.isClosed()) {
+            throw new BQSQLException("This Statement is Closed");
+        }
+        this.starttime = System.currentTimeMillis();
+        Job referencedJob;
+
+        // TODO(myl): check if it's a create table statement and divert to a different function if it is
+
+        // ANTLR Parsing
+        BQQueryParser parser = new BQQueryParser(updateSql, this.connection);
+        updateSql = parser.parse();
+
+        try {
+            // Gets the Job reference of the completed job
+            referencedJob = BQSupportFuncts.startQuery(
+                    this.connection.getBigquery(),
+                    this.ProjectId,
+                    updateSql,
+                    connection.getDataSet(),
+                    false,  //this.connection.getUseLegacySql(),  TODO(myl): change the test
+                    this.connection.getMaxBillingBytes()
+            );
+            this.logger.info("Executing Update: " + updateSql);
+        } catch (IOException e) {
+            throw new BQSQLException("Something went wrong with the update: " + updateSql, e);
+        }
+        try {
+            do {
+                Job pollJob = BQSupportFuncts.getQueryState(referencedJob,
+                        this.connection.getBigquery(), this.ProjectId);
+                if (pollJob.getStatus().getState().equals("DONE")) {
+                    return pollJob.getStatistics().getQuery().getNumDmlAffectedRows().intValue();
+                }
+                // Pause execution for half second before polling job status again, to reduce unnecessary calls to the
+                // BigQUery API and lower overall application bandwidth.
+                Thread.sleep(500);
+                this.logger.debug("slept for 500" + "ms, querytimeout is: "
+                        + this.querytimeout + "s");
+            }
+            while (System.currentTimeMillis() - this.starttime <= (long) this.querytimeout * 1000);
+            // it runs for a minimum of 1 time
+        } catch (IOException e) {
+            throw new BQSQLException("Something went wrong with the update: " + updateSql, e);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        // here we should kill/stop the running job, but bigquery doesn't
+        // support that :(
+        throw new BQSQLException(
+                "Query run took more than the specified timeout");
     }
 
     /**

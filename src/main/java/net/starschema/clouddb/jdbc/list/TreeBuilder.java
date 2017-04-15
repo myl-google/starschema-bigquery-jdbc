@@ -108,6 +108,7 @@ public class TreeBuilder {
         }
         this.logger.debug("Creating a new SelectStatement with the builded tree");
         try {
+            // TODO(myl): support create table statement
             return new SelectStatement(this.tree, this);
         } catch (TreeParsingException e) {
             logger.warn("Something went wrong with the TreeBuilding", e);
