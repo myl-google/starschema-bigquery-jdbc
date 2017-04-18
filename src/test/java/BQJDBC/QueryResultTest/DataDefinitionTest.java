@@ -36,7 +36,7 @@ import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 
-public class GrammarTest {
+public class DataDefinitionTest {
     /** String for System independent newline */
     public static String newLine = System.getProperty("line.separator");
     /**
