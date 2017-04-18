@@ -253,9 +253,9 @@ public abstract class BQStatementRoot {
         }
         try {
             do {
-                Job job = BQSupportFuncts.getQueryState(referencedJob,
+                Job pollJob = BQSupportFuncts.getQueryState(referencedJob,
                         this.connection.getBigquery(), this.ProjectId);
-                if (job.getStatus().getState().equals("DONE")) {
+                if (pollJob.getStatus().getState().equals("DONE")) {
                     if (resultSetType == ResultSet.TYPE_SCROLL_INSENSITIVE) {
                         return new BQScrollableResultSet(BQSupportFuncts.getQueryResults(
                                 this.connection.getBigquery(), this.ProjectId,

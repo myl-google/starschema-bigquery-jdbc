@@ -255,10 +255,10 @@ public class BQPreparedStatement extends BQStatementRoot implements
         }
         try {
             do {
-                if (BQSupportFuncts.getQueryState(referencedJob,
+                Job pollJob = BQSupportFuncts.getQueryState(referencedJob,
                         this.connection.getBigquery(),
-                        this.ProjectId.replace("__", ":").replace("_", "."))
-                        .equals("DONE")) {
+                        this.ProjectId.replace("__", ":").replace("_", "."));
+                if (pollJob.getStatus().getState().equals("DONE")) {
                     if (resultSetType == ResultSet.TYPE_SCROLL_INSENSITIVE) {
                         return new BQScrollableResultSet(BQSupportFuncts.getQueryResults(
                                 this.connection.getBigquery(),
