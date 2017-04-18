@@ -75,23 +75,6 @@ public class GrammarTest {
     static String input;
 
     /**
-     * Test CREATE TABLE statement
-     */
-    @Test
-    public void createTable() {
-        input = "create table t1 ()";
-        logger.info("Running test: create table:" + newLine + input);
-        int result = 0;
-        try {
-            result = con.createStatement().executeUpdate(input);
-        } catch (SQLException e) {
-            this.logger.error("SQLexception" + e.toString());
-            Assert.fail("SQLException" + e.toString());
-        }
-        Assert.assertEquals(0, result);
-    }
-
-    /**
      * to Test the columnresolver from 2 subqueries
      */
     @Test
