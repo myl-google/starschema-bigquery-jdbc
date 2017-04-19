@@ -82,7 +82,6 @@ import JDBCTokens;
  */
   package net.starschema.clouddb.jdbc;
 }
-/*temp*/
 /**
 Rule for entry point for the parser makes the sqlstatement as the root for the Tree
 */

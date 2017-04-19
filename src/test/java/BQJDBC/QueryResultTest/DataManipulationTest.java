@@ -24,19 +24,16 @@
  */
 package BQJDBC.DataManipulationTest;
 
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
 import junit.framework.Assert;
 import net.starschema.clouddb.jdbc.BQConnection;
 import net.starschema.clouddb.jdbc.BQSupportFuncts;
-import net.starschema.clouddb.jdbc.BQSupportMethods;
-
 import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 //import net.starschema.clouddb.bqjdbc.logging.Logger;
 
 /**
@@ -66,9 +63,11 @@ public class DataManipulationTest {
                             .getConnection(
                                     BQSupportFuncts
                                             .constructUrlFromPropertiesFile(BQSupportFuncts
-                                                    .readFromPropFile(getClass().getResource("/serviceaccount.properties").getFile())),
+                                                    .readFromPropFile(getClass().getResource(
+                                                            "/serviceaccount.properties").getFile())),
                                     BQSupportFuncts
-                                            .readFromPropFile(getClass().getResource("/serviceaccount.properties").getFile()));
+                                            .readFromPropFile(getClass().getResource(
+                                                    "/serviceaccount.properties").getFile()));
                 } catch (Exception e) {
                     this.logger.error("Error in connection" + e.toString());
                     Assert.fail("General Exception:" + e.toString());
@@ -82,12 +81,16 @@ public class DataManipulationTest {
         }
     }
 
+    private void logStatement(String sql) {
+        this.logger.info("Running statement:" + sql);
+    }
+
     @Test
     public void InsertTest() {
         final String sql = "insert into starschema.test(col) values ('a')";
 
         this.logger.info("Test number: InsertTest");
-        this.logger.info("Running statement:" + sql);
+        logStatement(sql);
 
         int result = 0;
         try {
@@ -106,7 +109,7 @@ public class DataManipulationTest {
         this.logger.info("Test number: InsertUpdateDeleteTest");
 
         final String insert_sql = "insert into starschema.test(col) values ('b')";
-        this.logger.info("Running statement:" + insert_sql);
+        logStatement(insert_sql);
         try {
             Statement stm = con.createStatement();
             result = stm.executeUpdate(insert_sql);
@@ -117,7 +120,7 @@ public class DataManipulationTest {
         Assert.assertEquals(1, result);
 
         final String update_sql = "update starschema.test set col='c' where col='b'";
-        this.logger.info("Running statement:" + update_sql);
+        logStatement(update_sql);
         try {
             Statement stm = con.createStatement();
             result = stm.executeUpdate(update_sql);
@@ -128,7 +131,7 @@ public class DataManipulationTest {
         Assert.assertEquals(1, result);
 
         final String delete_sql = "delete starschema.test where col='c'";
-        this.logger.info("Running statement:" + delete_sql);
+        logStatement(delete_sql);
         try {
             Statement stm = con.createStatement();
             result = stm.executeUpdate(delete_sql);

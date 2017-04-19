@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2015, STARSCHEMA LTD.
+ * Copyright (c) 2017, STARSCHEMA LTD.
  * All rights reserved.
 
  * Redistribution and use in source and binary forms, with or without modification, are permitted
@@ -38,7 +38,7 @@ import org.junit.Test;
 
 public class DataDefinitionTest {
     /** String for System independent newline */
-    public static String newLine = System.getProperty("line.separator");
+    private static String newLine = System.getProperty("line.separator");
     /**
      * Static Connection holder
      */
@@ -59,8 +59,10 @@ public class DataDefinitionTest {
                     Class.forName("net.starschema.clouddb.jdbc.BQDriver");
                     con = DriverManager.getConnection(
                             BQSupportFuncts.constructUrlFromPropertiesFile(BQSupportFuncts
-                                    .readFromPropFile(getClass().getResource("/installedaccount.properties").getFile())),
-                            BQSupportFuncts.readFromPropFile(getClass().getResource("/installedaccount.properties").getFile()));
+                                    .readFromPropFile(getClass().getResource(
+                                            "/installedaccount.properties").getFile())),
+                            BQSupportFuncts.readFromPropFile(getClass().getResource(
+                                    "/installedaccount.properties").getFile()));
                 } catch (Exception e) {
                     logger.debug("Failed to make connection trough the JDBC driver", e);
                 }
