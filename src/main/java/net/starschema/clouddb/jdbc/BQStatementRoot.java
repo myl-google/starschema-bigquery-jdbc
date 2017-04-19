@@ -33,6 +33,8 @@ import org.apache.log4j.Logger;
 import java.io.IOException;
 import java.sql.*;
 
+import org.antlr.runtime.tree.Tree;
+
 // import net.starschema.clouddb.bqjdbc.logging.Logger;
 
 /**
@@ -305,11 +307,12 @@ public abstract class BQStatementRoot {
         this.starttime = System.currentTimeMillis();
         Job referencedJob;
 
-        // TODO(myl): check if it's a create table statement and divert to a different function if it is
-
         // ANTLR Parsing
         BQQueryParser parser = new BQQueryParser(updateSql, this.connection);
-        updateSql = parser.parse();
+        Tree createTableTree = parser.parseCreateTable();
+        if (createTableTree != null) {
+            return executeCreateTable(createTableTree);
+        }
 
         try {
             // Gets the Job reference of the completed job
@@ -349,6 +352,11 @@ public abstract class BQStatementRoot {
         // support that :(
         throw new BQSQLException(
                 "Query run took more than the specified timeout");
+    }
+
+    public int executeCreateTable(Tree tree) throws SQLException {
+        // TODO(myl): implement
+        throw new BQSQLException("create table not yet implemented");
     }
 
     /**

@@ -62,7 +62,7 @@ public class GrammarTreeTest {
         TreeBuilder builder = new TreeBuilder(string, con, new CallContainer());
         SelectStatement build = null;
         try {
-            build = (SelectStatement) builder.build();
+            build = (SelectStatement) builder.buildSelect();
             SQLCleaner.Clean(build);
         } catch (Exception e) {
             // TODO Auto-generated catch block

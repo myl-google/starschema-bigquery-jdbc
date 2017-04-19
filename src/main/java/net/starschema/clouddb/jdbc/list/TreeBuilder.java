@@ -90,10 +90,10 @@ public class TreeBuilder {
     /**
      * The starter of everything, first we replace all the ` with "
      * then making an ANTLR tree
-     * @return - SelectStatement as Node
+     * @return - ANTLR tree
      * @throws Exception
      */
-    public Node build() throws Exception {
+    public Tree buildTree() throws Exception {
         this.sqlForParse = this.sqlForParse.replace('`', '\"').replace('\r', ' ').replace('\n', ' ');
         this.logger.debug("Building the ANTLR tree");
         CharStream stream = new ANTLRStringStream(this.sqlForParse);
@@ -106,9 +106,18 @@ public class TreeBuilder {
             logger.warn("Grammar error: Failed to parse the Query", e);
             throw new Exception("Grammar error: Failed to parse the Query", e);
         }
+        return this.tree;
+    }
+
+    /**
+     * First creates an ANTLR tree, then converts to a SelectStatement.
+     * @return - SelectStatement as Node
+     * @throws Exception
+     */
+    public Node buildSelect() throws Exception {
+        buildTree();
         this.logger.debug("Creating a new SelectStatement with the builded tree");
         try {
-            // TODO(myl): support create table statement
             return new SelectStatement(this.tree, this);
         } catch (TreeParsingException e) {
             logger.warn("Something went wrong with the TreeBuilding", e);

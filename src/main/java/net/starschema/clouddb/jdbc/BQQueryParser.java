@@ -40,6 +40,7 @@ import net.starschema.clouddb.jdbc.list.SQLCleaner;
 import net.starschema.clouddb.jdbc.list.SelectStatement;
 import net.starschema.clouddb.jdbc.list.TreeBuilder;
 
+import org.antlr.runtime.tree.Tree;
 import org.antlr.runtime.RecognitionException;
 import org.apache.log4j.Logger;
 
@@ -123,7 +124,7 @@ public class BQQueryParser {
                     this.connection, new CallContainer());
             SelectStatement seleNode = null;
             try {
-                seleNode = (SelectStatement) builder.build();
+                seleNode = (SelectStatement) builder.buildSelect();
                 SQLCleaner.Clean(seleNode);
             } catch (TreeParsingException e1) {
                 logger.debug("Parsing failed", e1);
@@ -285,6 +286,30 @@ public class BQQueryParser {
             this.successFullParsing = false;
         }
         return this.queryToParse;
+    }
+
+    /**
+     * @return a parsed CREATE TABLE statement
+     */
+    public Tree parseCreateTable() {
+        this.successFullParsing = true;
+        Tree tree = null;
+        try {
+            TreeBuilder builder = new TreeBuilder(this.queryToParse, this.connection, new CallContainer());
+            try {
+                tree = builder.buildTree();
+            } catch (TreeParsingException e1) {
+                logger.debug("Parsing failed", e1);
+                return null;
+            }
+        } catch (Exception e) {
+            this.logger.info("Parsing failed", e);
+        }
+        if (tree.getText() == "CREATETABLESTATEMENT") {
+            return tree;
+        } else {
+            return null;
+        }
     }
 
     /** Setter for the Connection, it must be a BQConnection */
