@@ -81,17 +81,8 @@ public class DataManipulationTest {
         }
     }
 
-    private void logStatement(String sql) {
+    private int runStatement(String sql) {
         this.logger.info("Running statement:" + sql);
-    }
-
-    @Test
-    public void InsertTest() {
-        final String sql = "insert into starschema.test(col) values ('a')";
-
-        this.logger.info("Test number: InsertTest");
-        logStatement(sql);
-
         int result = 0;
         try {
             Statement stm = con.createStatement();
@@ -100,6 +91,15 @@ public class DataManipulationTest {
             this.logger.error("SQLexception" + e.toString());
             Assert.fail("SQLException" + e.toString());
         }
+        return result
+    }
+
+    @Test
+    public void InsertTest() {
+        final String sql = "insert into starschema.test(col) values ('a')";
+
+        this.logger.info("Test number: InsertTest");
+        int result = runStatement(sql);
         Assert.assertEquals(result, 1);
     }
 
@@ -109,36 +109,15 @@ public class DataManipulationTest {
         this.logger.info("Test number: InsertUpdateDeleteTest");
 
         final String insert_sql = "insert into starschema.test(col) values ('b')";
-        logStatement(insert_sql);
-        try {
-            Statement stm = con.createStatement();
-            result = stm.executeUpdate(insert_sql);
-        } catch (SQLException e) {
-            this.logger.error("SQLexception" + e.toString());
-            Assert.fail("SQLException" + e.toString());
-        }
+        result = runStatement(insert_sql);
         Assert.assertEquals(1, result);
 
         final String update_sql = "update starschema.test set col='c' where col='b'";
-        logStatement(update_sql);
-        try {
-            Statement stm = con.createStatement();
-            result = stm.executeUpdate(update_sql);
-        } catch (SQLException e) {
-            this.logger.error("SQLexception" + e.toString());
-            Assert.fail("SQLException" + e.toString());
-        }
+        result = runStatement(update_sql)
         Assert.assertEquals(1, result);
 
         final String delete_sql = "delete starschema.test where col='c'";
-        logStatement(delete_sql);
-        try {
-            Statement stm = con.createStatement();
-            result = stm.executeUpdate(delete_sql);
-        } catch (SQLException e) {
-            this.logger.error("SQLexception" + e.toString());
-            Assert.fail("SQLException" + e.toString());
-        }
+        result = runStatement(delete_sql);
         Assert.assertEquals(1, result );
     }
 }

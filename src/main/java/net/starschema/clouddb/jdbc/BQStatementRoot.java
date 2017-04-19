@@ -28,7 +28,6 @@
 package net.starschema.clouddb.jdbc;
 
 import com.google.api.services.bigquery.model.Job;
-import com.google.api.services.bigquery.;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;
@@ -356,7 +355,9 @@ public abstract class BQStatementRoot {
     }
 
     public int executeCreateTable(Tree tree) throws SQLException {
-        String datasetName = "my_dataset_name";
+	// TODO(myl): implement
+        throw new BQSQLException("create table not yet implemented");
+        /* String datasetName = "my_dataset_name";
         String tableName = "my_table_name";
         String fieldName = "string_field";
         TableId tableId = TableId.of(datasetName, tableName);
@@ -366,7 +367,7 @@ public abstract class BQStatementRoot {
         Schema schema = Schema.of(field);
         TableDefinition tableDefinition = StandardTableDefinition.of(schema);
         TableInfo tableInfo = TableInfo.newBuilder(tableId, tableDefinition).build();
-        Table table = bigquery.create(tableInfo);
+        Table table = bigquery.create(tableInfo);*/
     }
 
     /**
