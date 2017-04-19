@@ -91,7 +91,7 @@ public class DataManipulationTest {
             this.logger.error("SQLexception" + e.toString());
             Assert.fail("SQLException" + e.toString());
         }
-        return result
+        return result;
     }
 
     @Test
@@ -113,7 +113,7 @@ public class DataManipulationTest {
         Assert.assertEquals(1, result);
 
         final String update_sql = "update starschema.test set col='c' where col='b'";
-        result = runStatement(update_sql)
+        result = runStatement(update_sql);
         Assert.assertEquals(1, result);
 
         final String delete_sql = "delete starschema.test where col='c'";
