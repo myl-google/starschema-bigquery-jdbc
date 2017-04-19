@@ -79,7 +79,7 @@ public class DataDefinitionTest {
      */
     @Test
     public void createTable() {
-        input = "create table t1 ()";
+        input = "create table t1 (c1 int, c2 char(10) null, c3 varchar(20) not null)";
         logger.info("Running test: create table:" + newLine + input);
         int result = 0;
         try {

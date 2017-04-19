@@ -100,6 +100,9 @@ CREATEKEYWORD:   C R E A T E;
 /** TABLE keyword, case insensitive */
 TABLEKEYWORD:   T A B L E;
 
+/** NULL keyword, case insensitive */
+NULLKEYWORD:   N U L L;
+
 
 //Other strings
 
@@ -220,6 +223,7 @@ fragment TEXT:;
 fragment WHEREEXPRESSION:;
 fragment EXPRESSIONTEXT:;
 fragment CREATETABLESTATEMENT:;
+fragment COLUMNEXPRESSION:;
 
 
 

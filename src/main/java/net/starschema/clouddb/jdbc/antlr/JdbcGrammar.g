@@ -82,7 +82,7 @@ import JDBCTokens;
  */
   package net.starschema.clouddb.jdbc;
 }
-
+/*temp*/
 /**
 Rule for entry point for the parser makes the sqlstatement as the root for the Tree
 */
@@ -109,8 +109,13 @@ selectstatement
 Rule for parsing an sql create table
 */
 createtablestatement
-:   CREATEKEYWORD TABLEKEYWORD sourcetable LPARAM RPARAM
-    ->^(CREATETABLESTATEMENT sourcetable)
+:   CREATEKEYWORD TABLEKEYWORD sourcetable LPARAM columndefinition(COMMA columndefinition)* RPARAM
+    ->^(CREATETABLESTATEMENT sourcetable columndefinition*)
+;
+
+columndefinition
+:   IDENTIFIER IDENTIFIER (LPARAM number RPARAM)? (NOTKEYWORD? NULLKEYWORD)?
+    ->^(COLUMNEXPRESSION IDENTIFIER IDENTIFIER number? (NOTKEYWORD? NULLKEYWORD)?)
 ;
 
 fragment LIMITEXPRESSION:;
