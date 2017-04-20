@@ -347,14 +347,25 @@ public abstract class BQStatementRoot {
                 "Query run took more than the specified timeout");
     }
 
-    public int executeCreateTable(Tree tree) throws SQLException {
+    private void verifyChildText(Tree tree, int i, String expected_text) throws SQLException {
+        final String text = tree.getChild(i).getText();
+        if (!text.equalsIgnoreCase(expected_text)) {
+            throw new BQSQLException("Parse error: expected \"" + expected_text + "\" got \"" + text + '"');
+        }
+    }
+
+    private int executeCreateTable(Tree tree) throws SQLException {
         TableSchema schema = new TableSchema();
+
+        // Extract table name from the first child.
         Tree table_name_tree = tree.getChild(0);
         if (table_name_tree.getText() != "SOURCETABLE" || table_name_tree.getChildCount() != 2) {
             throw new BQSQLException("Error with table name in CREATE TABLE");
         }
         final String dataSetId = table_name_tree.getChild(0).getText();
         final String tableId = table_name_tree.getChild(1).getText();
+
+        // Extract column definitions from the second and subsequent children.
         ArrayList<TableFieldSchema> tableFieldSchema = new ArrayList<TableFieldSchema>();
         for (int i = 1; i < tree.getChildCount(); ++i) {
             Tree treeChild = tree.getChild(i);
@@ -386,8 +397,11 @@ public abstract class BQStatementRoot {
                 default:
                     throw new BQSQLException("Invalid type in create table: " + type_name);
             }
-            if (treeChild.getChildCount() == 4) {
-                // Third and fourth tokens are "NOT" and "NULL"
+            if (treeChild.getChildCount() == 3) {
+                verifyChildText(treeChild, 2, "null");
+            } else if (treeChild.getChildCount() == 4) {
+                verifyChildText(treeChild, 2, "not");
+                verifyChildText(treeChild, 3, "null");
                 schema_entry.setMode("REQUIRED");
             }
             tableFieldSchema.add(schema_entry);
