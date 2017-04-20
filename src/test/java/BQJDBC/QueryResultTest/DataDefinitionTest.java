@@ -73,21 +73,18 @@ public class DataDefinitionTest {
         }
     }
 
-
-    static String input;
-
     /**
      * Test CREATE TABLE statement
      */
     @Test
     public void createTable() {
-        input = "create table t1 (c1 int, c2 char(10) null, c3 varchar(20) not null)";
+        final String input = "create table t1 (c1 int, c2 char(10) null, c3 varchar(20) not null)";
         logger.info("Running test: create table:" + newLine + input);
         int result = 0;
         try {
             result = con.createStatement().executeUpdate(input);
         } catch (SQLException e) {
-            this.logger.error("SQLexception" + e.toString());
+            logger.error("SQLexception" + e.toString());
             Assert.fail("SQLException" + e.toString());
         }
         Assert.assertEquals(0, result);

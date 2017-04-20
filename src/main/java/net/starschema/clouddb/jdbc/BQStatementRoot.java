@@ -305,7 +305,6 @@ public abstract class BQStatementRoot {
             throw new BQSQLException("This Statement is Closed");
         }
         this.starttime = System.currentTimeMillis();
-        Job referencedJob;
 
         // ANTLR Parsing
         BQQueryParser parser = new BQQueryParser(updateSql, this.connection);
@@ -314,6 +313,7 @@ public abstract class BQStatementRoot {
             return executeCreateTable(createTableTree);
         }
 
+        Job referencedJob;
         try {
             // Gets the Job reference of the completed job
             referencedJob = BQSupportFuncts.startQuery(
@@ -336,26 +336,24 @@ public abstract class BQStatementRoot {
                     return pollJob.getStatistics().getQuery().getNumDmlAffectedRows().intValue();
                 }
                 // Pause execution for half second before polling job status again, to reduce unnecessary calls to the
-                // BigQUery API and lower overall application bandwidth.
+                // BigQuery API and lower overall application bandwidth.
                 Thread.sleep(500);
                 this.logger.debug("slept for 500" + "ms, querytimeout is: "
                         + this.querytimeout + "s");
             }
             while (System.currentTimeMillis() - this.starttime <= (long) this.querytimeout * 1000);
-            // it runs for a minimum of 1 time
         } catch (IOException e) {
             throw new BQSQLException("Something went wrong with the update: " + updateSql, e);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        // here we should kill/stop the running job, but bigquery doesn't
-        // support that :(
+        // TODO(myl): cancel the job or set a timeout on the original request
         throw new BQSQLException(
                 "Query run took more than the specified timeout");
     }
 
     public int executeCreateTable(Tree tree) throws SQLException {
-	// TODO(myl): implement
+	    // TODO(myl): implement
         throw new BQSQLException("create table not yet implemented");
         /* String datasetName = "my_dataset_name";
         String tableName = "my_table_name";

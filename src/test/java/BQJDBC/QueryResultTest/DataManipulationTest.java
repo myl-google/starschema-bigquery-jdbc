@@ -34,7 +34,6 @@ import org.junit.Test;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
-//import net.starschema.clouddb.bqjdbc.logging.Logger;
 
 /**
  * This Junit tests if DML statements work as expected
@@ -44,7 +43,6 @@ import java.sql.Statement;
 public class DataManipulationTest {
 
     private static java.sql.Connection con = null;
-    //Logger logger = new Logger(DataManipulationTest.class.getName());
     Logger logger = Logger.getLogger(DataManipulationTest.class.getName());
 
     /**
@@ -52,32 +50,27 @@ public class DataManipulationTest {
      * Connection to static con member.
      */
     @Before
-    public void NewConnection() {
-        try {
-            if (DataManipulationTest.con == null || !DataManipulationTest.con.isValid(0)) {
+    public void NewConnection() throws SQLException {
+        if (DataManipulationTest.con == null || !DataManipulationTest.con.isValid(0)) {
 
-                this.logger.info("Testing the JDBC driver");
-                try {
-                    Class.forName("net.starschema.clouddb.jdbc.BQDriver");
-                    DataManipulationTest.con = DriverManager
-                            .getConnection(
-                                    BQSupportFuncts
-                                            .constructUrlFromPropertiesFile(BQSupportFuncts
-                                                    .readFromPropFile(getClass().getResource(
-                                                            "/serviceaccount.properties").getFile())),
-                                    BQSupportFuncts
-                                            .readFromPropFile(getClass().getResource(
-                                                    "/serviceaccount.properties").getFile()));
-                } catch (Exception e) {
-                    this.logger.error("Error in connection" + e.toString());
-                    Assert.fail("General Exception:" + e.toString());
-                }
-                this.logger.info(((BQConnection) DataManipulationTest.con)
-                        .getURLPART());
+            this.logger.info("Testing the JDBC driver");
+            try {
+                Class.forName("net.starschema.clouddb.jdbc.BQDriver");
+                DataManipulationTest.con = DriverManager
+                        .getConnection(
+                                BQSupportFuncts
+                                        .constructUrlFromPropertiesFile(BQSupportFuncts
+                                                .readFromPropFile(getClass().getResource(
+                                                        "/serviceaccount.properties").getFile())),
+                                BQSupportFuncts
+                                        .readFromPropFile(getClass().getResource(
+                                                "/serviceaccount.properties").getFile()));
+            } catch (Exception e) {
+                this.logger.error("Error in connection" + e.toString());
+                Assert.fail("General Exception:" + e.toString());
             }
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            this.logger.info(((BQConnection) DataManipulationTest.con)
+                    .getURLPART());
         }
     }
 
