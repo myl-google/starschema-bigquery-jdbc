@@ -380,8 +380,8 @@ public class BQSupportFuncts {
      *                     projectId fails
      *                     </p>
      */
-    public static Job getQueryState(Job myjob, Bigquery bigquery,
-                                       String projectId) throws IOException {
+    public static Job getQueryJob(Job myjob, Bigquery bigquery,
+                                  String projectId) throws IOException {
         projectId = projectId.replace("__", ":").replace("_", ".");
         Job pollJob = bigquery.jobs()
                 .get(projectId, myjob.getJobReference().getJobId()).execute();
@@ -393,6 +393,23 @@ public class BQSupportFuncts {
                 + (System.currentTimeMillis() - pollJob.getStatistics()
                 .getStartTime()));
         return pollJob;
+    }
+
+    /**
+     * Returns the status of a job
+     *
+     * @param myjob     Instance of Job
+     * @param bigquery  Instance of authorized Bigquery client
+     * @param projectId The id of the Project the job is contained in
+     * @return the status of the job
+     * @throws IOException <p>
+     *                     if the request to get the job specified by myjob and
+     *                     projectId fails
+     *                     </p>
+     */
+    public static String getQueryState(Job myjob, Bigquery bigquery,
+                                    String projectId) throws IOException {
+        return getQueryJob(myjob, bigquery, projectId).getStatus().getState();
     }
 
     /**

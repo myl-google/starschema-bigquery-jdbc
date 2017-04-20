@@ -255,9 +255,9 @@ public abstract class BQStatementRoot {
         }
         try {
             do {
-                Job pollJob = BQSupportFuncts.getQueryState(referencedJob,
-                        this.connection.getBigquery(), this.ProjectId);
-                if (pollJob.getStatus().getState().equals("DONE")) {
+                if (BQSupportFuncts.getQueryState(referencedJob,
+                        this.connection.getBigquery(), this.ProjectId).equals(
+                        "DONE")) {
                     if (resultSetType == ResultSet.TYPE_SCROLL_INSENSITIVE) {
                         return new BQScrollableResultSet(BQSupportFuncts.getQueryResults(
                                 this.connection.getBigquery(), this.ProjectId,
@@ -330,7 +330,7 @@ public abstract class BQStatementRoot {
         }
         try {
             do {
-                Job pollJob = BQSupportFuncts.getQueryState(referencedJob,
+                Job pollJob = BQSupportFuncts.getQueryJob(referencedJob,
                         this.connection.getBigquery(), this.ProjectId);
                 if (pollJob.getStatus().getState().equals("DONE")) {
                     return pollJob.getStatistics().getQuery().getNumDmlAffectedRows().intValue();
