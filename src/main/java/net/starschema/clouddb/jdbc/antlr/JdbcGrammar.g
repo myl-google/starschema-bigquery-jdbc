@@ -108,13 +108,18 @@ selectstatement
 Rule for parsing an sql create table
 */
 createtablestatement
-:   CREATEKEYWORD TABLEKEYWORD sourcetable LPARAM columndefinition(COMMA columndefinition)* RPARAM
-    ->^(CREATETABLESTATEMENT sourcetable columndefinition*)
+:   CREATEKEYWORD TABLEKEYWORD tabledefinition LPARAM columndefinition(COMMA columndefinition)* RPARAM
+    ->^(CREATETABLESTATEMENT tabledefinition columndefinition*)
 ;
 
 columndefinition
 :   IDENTIFIER IDENTIFIER (LPARAM number RPARAM)? (NOTKEYWORD? NULLKEYWORD)?
-    ->^(COLUMNEXPRESSION IDENTIFIER IDENTIFIER number? (NOTKEYWORD? NULLKEYWORD)?)
+    ->^(COLUMNEXPRESSION IDENTIFIER IDENTIFIER (NOTKEYWORD? NULLKEYWORD)?)
+;
+
+tabledefinition
+:  IDENTIFIER (columndivider IDENTIFIER)*
+   ->^(SOURCETABLE IDENTIFIER*)
 ;
 
 fragment LIMITEXPRESSION:;

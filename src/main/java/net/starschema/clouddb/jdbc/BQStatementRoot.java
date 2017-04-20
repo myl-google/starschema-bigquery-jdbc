@@ -27,13 +27,13 @@
 
 package net.starschema.clouddb.jdbc;
 
-import com.google.api.services.bigquery.model.Job;
+import com.google.api.services.bigquery.model.*;
+import org.antlr.runtime.tree.Tree;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.sql.*;
-
-import org.antlr.runtime.tree.Tree;
+import java.util.ArrayList;
 
 // import net.starschema.clouddb.bqjdbc.logging.Logger;
 
@@ -291,14 +291,7 @@ public abstract class BQStatementRoot {
                 "Query run took more than the specified timeout");
     }
 
-    /**
-     * <p>
-     * <h1>Implementation Details:</h1><br>
-     * Not implemented yet.
-     * </p>
-     *
-     * @throws BQSQLException
-     */
+    /** {@inheritDoc} */
 
     public int executeUpdate(String updateSql) throws SQLException {
         if (this.isClosed()) {
@@ -321,7 +314,7 @@ public abstract class BQStatementRoot {
                     this.ProjectId,
                     updateSql,
                     connection.getDataSet(),
-                    false,  //this.connection.getUseLegacySql(),  TODO(myl): change the test
+                    false,
                     this.connection.getMaxBillingBytes()
             );
             this.logger.info("Executing Update: " + updateSql);
@@ -355,19 +348,64 @@ public abstract class BQStatementRoot {
     }
 
     public int executeCreateTable(Tree tree) throws SQLException {
-	// TODO(myl): implement
-        throw new BQSQLException("create table not yet implemented");
-        /* String datasetName = "my_dataset_name";
-        String tableName = "my_table_name";
-        String fieldName = "string_field";
-        TableId tableId = TableId.of(datasetName, tableName);
-        // Table field definition
-        Field field = Field.of(fieldName, Field.Type.string());
-        // Table schema definition
-        Schema schema = Schema.of(field);
-        TableDefinition tableDefinition = StandardTableDefinition.of(schema);
-        TableInfo tableInfo = TableInfo.newBuilder(tableId, tableDefinition).build();
-        Table table = bigquery.create(tableInfo);*/
+        TableSchema schema = new TableSchema();
+        Tree table_name_tree = tree.getChild(0);
+        if (table_name_tree.getText() != "SOURCETABLE" || table_name_tree.getChildCount() != 2) {
+            throw new BQSQLException("Error with table name in CREATE TABLE");
+        }
+        final String dataSetId = table_name_tree.getChild(0).getText();
+        final String tableId = table_name_tree.getChild(1).getText();
+        ArrayList<TableFieldSchema> tableFieldSchema = new ArrayList<TableFieldSchema>();
+        for (int i = 1; i < tree.getChildCount(); ++i) {
+            Tree treeChild = tree.getChild(i);
+            if (treeChild.getChildCount() < 2) {
+                throw new BQSQLException("Error with CREATE TABLE column definition " + i);
+            }
+            TableFieldSchema schema_entry = new TableFieldSchema();
+            schema_entry.setName(treeChild.getChild(0).getText());
+            final String type_name = treeChild.getChild(1).getText().toLowerCase();
+            switch (type_name) {
+                case "integer":
+                case "date":
+                case "datetime":
+                case "timestamp":
+                case "time":
+                    schema_entry.setType(type_name);
+                    break;
+                case "char":
+                case "varchar":
+                case "text":
+                    schema_entry.setType("string");
+                    break;
+                case "int":
+                    schema_entry.setType("integer");
+                    break;
+                case "real":
+                    schema_entry.setType("float");
+                    break;
+                default:
+                    throw new BQSQLException("Invalid type in create table: " + type_name);
+            }
+            if (treeChild.getChildCount() == 4) {
+                // Third and fourth tokens are "NOT" and "NULL"
+                schema_entry.setMode("REQUIRED");
+            }
+            tableFieldSchema.add(schema_entry);
+        }
+        schema.setFields(tableFieldSchema);
+        Table table = new Table();
+        table.setSchema(schema);
+        TableReference tableRef = new TableReference();
+        tableRef.setDatasetId(dataSetId);
+        tableRef.setProjectId(this.ProjectId);
+        tableRef.setTableId(tableId);
+        table.setTableReference(tableRef);
+        try {
+            this.connection.getBigquery().tables().insert(this.ProjectId, dataSetId, table).execute();
+        } catch (IOException e) {
+            throw new BQSQLException("Failed to CREATE TABLE: ", e);
+        }
+        return 0;
     }
 
     /**
