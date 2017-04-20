@@ -121,8 +121,8 @@ public class BQStatement extends BQStatementRoot implements java.sql.Statement {
             do {
                 if (BQSupportFuncts.getQueryState(referencedJob,
                         this.connection.getBigquery(),
-                        this.ProjectId.replace("__", ":").replace("_", "."))
-                        .equals("DONE")) {
+                        this.ProjectId.replace("__", ":").replace("_", ".")).equals(
+                        "DONE")) {
                     if (resultSetType == ResultSet.TYPE_SCROLL_INSENSITIVE) {
                         return new BQScrollableResultSet(BQSupportFuncts.getQueryResults(
                                 this.connection.getBigquery(),
