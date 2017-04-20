@@ -299,13 +299,13 @@ public class BQQueryParser {
             try {
                 tree = builder.buildTree();
             } catch (TreeParsingException e1) {
-                logger.debug("Parsing failed", e1);
+                this.logger.debug("Parsing failed", e1);
                 return null;
             }
         } catch (Exception e) {
             this.logger.info("Parsing failed", e);
         }
-        if (tree.getText() == "CREATETABLESTATEMENT") {
+        if (tree.getText().equals("CREATETABLESTATEMENT")) {
             return tree;
         } else {
             return null;

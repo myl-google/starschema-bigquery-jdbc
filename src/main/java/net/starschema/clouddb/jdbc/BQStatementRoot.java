@@ -255,9 +255,9 @@ public abstract class BQStatementRoot {
         }
         try {
             do {
-                Job pollJob = BQSupportFuncts.getQueryState(referencedJob,
-                        this.connection.getBigquery(), this.ProjectId);
-                if (pollJob.getStatus().getState().equals("DONE")) {
+                if (BQSupportFuncts.getQueryState(referencedJob,
+                        this.connection.getBigquery(), this.ProjectId).equals(
+                        "DONE")) {
                     if (resultSetType == ResultSet.TYPE_SCROLL_INSENSITIVE) {
                         return new BQScrollableResultSet(BQSupportFuncts.getQueryResults(
                                 this.connection.getBigquery(), this.ProjectId,
@@ -298,7 +298,6 @@ public abstract class BQStatementRoot {
             throw new BQSQLException("This Statement is Closed");
         }
         this.starttime = System.currentTimeMillis();
-        Job referencedJob;
 
         // ANTLR Parsing
         BQQueryParser parser = new BQQueryParser(updateSql, this.connection);
@@ -307,6 +306,7 @@ public abstract class BQStatementRoot {
             return executeCreateTable(createTableTree);
         }
 
+        Job referencedJob;
         try {
             // Gets the Job reference of the completed job
             referencedJob = BQSupportFuncts.startQuery(
@@ -323,26 +323,24 @@ public abstract class BQStatementRoot {
         }
         try {
             do {
-                Job pollJob = BQSupportFuncts.getQueryState(referencedJob,
+                Job pollJob = BQSupportFuncts.getQueryJob(referencedJob,
                         this.connection.getBigquery(), this.ProjectId);
                 if (pollJob.getStatus().getState().equals("DONE")) {
                     return pollJob.getStatistics().getQuery().getNumDmlAffectedRows().intValue();
                 }
                 // Pause execution for half second before polling job status again, to reduce unnecessary calls to the
-                // BigQUery API and lower overall application bandwidth.
+                // BigQuery API and lower overall application bandwidth.
                 Thread.sleep(500);
                 this.logger.debug("slept for 500" + "ms, querytimeout is: "
                         + this.querytimeout + "s");
             }
             while (System.currentTimeMillis() - this.starttime <= (long) this.querytimeout * 1000);
-            // it runs for a minimum of 1 time
         } catch (IOException e) {
             throw new BQSQLException("Something went wrong with the update: " + updateSql, e);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        // here we should kill/stop the running job, but bigquery doesn't
-        // support that :(
+        // TODO(myl): cancel the job or set a timeout on the original request
         throw new BQSQLException(
                 "Query run took more than the specified timeout");
     }
