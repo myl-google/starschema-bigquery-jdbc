@@ -55,9 +55,10 @@
 
 package net.starschema.clouddb.jdbc;
 
-import org.apache.log4j.BasicConfigurator;
-import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
+//import org.apache.logging.log4j.BasicConfigurator;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.PropertyConfigurator;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -74,9 +75,9 @@ import java.util.Properties;
  */
 public class BQDriver implements java.sql.Driver {
 
-    /** Instance log4j.Logger */
+    /** Instance log4j.LogManager */
     // static Logger logg = new Logger(BQDriver.class.getName());
-    static Logger logg = Logger.getLogger(BQDriver.class.getName());
+    static Logger logg = LogManager.getLogger(BQDriver.class.getName());
     /** Url_Prefix for using this driver */
     private static final String URL_PREFIX = "jdbc:BQDriver:";
     /** MAJOR Version of the driver */
@@ -98,12 +99,12 @@ public class BQDriver implements java.sql.Driver {
                         + File.separator
                         + ".bqjdbc"
                         + File.separator + "log4j.properties"));
-                PropertyConfigurator.configure(properties);
+                //PropertyConfigurator.configure(properties);
             } catch (IOException e) {
-                BasicConfigurator.configure();
+                //BasicConfigurator.configure();
             }
 
-            logg = Logger.getLogger(driverInst.getClass());
+            logg = LogManager.getLogger(driverInst.getClass());
             logg.debug("Registered the driver");
 
         } catch (Exception e) {

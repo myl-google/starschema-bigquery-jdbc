@@ -27,7 +27,8 @@ package BQJDBC.DataManipulationTest;
 import junit.framework.Assert;
 import net.starschema.clouddb.jdbc.BQConnection;
 import net.starschema.clouddb.jdbc.BQSupportFuncts;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -43,7 +44,7 @@ import java.sql.Statement;
 public class DataManipulationTest {
 
     private static java.sql.Connection con = null;
-    Logger logger = Logger.getLogger(DataManipulationTest.class.getName());
+    Logger logger = LogManager.getLogger(DataManipulationTest.class.getName());
 
     /**
      * Makes a new Bigquery Connection to Hardcoded URL and gives back the

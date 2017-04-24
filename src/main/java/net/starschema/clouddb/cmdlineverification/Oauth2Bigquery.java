@@ -42,7 +42,8 @@ import com.google.api.services.bigquery.BigqueryRequest;
 import com.google.api.services.bigquery.BigqueryRequestInitializer;
 import com.google.api.services.bigquery.BigqueryScopes;
 import org.apache.commons.io.FileUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.awt.*;
 import java.awt.Desktop.Action;
@@ -70,7 +71,7 @@ public class Oauth2Bigquery {
      * Log4j logger, for debugging.
      */
     // static Logger logger = new Logger(Oauth2Bigquery.class.getName());
-    static Logger logger = Logger.getLogger(Oauth2Bigquery.class.getName());
+    static Logger logger = LogManager.getLogger(Oauth2Bigquery.class.getName());
     /**
      * Browsers to try:
      */
@@ -333,7 +334,7 @@ public class Oauth2Bigquery {
             logger.debug("success");
             return;
         } catch (Exception e) {
-            logger.debug(null, e);
+            logger.debug("", e);
             // handled below
         }
 

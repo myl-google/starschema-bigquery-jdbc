@@ -53,7 +53,8 @@ import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 // import net.starschema.clouddb.bqjdbc.logging.Logger;
 
@@ -69,7 +70,7 @@ import org.apache.log4j.Logger;
 abstract class ScrollableResultset<T> implements java.sql.ResultSet {
 
     // Logger logger = new Logger(ScrollableResultset.class.getName());
-    Logger logger = Logger.getLogger(ScrollableResultset.class.getName());
+    Logger logger = LogManager.getLogger(ScrollableResultset.class.getName());
     /** Reference for holding the current InputStream given back by get methods */
     protected InputStream Strm = null;
 

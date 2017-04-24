@@ -34,7 +34,8 @@ import java.sql.Statement;
 import junit.framework.Assert;
 import net.starschema.clouddb.jdbc.BQSupportFuncts;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -48,7 +49,7 @@ public class GrammarTestsToBeFixed {
     /**
      * Logger initialization
      */
-    Logger logger = Logger.getLogger(this.toString());
+    Logger logger = LogManager.getLogger(this.toString());
 
     /**
      * Creates a new Connection to bigquery with the jdbc driver

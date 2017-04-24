@@ -29,7 +29,8 @@ package net.starschema.clouddb.jdbc;
 
 import com.google.api.services.bigquery.model.*;
 import org.antlr.runtime.tree.Tree;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.sql.*;
@@ -53,7 +54,7 @@ public abstract class BQStatementRoot {
     /** String containing the context of the Project */
     String ProjectId = null;
     // Logger logger = new Logger(BQStatementRoot.class.getName());
-    Logger logger = Logger.getLogger(BQStatementRoot.class.getName());
+    Logger logger = LogManager.getLogger(BQStatementRoot.class.getName());
 
     /** Variable that stores the closed state of the statement */
     boolean closed = false;
@@ -63,7 +64,7 @@ public abstract class BQStatementRoot {
 
     /** Variable that stores the set query timeout */
     int querytimeout = Integer.MAX_VALUE;
-    /** Instance of log4j.Logger */
+    /** Instance of log4j.LogManager */
     /**
      * Variable stores the time an execute is made
      */

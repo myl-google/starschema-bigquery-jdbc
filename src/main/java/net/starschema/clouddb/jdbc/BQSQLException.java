@@ -30,7 +30,8 @@ import java.sql.SQLException;
 
 import com.google.api.client.googleapis.json.GoogleJsonResponseException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 // import net.starschema.clouddb.bqjdbc.logging.Logger;
 
@@ -61,7 +62,7 @@ public class BQSQLException extends SQLException {
 
     private static final long serialVersionUID = -3669725541475950504L;
     // Logger logger = new Logger(BQSQLException.class.getName());
-    Logger logger = Logger.getLogger(BQSQLException.class.getName());
+    Logger logger = LogManager.getLogger(BQSQLException.class.getName());
 
     /**
      * <p>

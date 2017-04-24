@@ -27,7 +27,8 @@ package net.starschema.clouddb.jdbc;
 
 import com.google.api.services.bigquery.Bigquery;
 import net.starschema.clouddb.cmdlineverification.Oauth2Bigquery;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -52,7 +53,7 @@ public class BQConnection implements Connection {
     /** Variable to store auto commit mode */
     private boolean autoCommitEnabled = false;
 
-    /** Instance log4j.Logger */
+    /** Instance log4j.LogManager */
     Logger logger;
     /**
      * The bigquery client to access the service.
@@ -105,7 +106,7 @@ public class BQConnection implements Connection {
      * @throws SQLException
      */
     public BQConnection(String url, Properties loginProp) throws SQLException {
-        this.logger = Logger.getLogger(this.getClass());
+        this.logger = LogManager.getLogger(this.getClass());
         this.URLPART = url;
         this.isclosed = false;
 

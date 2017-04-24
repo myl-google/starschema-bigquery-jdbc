@@ -34,7 +34,8 @@ import net.starschema.clouddb.jdbc.BQConnection;
 import net.starschema.clouddb.jdbc.BQSupportFuncts;
 import net.starschema.clouddb.jdbc.BQSupportMethods;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 //import net.starschema.clouddb.bqjdbc.logging.Logger;
@@ -49,7 +50,7 @@ public class QueryResultTest {
 
     private static java.sql.Connection con = null;
     //Logger logger = new Logger(QueryResultTest.class.getName());
-    Logger logger = Logger.getLogger(QueryResultTest.class.getName());
+    Logger logger = LogManager.getLogger(QueryResultTest.class.getName());
 
     /**
      * Compares two String[][]

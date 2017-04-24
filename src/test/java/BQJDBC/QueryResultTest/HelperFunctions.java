@@ -27,10 +27,11 @@ package BQJDBC.QueryResultTest;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class HelperFunctions {
-    static Logger logger = Logger.getLogger("HelperFunctions");
+    static Logger logger = LogManager.getLogger("HelperFunctions");
 
     /**
      * Prints a ResultSet QueryResult to Log

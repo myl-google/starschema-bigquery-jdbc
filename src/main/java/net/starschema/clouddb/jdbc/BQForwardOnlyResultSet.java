@@ -32,7 +32,8 @@ import com.google.api.services.bigquery.Bigquery;
 import com.google.api.services.bigquery.model.GetQueryResultsResponse;
 import com.google.api.services.bigquery.model.Job;
 import com.google.api.services.bigquery.model.TableRow;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 import java.math.BigDecimal;
@@ -55,7 +56,7 @@ import java.util.TimeZone;
 public class BQForwardOnlyResultSet implements java.sql.ResultSet {
 
     // Logger logger = new Logger(ScrollableResultset.class.getName());
-    Logger logger = Logger.getLogger(BQForwardOnlyResultSet.class.getName());
+    Logger logger = LogManager.getLogger(BQForwardOnlyResultSet.class.getName());
     /** Reference for holding the current InputStream given back by get methods */
     protected InputStream Strm = null;
 

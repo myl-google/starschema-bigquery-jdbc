@@ -42,7 +42,8 @@ import net.starschema.clouddb.jdbc.list.TreeBuilder;
 
 import org.antlr.runtime.tree.Tree;
 import org.antlr.runtime.RecognitionException;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * The initializer for the Query Transformer
@@ -54,7 +55,7 @@ import org.apache.log4j.Logger;
 public class BQQueryParser {
     private String queryToParse = null;
     private BQConnection connection = null;
-    Logger logger = Logger.getLogger(this.getClass());
+    Logger logger = LogManager.getLogger(this.getClass());
     /** Was the parsing Successfull? */
     public boolean successFullParsing = false;
     private boolean formatted = true;

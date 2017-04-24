@@ -56,7 +56,8 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -79,7 +80,7 @@ import com.google.api.client.auth.oauth2.CredentialStore;
 public class BQXMLCredentialStore implements CredentialStore {
 
     // static Logger logger = new Logger(BQXMLCredentialStore.class.getName());
-    static Logger logger = Logger.getLogger(BQXMLCredentialStore.class
+    static Logger logger = LogManager.getLogger(BQXMLCredentialStore.class
             .getName());
 
     /**

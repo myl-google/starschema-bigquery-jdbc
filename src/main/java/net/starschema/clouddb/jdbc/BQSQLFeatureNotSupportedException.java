@@ -28,7 +28,8 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.sql.SQLFeatureNotSupportedException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 // import net.starschema.clouddb.bqjdbc.logging.Logger;
 
@@ -61,7 +62,7 @@ public class BQSQLFeatureNotSupportedException extends
     private static final long serialVersionUID = 5713619285089813617L;
     // Logger logger = new
     // Logger(BQSQLFeatureNotSupportedException.class.getName());
-    Logger logger = Logger.getLogger(BQSQLFeatureNotSupportedException.class
+    Logger logger = LogManager.getLogger(BQSQLFeatureNotSupportedException.class
             .getName());
 
     /**

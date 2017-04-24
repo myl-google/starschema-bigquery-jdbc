@@ -49,7 +49,8 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -66,7 +67,7 @@ class BQSQLXML implements java.sql.SQLXML {
     /** Indicates wether the SQLXML is readable or not */
     Boolean Readable = true;
 
-    Logger logger = Logger.getLogger(getClass());
+    Logger logger = LogManager.getLogger(getClass());
 
     /**
      * Constructor that tries to parse the xmlString to an XML document

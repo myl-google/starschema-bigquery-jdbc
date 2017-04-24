@@ -28,7 +28,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * The basic Node for the List
@@ -43,7 +44,7 @@ import org.apache.log4j.Logger;
 public class Node implements NodeBuilder {
 
     public static String newline = System.getProperty("line.separator");
-    protected Logger logger = Logger.getLogger(this.getClass().toString());
+    protected Logger logger = LogManager.getLogger(this.getClass().toString());
     protected Node prev = null;
     protected Node next = null;
     protected LinkedList<Node> children = null;

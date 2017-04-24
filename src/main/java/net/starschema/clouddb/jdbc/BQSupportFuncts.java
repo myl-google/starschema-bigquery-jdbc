@@ -35,7 +35,8 @@ import com.google.api.services.bigquery.model.DatasetList.Datasets;
 import com.google.api.services.bigquery.model.*;
 import com.google.api.services.bigquery.model.ProjectList.Projects;
 import com.google.api.services.bigquery.model.TableList.Tables;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -55,9 +56,9 @@ import java.util.regex.Pattern;
  * @author Gunics Balázs, Horváth Attila
  */
 public class BQSupportFuncts {
-    /** log4j.Logger instance */
+    /** log4j.LogManager instance */
     // static Logger logger = new Logger(BQSupportFuncts.class.getName());
-    static Logger logger = Logger.getLogger(BQSupportFuncts.class.getName());
+    static Logger logger = LogManager.getLogger(BQSupportFuncts.class.getName());
 
     /**
      * Constructs a valid BigQuery JDBC driver URL from the specified properties

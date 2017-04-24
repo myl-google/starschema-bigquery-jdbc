@@ -34,7 +34,8 @@ import net.starschema.clouddb.jdbc.BQConnection;
 import net.starschema.clouddb.jdbc.BQSupportFuncts;
 import net.starschema.clouddb.jdbc.BQSupportMethods;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -42,7 +43,7 @@ public class Timeouttest {
 
     private static java.sql.Connection con = null;
     //Logger logger = new Logger(Timeouttest.class.getName());
-    Logger logger = Logger.getLogger(Timeouttest.class.getName());
+    Logger logger = LogManager.getLogger(Timeouttest.class.getName());
 
     /**
      * Compares two String[][]

@@ -34,11 +34,12 @@ import java.sql.Timestamp;
 import java.util.List;
 
 import com.google.api.client.util.Data;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import com.google.api.services.bigquery.model.GetQueryResultsResponse;
 import com.google.api.services.bigquery.model.TableFieldSchema;
 import com.google.api.services.bigquery.model.TableSchema;
+import org.apache.logging.log4j.Logger;
 
 /**
  * This class implements the java.sql.ResultSetMetadata interface
@@ -54,7 +55,7 @@ class BQResultsetMetaData implements ResultSetMetaData {
     ResultSet results = null;
 
     /** Logger instance */
-    Logger logger = Logger.getLogger(BQResultsetMetaData.class.getName());
+    Logger logger = LogManager.getLogger(BQResultsetMetaData.class.getName());
 
     /**
      * Constructor that initializes variables
