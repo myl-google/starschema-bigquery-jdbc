@@ -34,7 +34,7 @@ import java.sql.Timestamp;
 import java.util.List;
 
 import com.google.api.client.util.Data;
-import org.apache.log4j.Logger;
+import net.starschema.clouddb.jdbc.Logger;
 
 import com.google.api.services.bigquery.model.GetQueryResultsResponse;
 import com.google.api.services.bigquery.model.TableFieldSchema;

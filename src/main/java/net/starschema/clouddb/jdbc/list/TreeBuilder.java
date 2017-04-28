@@ -41,7 +41,7 @@ import org.antlr.runtime.CharStream;
 import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.tree.Tree;
-import org.apache.log4j.Logger;
+import net.starschema.clouddb.jdbc.Logger;
 
 /**
  * This is the initializer for the SQL transformer

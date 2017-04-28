@@ -32,7 +32,7 @@ import com.google.api.services.bigquery.Bigquery;
 import com.google.api.services.bigquery.model.GetQueryResultsResponse;
 import com.google.api.services.bigquery.model.Job;
 import com.google.api.services.bigquery.model.TableRow;
-import org.apache.log4j.Logger;
+import net.starschema.clouddb.jdbc.Logger;
 
 import java.io.*;
 import java.math.BigDecimal;
@@ -383,7 +383,7 @@ public class BQForwardOnlyResultSet implements java.sql.ResultSet {
         }
         int columncount = this.getMetaData().getColumnCount();
         for (int i = 1; i <= columncount; i++) {
-            if (this.getMetaData().getCatalogName(i).equals(columnLabel)) {
+            if (this.getMetaData().getColumnName(i).equals(columnLabel)) {
                 return i;
             }
         }

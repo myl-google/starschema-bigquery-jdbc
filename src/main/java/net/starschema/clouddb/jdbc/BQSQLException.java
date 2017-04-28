@@ -30,7 +30,7 @@ import java.sql.SQLException;
 
 import com.google.api.client.googleapis.json.GoogleJsonResponseException;
 
-import org.apache.log4j.Logger;
+import net.starschema.clouddb.jdbc.Logger;
 
 // import net.starschema.clouddb.bqjdbc.logging.Logger;
 

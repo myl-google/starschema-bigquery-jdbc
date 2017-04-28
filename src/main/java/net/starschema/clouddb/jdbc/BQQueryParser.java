@@ -42,7 +42,7 @@ import net.starschema.clouddb.jdbc.list.TreeBuilder;
 
 import org.antlr.runtime.tree.Tree;
 import org.antlr.runtime.RecognitionException;
-import org.apache.log4j.Logger;
+import net.starschema.clouddb.jdbc.Logger;
 
 /**
  * The initializer for the Query Transformer

@@ -38,7 +38,7 @@ import java.util.List;
 
 import net.starschema.clouddb.jdbc.DMDResultSet.DMDResultSetType;
 
-import org.apache.log4j.Logger;
+import net.starschema.clouddb.jdbc.Logger;
 
 import com.google.api.services.bigquery.model.DatasetList;
 import com.google.api.services.bigquery.model.DatasetList.Datasets;
@@ -633,7 +633,8 @@ class BQDatabaseMetadata implements DatabaseMetaData {
      */
     @Override
     public String getDatabaseProductName() throws SQLException {
-        return "Google Big Query";
+        //return "Google Big Query";
+        return "PostgreSQL";
     }
 
     /**

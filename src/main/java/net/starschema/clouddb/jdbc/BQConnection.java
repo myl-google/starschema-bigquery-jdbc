@@ -27,7 +27,7 @@ package net.starschema.clouddb.jdbc;
 
 import com.google.api.services.bigquery.Bigquery;
 import net.starschema.clouddb.cmdlineverification.Oauth2Bigquery;
-import org.apache.log4j.Logger;
+//import net.starschema.clouddb.jdbc.Logger;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;

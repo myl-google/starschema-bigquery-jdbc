@@ -28,7 +28,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import net.starschema.clouddb.jdbc.Logger;
 
 public class Resolver {
     Connection connection;

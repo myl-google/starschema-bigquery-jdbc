@@ -29,7 +29,7 @@ import java.sql.ResultSet;
 import java.util.HashSet;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import net.starschema.clouddb.jdbc.Logger;
 
 /**
  * Class that contains a functioncall of databasemetadata and stores the result

@@ -27,7 +27,7 @@ package BQJDBC.QueryResultTest;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import org.apache.log4j.Logger;
+import net.starschema.clouddb.jdbc.Logger;
 
 public class HelperFunctions {
     static Logger logger = Logger.getLogger("HelperFunctions");

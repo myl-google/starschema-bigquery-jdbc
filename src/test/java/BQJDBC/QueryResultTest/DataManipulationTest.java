@@ -27,7 +27,7 @@ package BQJDBC.DataManipulationTest;
 import junit.framework.Assert;
 import net.starschema.clouddb.jdbc.BQConnection;
 import net.starschema.clouddb.jdbc.BQSupportFuncts;
-import org.apache.log4j.Logger;
+import net.starschema.clouddb.jdbc.Logger;
 import org.junit.Before;
 import org.junit.Test;
 

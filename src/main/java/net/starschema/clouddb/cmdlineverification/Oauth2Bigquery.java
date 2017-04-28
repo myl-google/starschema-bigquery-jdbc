@@ -42,7 +42,7 @@ import com.google.api.services.bigquery.BigqueryRequest;
 import com.google.api.services.bigquery.BigqueryRequestInitializer;
 import com.google.api.services.bigquery.BigqueryScopes;
 import org.apache.commons.io.FileUtils;
-import org.apache.log4j.Logger;
+import net.starschema.clouddb.jdbc.Logger;
 
 import java.awt.*;
 import java.awt.Desktop.Action;

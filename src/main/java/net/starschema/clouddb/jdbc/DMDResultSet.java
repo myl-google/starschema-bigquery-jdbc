@@ -30,7 +30,7 @@
 package net.starschema.clouddb.jdbc;
 
 import net.starschema.clouddb.jdbc.DMDResultSet.DMDResultSetType;
-import org.apache.log4j.Logger;
+import net.starschema.clouddb.jdbc.Logger;
 
 import java.sql.SQLException;
 

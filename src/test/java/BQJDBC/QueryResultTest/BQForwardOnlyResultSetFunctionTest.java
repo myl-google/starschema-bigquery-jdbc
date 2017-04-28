@@ -33,7 +33,7 @@ import junit.framework.Assert;
 import net.starschema.clouddb.jdbc.BQConnection;
 import net.starschema.clouddb.jdbc.BQSupportFuncts;
 
-import org.apache.log4j.Logger;
+import net.starschema.clouddb.jdbc.Logger;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -222,6 +222,7 @@ public class BQForwardOnlyResultSetFunctionTest {
             Assert.fail("SQLException" + e.toString());
         }
         Assert.assertNotNull(BQForwardOnlyResultSetFunctionTest.Result);
+
     }
 
     @Test
@@ -231,6 +232,7 @@ public class BQForwardOnlyResultSetFunctionTest {
                     .getSchemaName(1));
             this.logger.debug(BQForwardOnlyResultSetFunctionTest.Result.getMetaData()
                     .getScale(1));
+            Assert.assertNotNull(BQForwardOnlyResultSetFunctionTest.Result.findColumn("word"));
         } catch (SQLException e) {
             this.logger.error("SQLexception" + e.toString());
         }

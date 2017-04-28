@@ -29,7 +29,7 @@ import java.io.StringWriter;
 
 import net.starschema.clouddb.jdbc.JdbcGrammarParser;
 
-import org.apache.log4j.Logger;
+import net.starschema.clouddb.jdbc.Logger;
 
 // import net.starschema.clouddb.bqjdbc.logging.Logger;
 

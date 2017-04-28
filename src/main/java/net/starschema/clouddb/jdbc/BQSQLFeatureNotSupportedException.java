@@ -28,7 +28,7 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.sql.SQLFeatureNotSupportedException;
 
-import org.apache.log4j.Logger;
+import net.starschema.clouddb.jdbc.Logger;
 
 // import net.starschema.clouddb.bqjdbc.logging.Logger;
 

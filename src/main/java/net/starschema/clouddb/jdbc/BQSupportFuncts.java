@@ -35,7 +35,7 @@ import com.google.api.services.bigquery.model.DatasetList.Datasets;
 import com.google.api.services.bigquery.model.*;
 import com.google.api.services.bigquery.model.ProjectList.Projects;
 import com.google.api.services.bigquery.model.TableList.Tables;
-import org.apache.log4j.Logger;
+import net.starschema.clouddb.jdbc.Logger;
 
 import java.io.FileInputStream;
 import java.io.IOException;

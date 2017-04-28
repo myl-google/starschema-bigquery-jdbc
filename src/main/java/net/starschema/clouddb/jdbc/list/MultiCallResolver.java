@@ -29,7 +29,7 @@ import java.util.List;
 
 import net.starschema.clouddb.jdbc.JdbcGrammarParser;
 
-import org.apache.log4j.Logger;
+import net.starschema.clouddb.jdbc.Logger;
 
 /**
  * Resolves the first SubQuery since its already in a join or union,

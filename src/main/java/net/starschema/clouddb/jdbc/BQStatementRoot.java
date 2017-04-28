@@ -29,7 +29,7 @@ package net.starschema.clouddb.jdbc;
 
 import com.google.api.services.bigquery.model.*;
 import org.antlr.runtime.tree.Tree;
-import org.apache.log4j.Logger;
+import net.starschema.clouddb.jdbc.Logger;
 
 import java.io.IOException;
 import java.sql.*;
@@ -138,7 +138,7 @@ public abstract class BQStatementRoot {
      */
 
     public void clearWarnings() throws SQLException {
-        throw new BQSQLException("Not implemented." + "clearWarnings()");
+        //throw new BQSQLException("Not implemented." + "clearWarnings()");
     }
 
     /**
