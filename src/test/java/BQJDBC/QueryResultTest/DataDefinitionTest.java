@@ -89,4 +89,21 @@ public class DataDefinitionTest {
         }
         Assert.assertEquals(0, result);
     }
+
+    /**
+     * Test SELECT statement that uses nextval
+     */
+    @Test
+    public void selectNextval() {
+        final String input = "select nextval ('flyaway.SEC_ROLE_SEQUENCE')";
+        logger.info("Running test: select nextval:" + newLine + input);
+        java.sql.ResultSet result = null;
+        try {
+            result = con.createStatement().executeQuery(input);
+        } catch (SQLException e) {
+            logger.error("SQLexception" + e.toString());
+            Assert.fail("SQLException" + e.toString());
+        }
+        Assert.assertNotNull(result);
+    }
 }

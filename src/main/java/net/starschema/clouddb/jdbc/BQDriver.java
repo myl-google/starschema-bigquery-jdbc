@@ -84,11 +84,15 @@ public class BQDriver implements java.sql.Driver {
     /** Minor Version of the driver */
     private static final int MINOR_VERSION = 3;
 
+    // Instance of the postgresql driver used to forward some requests
+    private static org.postgresql.Driver postgresDriver;
+
     /** Registers the driver with the drivermanager */
     static {
         try {
 
             BQDriver driverInst = new BQDriver();
+            driverInst.postgresDriver = new org.postgresql.Driver();
             DriverManager.registerDriver(driverInst);
 
             Properties properties = new Properties();
@@ -158,6 +162,12 @@ public class BQDriver implements java.sql.Driver {
         if (this.acceptsURL(url)) {
             localConInstance = new BQConnection(url, loginProp);
         }
+
+        // Creates postgres connection
+        Properties postgresProp = loginProp;
+        postgresProp.setProperty("user", loginProp.getProperty("postgresuser"));
+        postgresProp.setProperty("password", loginProp.getProperty("postgrespassword"));
+        localConInstance.postgresConnection = postgresDriver.connect(loginProp.getProperty("postgresurl"), loginProp);
 
         return localConInstance;
     }

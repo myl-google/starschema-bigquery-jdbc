@@ -227,9 +227,22 @@ public abstract class BQStatementRoot {
         throw new BQSQLException("Not implemented." + "executeBatch()");
     }
 
+    protected boolean shouldUsePostgresForQuery(String querySql) {
+        if (querySql.contains("select nextval")) return true;
+        return false;
+    }
+
+    protected ResultSet postgresExecuteQuery(String querySql) throws SQLException {
+        Statement s = this.connection.postgresConnection.createStatement();
+        return s.executeQuery(querySql);
+    }
+
     /** {@inheritDoc} */
 
     public ResultSet executeQuery(String querySql) throws SQLException {
+        if (shouldUsePostgresForQuery(querySql)) {
+            return postgresExecuteQuery(querySql);
+        }
         if (this.isClosed()) {
             throw new BQSQLException("This Statement is Closed");
         }
@@ -291,9 +304,21 @@ public abstract class BQStatementRoot {
                 "Query run took more than the specified timeout");
     }
 
+    protected boolean shouldUsePostgresForUpdate(String querySql) {
+        return false;
+    }
+
+    public int postgresExecuteUpdate(String updateSql) throws SQLException {
+        Statement s = this.connection.postgresConnection.createStatement();
+        return s.executeQuery(querySql);
+    }
+
     /** {@inheritDoc} */
 
     public int executeUpdate(String updateSql) throws SQLException {
+        if (shouldUsePostgresForUpdate(updateSql)) {
+            return postgresExecuteUpdate(updateSql);
+        }
         if (this.isClosed()) {
             throw new BQSQLException("This Statement is Closed");
         }

@@ -93,6 +93,9 @@ public class BQConnection implements Connection {
     /** String to contain the url except the url prefix */
     private String URLPART = null;
 
+    /** Postgres connection used to forward some requests */
+    public java.sql.Connection postgresConnection;
+
     /**
      * Extracts the JDBC URL then makes a connection to the Bigquery.
      *
@@ -251,6 +254,7 @@ public class BQConnection implements Connection {
             this.cancelRunningQueries();
             this.bigquery = null;
             this.isclosed = true;
+            this.postgresConnection.close();
         }
     }
 
