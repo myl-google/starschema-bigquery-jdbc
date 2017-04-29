@@ -310,7 +310,7 @@ public abstract class BQStatementRoot {
 
     public int postgresExecuteUpdate(String updateSql) throws SQLException {
         Statement s = this.connection.postgresConnection.createStatement();
-        return s.executeQuery(querySql);
+        return s.executeUpdate(updateSql);
     }
 
     /** {@inheritDoc} */

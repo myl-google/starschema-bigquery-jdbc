@@ -164,10 +164,13 @@ public class BQDriver implements java.sql.Driver {
         }
 
         // Creates postgres connection
-        Properties postgresProp = loginProp;
-        postgresProp.setProperty("user", loginProp.getProperty("postgresuser"));
-        postgresProp.setProperty("password", loginProp.getProperty("postgrespassword"));
-        localConInstance.postgresConnection = postgresDriver.connect(loginProp.getProperty("postgresurl"), loginProp);
+        Properties postgresProp = new Properties();
+        String pguser = System.getenv("starschema.pguser");
+        String pgpassword = System.getenv("starschema.pgpassword");
+        String pgurl = System.getenv("starschema.pgurl");
+        postgresProp.setProperty("user", pguser);
+        postgresProp.setProperty("password", pgpassword);
+        localConInstance.postgresConnection = postgresDriver.connect(pgurl, postgresProp);
 
         return localConInstance;
     }

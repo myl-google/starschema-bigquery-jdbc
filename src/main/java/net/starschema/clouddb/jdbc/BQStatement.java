@@ -87,7 +87,7 @@ public class BQStatement extends BQStatementRoot implements java.sql.Statement {
     /** {@inheritDoc} */
     @Override
     public ResultSet executeQuery(String querySql) throws SQLException {
-        if (shouldUsePostgres(querySql)) {
+        if (shouldUsePostgresForQuery(querySql)) {
             return postgresExecuteQuery(querySql);
         }
         try {
