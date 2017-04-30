@@ -24,6 +24,7 @@
  */
 package BQJDBC.DataManipulationTest;
 
+import BQJDBC.QueryResultTest.PreparedStatementTests;
 import junit.framework.Assert;
 import net.starschema.clouddb.jdbc.BQConnection;
 import net.starschema.clouddb.jdbc.BQSupportFuncts;
@@ -32,6 +33,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -74,12 +76,15 @@ public class DataManipulationTest {
         }
     }
 
-    private int runStatement(String sql) {
+    private int runStatement(String sql, boolean prepared) {
         this.logger.info("Running statement:" + sql);
         int result = 0;
         try {
-            Statement stm = con.createStatement();
-            result = stm.executeUpdate(sql);
+            if (prepared) {
+                result = con.prepareStatement(sql).executeUpdate();
+            } else {
+                result = con.createStatement().executeUpdate(sql);
+            }
         } catch (SQLException e) {
             this.logger.error("SQLexception" + e.toString());
             Assert.fail("SQLException" + e.toString());
@@ -92,8 +97,17 @@ public class DataManipulationTest {
         final String sql = "insert into starschema.test(col) values ('a')";
 
         this.logger.info("Test number: InsertTest");
-        int result = runStatement(sql);
+        int result = runStatement(sql, false);
         Assert.assertEquals(result, 1);
+    }
+
+    @Test
+    public void PreparedInsertTest() {
+        final String sql = "insert into starschema.test(col) values ('a')";
+
+        this.logger.info("Test number: PreparedInsertTest");
+        int result = runStatement(sql, true);
+        Assert.assertEquals(1, result);
     }
 
     @Test
@@ -108,7 +122,7 @@ public class DataManipulationTest {
         } catch (SQLException e) {
             error_message = e.toString();
         }
-        Assert.assertEquals(result, 0);
+        Assert.assertEquals(0, result);
         Assert.assertNotNull(error_message);
     }
 
@@ -118,15 +132,15 @@ public class DataManipulationTest {
         this.logger.info("Test number: InsertUpdateDeleteTest");
 
         final String insert_sql = "insert into starschema.test(col) values ('b')";
-        result = runStatement(insert_sql);
+        result = runStatement(insert_sql, false);
         Assert.assertEquals(1, result);
 
         final String update_sql = "update starschema.test set col='c' where col='b'";
-        result = runStatement(update_sql);
+        result = runStatement(update_sql, false);
         Assert.assertEquals(1, result);
 
         final String delete_sql = "delete starschema.test where col='c'";
-        result = runStatement(delete_sql);
+        result = runStatement(delete_sql, false);
         Assert.assertEquals(1, result );
     }
 }

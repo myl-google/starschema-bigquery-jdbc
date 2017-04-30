@@ -346,7 +346,7 @@ public abstract class BQStatementRoot {
         }
         // TODO(myl): cancel the job or set a timeout on the original request
         throw new BQSQLException(
-                "Query run took more than the specified timeout");
+                "Update run took more than the specified timeout");
     }
 
     private void verifyChildText(Tree tree, int i, String expected_text) throws SQLException {
@@ -356,7 +356,7 @@ public abstract class BQStatementRoot {
         }
     }
 
-    private int executeCreateTable(Tree tree) throws SQLException {
+    protected int executeCreateTable(Tree tree) throws SQLException {
         TableSchema schema = new TableSchema();
 
         // Extract table name from the first child.
