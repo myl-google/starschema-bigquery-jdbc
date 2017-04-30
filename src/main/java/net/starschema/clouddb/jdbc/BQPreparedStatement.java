@@ -222,6 +222,11 @@ public class BQPreparedStatement extends BQStatementRoot implements
     /** {@inheritDoc} */
     @Override
     public ResultSet executeQuery() throws SQLException {
+        if (shouldUsePostgresForQuery(this.RunnableStatement)) {
+            this.logger.info("Executing BQPreparedStatment query with postgres: " + this.RunnableStatement);
+            return postgresExecuteQuery(this.RunnableStatement);
+        }
+        this.logger.info("Executing BQPreparedStatement query with bq: " + this.RunnableStatement);
         if (this.isClosed()) {
             throw new BQSQLException("This Statement is Closed");
         }

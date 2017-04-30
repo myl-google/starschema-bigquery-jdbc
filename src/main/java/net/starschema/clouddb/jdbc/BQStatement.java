@@ -88,10 +88,10 @@ public class BQStatement extends BQStatementRoot implements java.sql.Statement {
     @Override
     public ResultSet executeQuery(String querySql) throws SQLException {
         if (shouldUsePostgresForQuery(querySql)) {
-            this.logger.info("Executing query with postgres: " + querySql);
+            this.logger.info("Executing BQStatement query with postgres: " + querySql);
             return postgresExecuteQuery(querySql);
         }
-        this.logger.info("Executing query with bq: " + querySql);
+        this.logger.info("Executing BQStatement query with bq: " + querySql);
         try {
             this.connection.addRunningStatement(this);
             return executeQueryHelper(querySql);
