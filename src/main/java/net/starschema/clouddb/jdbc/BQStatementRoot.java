@@ -241,8 +241,10 @@ public abstract class BQStatementRoot {
 
     public ResultSet executeQuery(String querySql) throws SQLException {
         if (shouldUsePostgresForQuery(querySql)) {
+            this.logger.info("Executing query with postgres: " + querySql);
             return postgresExecuteQuery(querySql);
         }
+        this.logger.info("Executing query with bq: " + querySql);
         if (this.isClosed()) {
             throw new BQSQLException("This Statement is Closed");
         }
@@ -317,8 +319,10 @@ public abstract class BQStatementRoot {
 
     public int executeUpdate(String updateSql) throws SQLException {
         if (shouldUsePostgresForUpdate(updateSql)) {
+            this.logger.info("Executing update with postgres: " + updateSql);
             return postgresExecuteUpdate(updateSql);
         }
+        this.logger.info("Executing update with bq: " + updateSql);
         if (this.isClosed()) {
             throw new BQSQLException("This Statement is Closed");
         }
