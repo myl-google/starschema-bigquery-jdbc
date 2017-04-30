@@ -97,6 +97,22 @@ public class DataManipulationTest {
     }
 
     @Test
+    public void FailedInsertTest() {
+        final String sql = "insert into starschema.missingtable(col) values ('a')";
+
+        this.logger.info("Test number: FailedInsertTest");
+        int result = 0;
+        String error_message = null;
+        try {
+            result = con.createStatement().executeUpdate(sql);
+        } catch (SQLException e) {
+            error_message = e.toString();
+        }
+        Assert.assertEquals(result, 0);
+        Assert.assertNotNull(error_message);
+    }
+
+    @Test
     public void InsertUpdateDeleteTest() {
         int result = 0;
         this.logger.info("Test number: InsertUpdateDeleteTest");

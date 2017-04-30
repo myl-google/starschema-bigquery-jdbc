@@ -326,7 +326,11 @@ public abstract class BQStatementRoot {
                 Job pollJob = BQSupportFuncts.getQueryJob(referencedJob,
                         this.connection.getBigquery(), this.ProjectId);
                 if (pollJob.getStatus().getState().equals("DONE")) {
-                    return pollJob.getStatistics().getQuery().getNumDmlAffectedRows().intValue();
+                    if (pollJob.getStatus().getErrors() == null) {
+                        return pollJob.getStatistics().getQuery().getNumDmlAffectedRows().intValue();
+                    } else {
+                        throw new BQSQLException("Error during update: " + pollJob.getStatus().getErrors().toString());
+                    }
                 }
                 // Pause execution for half second before polling job status again, to reduce unnecessary calls to the
                 // BigQuery API and lower overall application bandwidth.
