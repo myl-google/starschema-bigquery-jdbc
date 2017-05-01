@@ -29,6 +29,7 @@
 package net.starschema.clouddb.jdbc;
 
 import com.google.api.services.bigquery.model.Job;
+import org.antlr.runtime.tree.Tree;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -308,7 +309,69 @@ public class BQPreparedStatement extends BQStatementRoot implements
      */
     @Override
     public int executeUpdate() throws SQLException {
-        throw new BQSQLFeatureNotSupportedException("executeUpdate()");
+        if (this.isClosed()) {
+            throw new BQSQLException("This Statement is Closed");
+        }
+        if (this.RunnableStatement == null) {
+            throw new BQSQLException("Parameters are not set");
+        }
+        if (this.RunnableStatement.contains("?")) {
+            throw new BQSQLException("Not all parameters set");
+        }
+        this.starttime = System.currentTimeMillis();
+        Job referencedJob;
+
+        // ANTLR Parser
+        BQQueryParser parser = new BQQueryParser(this.RunnableStatement, this.connection);
+        Tree createTableTree = parser.parseCreateTable();
+        if (createTableTree != null) {
+            return executeCreateTable(createTableTree);
+        }
+
+        try {
+            // Gets the Job reference of the completed job with given Query
+            referencedJob = BQSupportFuncts.startQuery(
+                    this.connection.getBigquery(),
+                    this.ProjectId.replace("__", ":").replace("_", "."),
+                    this.RunnableStatement,
+                    this.connection.getDataSet(),
+                    false,
+                    this.connection.getMaxBillingBytes()
+            );
+            this.logger.info("Executing Update: " + this.RunnableStatement);
+        } catch (IOException e) {
+            throw new BQSQLException("Something went wrong with the update: " + this.RunnableStatement, e);
+        }
+        try {
+            do {
+                Job pollJob = BQSupportFuncts.getQueryJob(referencedJob,
+                        this.connection.getBigquery(), this.ProjectId.replace("__", ":").replace("_", "."));
+                if (pollJob.getStatus().getState().equals("DONE")) {
+                    if (pollJob.getStatus().getErrors() == null) {
+                        return pollJob.getStatistics().getQuery().getNumDmlAffectedRows().intValue();
+                    } else {
+                        throw new BQSQLException("Error during update: " + pollJob.getStatus().getErrors().toString());
+                    }
+                }
+                // Pause execution for half second before polling job status
+                // again, to
+                // reduce unnecessary calls to the BigQUery API and lower
+                // overall
+                // application bandwidth.
+                Thread.sleep(500);
+                this.logger.debug("slept for 500" + "ms, querytimeout is: "
+                        + this.querytimeout + "s");
+            }
+            while (System.currentTimeMillis() - this.starttime <= (long) this.querytimeout * 1000);
+            // it runs for a minimum of 1 time
+        } catch (IOException e) {
+            throw new BQSQLException("Something went wrong with the update: " + this.RunnableStatement, e);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        // TODO(myl): cancel the job or set a timeout on the original request
+        throw new BQSQLException(
+                "Update run took more than the specified timeout");
     }
 
     @Override
