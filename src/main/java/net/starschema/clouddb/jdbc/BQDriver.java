@@ -164,15 +164,20 @@ public class BQDriver implements java.sql.Driver {
         }
 
         // Creates postgres connection
-        Properties postgresProp = new Properties();
         String pguser = System.getenv("starschema.pguser");
         String pgpassword = System.getenv("starschema.pgpassword");
         String pgurl = System.getenv("starschema.pgurl");
-        logg.info("Creating postgres connection with pguser=" + pguser + " pgpassword=" + pgpassword +
-                " pgurl=" + pgurl);
-        postgresProp.setProperty("user", pguser);
-        postgresProp.setProperty("password", pgpassword);
-        localConInstance.postgresConnection = postgresDriver.connect(pgurl, postgresProp);
+        if(pgurl != null && pgpassword != null && pgurl != null) {
+            Properties postgresProp = new Properties();
+            postgresProp.setProperty("user", pguser);
+            postgresProp.setProperty("password", pgpassword);
+            logg.info("Creating postgres connection with pguser=" + pguser + " pgpassword=" + pgpassword +
+                    " pgurl=" + pgurl);
+            localConInstance.postgresConnection = postgresDriver.connect(pgurl, postgresProp);
+        } else {
+            logg.info("Skipping creation of postgres connection pguser=" + pguser + " pgpassword=" + pgpassword +
+                    " pgurl=" + pgurl);
+        }
 
         return localConInstance;
     }
