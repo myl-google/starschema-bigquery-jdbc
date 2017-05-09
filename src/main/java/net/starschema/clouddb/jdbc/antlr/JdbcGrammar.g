@@ -93,6 +93,7 @@ statement
 sqlstatement
 :   selectstatement
     | createtablestatement
+    | droptablestatement
 ;
 
 /**
@@ -110,6 +111,14 @@ Rule for parsing an sql create table
 createtablestatement
 :   CREATEKEYWORD TABLEKEYWORD tabledefinition LPARAM columndefinition(COMMA columndefinition)* RPARAM
     ->^(CREATETABLESTATEMENT tabledefinition columndefinition*)
+;
+
+/**
+Rule for parsing an sql drop table
+*/
+droptablestatement
+:   DROPKEYWORD TABLEKEYWORD (IFKEYWORD EXISTSKEYWORD)? tabledefinition
+    ->^(DROPTABLESTATEMENT tabledefinition (IFKEYWORD EXISTSKEYWORD)?)
 ;
 
 columndefinition

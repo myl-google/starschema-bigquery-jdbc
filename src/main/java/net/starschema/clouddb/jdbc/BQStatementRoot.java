@@ -34,6 +34,8 @@ import org.apache.log4j.Logger;
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 // import net.starschema.clouddb.bqjdbc.logging.Logger;
 
@@ -301,9 +303,9 @@ public abstract class BQStatementRoot {
 
         // ANTLR Parsing
         BQQueryParser parser = new BQQueryParser(updateSql, this.connection);
-        Tree createTableTree = parser.parseCreateTable();
-        if (createTableTree != null) {
-            return executeCreateTable(createTableTree);
+        Tree dataDefinitionTree = parser.parseDataDefinition();
+        if (dataDefinitionTree != null) {
+            return executeDataDefinition(dataDefinitionTree, updateSql);
         }
 
         Job referencedJob;
@@ -354,6 +356,16 @@ public abstract class BQStatementRoot {
         if (!text.equalsIgnoreCase(expected_text)) {
             throw new BQSQLException("Parse error: expected \"" + expected_text + "\" got \"" + text + '"');
         }
+    }
+
+    protected int executeDataDefinition(Tree tree, String updateSql) throws SQLException {
+        switch(tree.getText()) {
+            case "CREATETABLESTATEMENT":
+                return executeCreateTable(tree);
+            case "DROPTABLESTATEMENT":
+                return executeDropTable(tree);
+        }
+        throw new BQSQLFeatureNotSupportedException(updateSql);
     }
 
     protected int executeCreateTable(Tree tree) throws SQLException {
@@ -420,6 +432,57 @@ public abstract class BQStatementRoot {
             this.connection.getBigquery().tables().insert(this.ProjectId, dataSetId, table).execute();
         } catch (IOException e) {
             throw new BQSQLException("Failed to CREATE TABLE: ", e);
+        }
+        return 0;
+    }
+
+    protected int executeDropTable(Tree tree) throws SQLException {
+        // Extract table name from the first child.
+        Tree table_name_tree = tree.getChild(0);
+        if (table_name_tree.getText() != "SOURCETABLE" || table_name_tree.getChildCount() != 2) {
+            throw new BQSQLException("Error with table name in DROP TABLE");
+        }
+        final String dataSetId = table_name_tree.getChild(0).getText();
+        final String tableId = table_name_tree.getChild(1).getText();
+
+        // Check if IF EXISTS was specified
+        boolean if_exists = false;
+        if (tree.getChildCount() == 3 &&
+                tree.getChild(1).getText().equalsIgnoreCase("if") &&
+                tree.getChild(2).getText().equalsIgnoreCase("exists")) {
+            if_exists = true;
+        }
+
+        // Check if the table exists
+        TableList tableList = null;
+        boolean found = false;
+        try {
+            tableList = this.connection.getBigquery().tables().list(this.ProjectId, dataSetId).execute();
+        } catch (IOException e) {
+            throw new BQSQLException("Failed to list tables: ", e);
+        }
+        Iterator<TableList.Tables> table_iterator = tableList.getTables().iterator();
+        while (table_iterator.hasNext()) {
+            if (table_iterator.next().getTableReference().getTableId().equals(tableId)) {
+                found = true;
+                break;
+            }
+        }
+
+        if (!found) {
+            if (if_exists) {
+                // Table doesn't exist but IF EXISTS was specified.  Return success
+                return 0;
+            } else {
+                // Table doesn't exists and IF EXISTS was not specified.  Error.
+                throw new BQSQLException("Failed to DROP non-existent table: " + dataSetId + "." + tableId);
+            }
+        }
+
+        try {
+            this.connection.getBigquery().tables().delete(this.ProjectId, dataSetId, tableId).execute();
+        } catch (IOException e) {
+            throw new BQSQLException("Failed to DROP TABLE: ", e);
         }
         return 0;
     }

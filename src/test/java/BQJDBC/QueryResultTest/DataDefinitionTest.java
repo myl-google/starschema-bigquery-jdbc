@@ -73,20 +73,72 @@ public class DataDefinitionTest {
         }
     }
 
-    /**
-     * Test CREATE TABLE statement
-     */
-    @Test
-    public void createTable() {
-        final String input = "create table starschema.t1 (c1 int, c2 char(10) null, c3 varchar(20) not null)";
-        logger.info("Running test: create table:" + newLine + input);
-        int result = 0;
+    private int executeUpdate(String input) {
+        int result = -1;
         try {
             result = con.createStatement().executeUpdate(input);
         } catch (SQLException e) {
             logger.error("SQLexception" + e.toString());
-            Assert.fail("SQLException" + e.toString());
         }
+        return result;
+    }
+
+    /**
+     * Test DROP TABLE statement
+     */
+    @Test
+    public void dropTable() {
+        final String create_table = "create table starschema.t1 (c1 int)";
+        logger.info("Running test: create table:" + newLine + create_table);
+        int result = executeUpdate(create_table);
+        Assert.assertEquals(0, result);
+
+        final String drop_table = "drop table starschema.t1";
+        logger.info("Running test: drop table:" + newLine + drop_table);
+        result = executeUpdate(drop_table);
         Assert.assertEquals(0, result);
     }
+
+    @Test
+    public void dropTableIfExists() {
+        final String create_table = "create table starschema.t1 (c1 int)";
+        logger.info("Running test: create table:" + newLine + create_table);
+        int result = executeUpdate(create_table);
+        Assert.assertEquals(0, result);
+
+        final String drop_table = "drop table if exists starschema.t1";
+        logger.info("Running test: drop table:" + newLine + drop_table);
+        result = executeUpdate(drop_table);
+        Assert.assertEquals(0, result);
+    }
+
+    /**
+     * Test CREATE TABLE statement
+     */
+    @Test
+    public void createAndDropTable() {
+        final String create_table = "create table starschema.t1 (c1 int, c2 char(10) null, c3 varchar(20) not null)";
+        logger.info("Running test: create table:" + newLine + create_table);
+        int result = executeUpdate(create_table);
+        Assert.assertEquals(0, result);
+
+        final String drop_table_if_exists = "drop table if exists starschema.t1";
+        final String drop_table = "drop table starschema.t1";
+
+        logger.info("Running test: drop table:" + newLine + drop_table);
+        result = executeUpdate(drop_table);
+        Assert.assertEquals(0, result);
+
+        // Attempt to drop table that doesn't exist should fail
+        logger.info("Running test: drop table:" + newLine + drop_table);
+        result = executeUpdate(drop_table);
+        Assert.assertEquals(-1, result);
+
+        // Attempt to drop table that doesn't exists with IF EXISTS should succeed
+        logger.info("Running test: drop table:" + newLine + drop_table_if_exists);
+        result = executeUpdate(drop_table_if_exists);
+        Assert.assertEquals(0, result);
+    }
+
+
 }

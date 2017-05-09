@@ -291,7 +291,7 @@ public class BQQueryParser {
     /**
      * @return a parsed CREATE TABLE statement
      */
-    public Tree parseCreateTable() {
+    public Tree parseDataDefinition() {
         this.successFullParsing = true;
         Tree tree = null;
         try {
@@ -305,7 +305,8 @@ public class BQQueryParser {
         } catch (Exception e) {
             this.logger.info("Parsing failed", e);
         }
-        if (tree.getText().equals("CREATETABLESTATEMENT")) {
+        if (tree.getText().equals("CREATETABLESTATEMENT") ||
+                tree.getText().equals("DROPTABLESTATEMENT")) {
             return tree;
         } else {
             return null;
