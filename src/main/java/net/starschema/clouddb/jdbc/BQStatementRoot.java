@@ -405,6 +405,9 @@ public abstract class BQStatementRoot {
                 case "int":
                     schema_entry.setType("integer");
                     break;
+                case "bigint":
+                    schema_entry.setType("integer");
+                    break;
                 case "real":
                     schema_entry.setType("float");
                     break;

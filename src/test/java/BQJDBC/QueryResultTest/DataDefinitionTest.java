@@ -83,32 +83,34 @@ public class DataDefinitionTest {
         return result;
     }
 
+    // Used for setup statements that aren't the ones being tested.
+    private void executeUpdateRequireSuccess(String input) {
+        int result = executeUpdate(input);
+        if (result != 0) {
+            logger.fatal("Unexpected failure executing update: " + input);
+        }
+    }
+
     /**
      * Test DROP TABLE statement
      */
     @Test
     public void dropTable() {
-        final String create_table = "create table starschema.t1 (c1 int)";
-        logger.info("Running test: create table:" + newLine + create_table);
-        int result = executeUpdate(create_table);
-        Assert.assertEquals(0, result);
+        executeUpdateRequireSuccess("create table starschema.t1 (c1 int)");
 
         final String drop_table = "drop table starschema.t1";
         logger.info("Running test: drop table:" + newLine + drop_table);
-        result = executeUpdate(drop_table);
+        int result = executeUpdate(drop_table);
         Assert.assertEquals(0, result);
     }
 
     @Test
     public void dropTableIfExists() {
-        final String create_table = "create table starschema.t1 (c1 int)";
-        logger.info("Running test: create table:" + newLine + create_table);
-        int result = executeUpdate(create_table);
-        Assert.assertEquals(0, result);
+        executeUpdateRequireSuccess("create table starschema.t1 (c1 int)");
 
         final String drop_table = "drop table if exists starschema.t1";
         logger.info("Running test: drop table:" + newLine + drop_table);
-        result = executeUpdate(drop_table);
+        int result = executeUpdate(drop_table);
         Assert.assertEquals(0, result);
     }
 
@@ -137,6 +139,22 @@ public class DataDefinitionTest {
         // Attempt to drop table that doesn't exists with IF EXISTS should succeed
         logger.info("Running test: drop table:" + newLine + drop_table_if_exists);
         result = executeUpdate(drop_table_if_exists);
+        Assert.assertEquals(0, result);
+    }
+
+    /**
+     * Test INSERT from SELECT statement
+     */
+    @Test
+    public void testInsertFromSelect() {
+        executeUpdateRequireSuccess("drop table starschema.t1 if exists;");
+        executeUpdateRequireSuccess("drop table starschema.t2 if exists;");
+        executeUpdateRequireSuccess("create table starschema.t1 (c1 int, c2 string);");
+        executeUpdateRequireSuccess("create table starschema.t2 (c3 int, c4 string, c5 int);");
+
+        final String insert = "insert into starschema.t2 (c5, c4) select * from starschema.t1";
+        logger.info("Running test: insert from select:" + newLine + insert);
+        int result = executeUpdate(insert);
         Assert.assertEquals(0, result);
     }
 }
