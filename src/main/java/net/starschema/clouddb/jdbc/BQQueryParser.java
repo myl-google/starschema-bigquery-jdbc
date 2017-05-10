@@ -40,6 +40,7 @@ import net.starschema.clouddb.jdbc.list.SQLCleaner;
 import net.starschema.clouddb.jdbc.list.SelectStatement;
 import net.starschema.clouddb.jdbc.list.TreeBuilder;
 
+import org.antlr.runtime.tree.CommonErrorNode;
 import org.antlr.runtime.tree.Tree;
 import org.antlr.runtime.RecognitionException;
 import org.apache.log4j.Logger;
@@ -288,8 +289,20 @@ public class BQQueryParser {
         return this.queryToParse;
     }
 
+    private boolean treeContainsErrors(Tree tree) {
+        if (tree instanceof CommonErrorNode) {
+            return true;
+        }
+        for (int i=0; i < tree.getChildCount(); ++i) {
+            if (treeContainsErrors(tree.getChild(i))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /**
-     * @return a parsed CREATE TABLE statement
+     * @return a parsed DDL statement, or null if the statement doesn't isn't DDL
      */
     public Tree parseDataDefinition() {
         this.successFullParsing = true;
@@ -305,7 +318,11 @@ public class BQQueryParser {
         } catch (Exception e) {
             this.logger.info("Parsing failed", e);
         }
-        if (tree.getText().equals("CREATETABLESTATEMENT") || tree.getText().equals("DROPTABLESTATEMENT")) {
+        if (treeContainsErrors(tree)) {
+            return null;
+        }
+        if (tree.getText().equals("CREATETABLESTATEMENT") || tree.getText().equals("DROPTABLESTATEMENT") ||
+                tree.getText().equals("INSERTFROMSELECTSTATEMENT")) {
             return tree;
         } else {
             return null;

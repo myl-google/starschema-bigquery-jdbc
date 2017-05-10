@@ -112,6 +112,13 @@ EXISTSKEYWORD:   E X I S T S;
 /** IF keyword, case insensitive */
 IFKEYWORD:   I F;
 
+/** INSERT keyword, case insensitive */
+INSERTKEYWORD:   I N S E R T;
+
+/** INTO keyword, case insensitive */
+INTOKEYWORD:   I N T O;
+
+
 
 //Other strings
 
@@ -234,6 +241,7 @@ fragment EXPRESSIONTEXT:;
 fragment CREATETABLESTATEMENT:;
 fragment DROPTABLESTATEMENT:;
 fragment COLUMNEXPRESSION:;
+fragment INSERTFROMSELECTSTATEMENT:;
 
 
 

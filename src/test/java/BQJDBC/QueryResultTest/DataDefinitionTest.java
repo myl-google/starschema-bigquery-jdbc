@@ -84,11 +84,9 @@ public class DataDefinitionTest {
     }
 
     // Used for setup statements that aren't the ones being tested.
-    private void executeUpdateRequireSuccess(String input) {
+    private void executeUpdateRequireSuccess(String input, int expected_result) {
         int result = executeUpdate(input);
-        if (result != 0) {
-            logger.fatal("Unexpected failure executing update: " + input);
-        }
+        Assert.assertEquals(expected_result, result);
     }
 
     /**
@@ -96,7 +94,7 @@ public class DataDefinitionTest {
      */
     @Test
     public void dropTable() {
-        executeUpdateRequireSuccess("create table starschema.t1 (c1 int)");
+        executeUpdateRequireSuccess("create table starschema.t1 (c1 int)", 0);
 
         final String drop_table = "drop table starschema.t1";
         logger.info("Running test: drop table:" + newLine + drop_table);
@@ -106,7 +104,7 @@ public class DataDefinitionTest {
 
     @Test
     public void dropTableIfExists() {
-        executeUpdateRequireSuccess("create table starschema.t1 (c1 int)");
+        executeUpdateRequireSuccess("create table starschema.t1 (c1 int)", 0);
 
         final String drop_table = "drop table if exists starschema.t1";
         logger.info("Running test: drop table:" + newLine + drop_table);
@@ -147,14 +145,17 @@ public class DataDefinitionTest {
      */
     @Test
     public void testInsertFromSelect() {
-        executeUpdateRequireSuccess("drop table starschema.t1 if exists;");
-        executeUpdateRequireSuccess("drop table starschema.t2 if exists;");
-        executeUpdateRequireSuccess("create table starschema.t1 (c1 int, c2 string);");
-        executeUpdateRequireSuccess("create table starschema.t2 (c3 int, c4 string, c5 int);");
+        executeUpdateRequireSuccess("drop table if exists starschema.t1;", 0);
+        executeUpdateRequireSuccess("drop table if exists starschema.t2;", 0);
+        executeUpdateRequireSuccess("create table starschema.t1 (c1 int, c2 string);", 0);
+        executeUpdateRequireSuccess("insert into starschema.t1 (c1, c2) values (1, 'a')", 1);
+        executeUpdateRequireSuccess("create table starschema.t2 (c3 int, c4 string, c5 int);", 0);
 
         final String insert = "insert into starschema.t2 (c5, c4) select * from starschema.t1";
         logger.info("Running test: insert from select:" + newLine + insert);
         int result = executeUpdate(insert);
-        Assert.assertEquals(0, result);
+        Assert.assertEquals(1, result);
     }
+
+    // TODO - empty table
 }

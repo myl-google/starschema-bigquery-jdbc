@@ -94,6 +94,7 @@ sqlstatement
 :   selectstatement
     | createtablestatement
     | droptablestatement
+    | insertfromselectstatement
 ;
 
 /**
@@ -119,6 +120,11 @@ Rule for parsing an sql drop table
 droptablestatement
 :   DROPKEYWORD TABLEKEYWORD (IFKEYWORD EXISTSKEYWORD)? tabledefinition
     ->^(DROPTABLESTATEMENT tabledefinition (IFKEYWORD EXISTSKEYWORD)?)
+;
+
+insertfromselectstatement
+:   INSERTKEYWORD INTOKEYWORD tabledefinition LPARAM IDENTIFIER(COMMA IDENTIFIER)* RPARAM selectstatement
+    ->^(INSERTFROMSELECTSTATEMENT tabledefinition selectstatement IDENTIFIER*)
 ;
 
 columndefinition

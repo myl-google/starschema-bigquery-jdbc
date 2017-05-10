@@ -1,16 +1,16 @@
 /**
  * Copyright (c) 2015, STARSCHEMA LTD.
  * All rights reserved.
-
+ * <p>
  * Redistribution and use in source and binary forms, with or without modification, are permitted
  * provided that the following conditions are met:
-
+ * <p>
  * 1. Redistributions of source code must retain the above copyright notice, this
  * list of conditions and the following disclaimer.
  * 2. Redistributions in binary form must reproduce the above copyright notice,
  * this list of conditions and the following disclaimer in the documentation
  * and/or other materials provided with the distribution.
-
+ * <p>
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -21,21 +21,21 @@
  * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- *
+ * <p>
  * This class is the parent of BQStatement and BQPreparedStatement
  */
 
 package net.starschema.clouddb.jdbc;
 
 import com.google.api.services.bigquery.model.*;
+import com.sun.deploy.util.StringUtils;
 import org.antlr.runtime.tree.Tree;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.Random;
 
 // import net.starschema.clouddb.bqjdbc.logging.Logger;
 
@@ -359,11 +359,13 @@ public abstract class BQStatementRoot {
     }
 
     protected int executeDataDefinition(Tree tree, String updateSql) throws SQLException {
-        switch(tree.getText()) {
+        switch (tree.getText()) {
             case "CREATETABLESTATEMENT":
                 return executeCreateTable(tree);
             case "DROPTABLESTATEMENT":
                 return executeDropTable(tree);
+            case "INSERTFROMSELECTSTATEMENT":
+                return executeInsertFromSelect(tree, updateSql);
         }
         throw new BQSQLFeatureNotSupportedException(updateSql);
     }
@@ -400,6 +402,7 @@ public abstract class BQStatementRoot {
                 case "char":
                 case "varchar":
                 case "text":
+                case "string":
                     schema_entry.setType("string");
                     break;
                 case "int":
@@ -457,19 +460,12 @@ public abstract class BQStatementRoot {
         }
 
         // Check if the table exists
-        TableList tableList = null;
         boolean found = false;
         try {
-            tableList = this.connection.getBigquery().tables().list(this.ProjectId, dataSetId).execute();
+            this.connection.getBigquery().tables().get(this.ProjectId, dataSetId, tableId).execute();
+            found = true;
         } catch (IOException e) {
-            throw new BQSQLException("Failed to list tables: ", e);
-        }
-        Iterator<TableList.Tables> table_iterator = tableList.getTables().iterator();
-        while (table_iterator.hasNext()) {
-            if (table_iterator.next().getTableReference().getTableId().equals(tableId)) {
-                found = true;
-                break;
-            }
+            found = false;
         }
 
         if (!found) {
@@ -488,6 +484,127 @@ public abstract class BQStatementRoot {
             throw new BQSQLException("Failed to DROP TABLE: ", e);
         }
         return 0;
+    }
+
+    private void executeSelectWithDestination(String selectQuery, String destinationDataSet, String destinationTableId,
+                                              boolean destinationAppend) throws SQLException {
+        Job referencedJob;
+        try {
+            referencedJob = BQSupportFuncts.startQueryWithDestination(
+                    this.connection.getBigquery(),
+                    this.ProjectId,
+                    selectQuery,
+                    connection.getDataSet(),
+                    this.connection.getUseLegacySql(),
+                    this.connection.getMaxBillingBytes(),
+                    destinationDataSet,
+                    destinationTableId,
+                    destinationAppend
+            );
+            this.logger.info("Executing Query: " + selectQuery);
+        } catch (IOException e) {
+            throw new BQSQLException("Something went wrong with the query: " + selectQuery, e);
+        }
+        try {
+            do {
+                Job pollJob = BQSupportFuncts.getQueryJob(referencedJob,
+                        this.connection.getBigquery(), this.ProjectId);
+                if (pollJob.getStatus().getState().equals("DONE")) {
+                    if (pollJob.getStatus().getErrors() == null) {
+                        return;
+                    } else {
+                        throw new BQSQLException("Error during update: " + pollJob.getStatus().getErrors().toString());
+                    }
+                }
+                Thread.sleep(500);
+                this.logger.debug("slept for 500" + "ms, querytimeout is: " + this.querytimeout + "s");
+            }
+            while (System.currentTimeMillis() - this.starttime <= (long) this.querytimeout * 1000);
+        } catch (IOException e) {
+            throw new BQSQLException("Something went wrong with the query: " + selectQuery, e);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        throw new BQSQLException("Query run took more than the specified timeout");
+    }
+
+    private ArrayList<String> getColumnNames(String dataSet, String tableId) throws BQSQLException {
+        ArrayList<String> ret = new ArrayList<String>();
+        try {
+            Table table = this.connection.getBigquery().tables().get(this.ProjectId, dataSet, tableId).execute();
+            for (TableFieldSchema field : table.getSchema().getFields()) {
+                ret.add(field.getName());
+            }
+            table.getNumRows();
+            return ret;
+        } catch (IOException e) {
+            throw new BQSQLException("Failed to lookup table: ", e);
+        }
+    }
+
+    private int getNumRows(String dataSet, String tableId) throws BQSQLException {
+        try {
+            Table table = this.connection.getBigquery().tables().get(this.ProjectId, dataSet, tableId).execute();
+            return table.getNumRows().intValue();
+        } catch (IOException e) {
+            throw new BQSQLException("Failed to lookup table: ", e);
+        }
+    }
+
+    private int executeInsertFromSelect(Tree tree, String updateSql) throws SQLException {
+        // Extract table name from the first child.
+        Tree table_name_tree = tree.getChild(0);
+        if (table_name_tree.getText() != "SOURCETABLE" || table_name_tree.getChildCount() != 2) {
+            throw new BQSQLException("Error with table name in INSERT from SELECT");
+        }
+        final String dataSetId = table_name_tree.getChild(0).getText();
+        final String tableId = table_name_tree.getChild(1).getText();
+
+        // Extract the select statement part
+        final Tree selectNode = tree.getChild(1).getChild(0);
+        if (!selectNode.getText().equalsIgnoreCase("select")) {
+            throw new BQSQLException("Error with table name in INSERT from SELECT");
+        }
+        final String selectQuery = updateSql.substring(selectNode.getCharPositionInLine());
+
+        // Find the destination column names
+        ArrayList<String> declared_dest_column_names = new ArrayList<String>();
+        for (int i=2; i < tree.getChildCount(); ++i) {
+            declared_dest_column_names.add(tree.getChild(i).getText());
+        }
+
+        // Execute first with a temporary table as the destination
+        Random random = new Random();
+        final String tempDataSet = "temp";
+        final String tempTableid = "t" + (random.nextLong() & 0xffffffffL);  // generate positive integer
+        executeSelectWithDestination(selectQuery, tempDataSet, tempTableid, false);
+
+        // Find the column of the temporary table and check that there are many as expected.
+        ArrayList<String> temp_column_names = getColumnNames(tempDataSet, tempTableid);
+        if (temp_column_names.size() != declared_dest_column_names.size()) {
+            throw new BQSQLException("Mismatch in declared and actual columns executing INSERT from SELECT");
+        }
+
+        // Find the column names of the destination table.
+        ArrayList<String> dest_column_names = getColumnNames(dataSetId, tableId);
+
+        // Construct a select list to populate the destination table.
+        ArrayList<String> temp_select_list = new ArrayList<String>();
+        for (String dest_column : dest_column_names) {
+            for (int i = 0; i < declared_dest_column_names.size(); ++i) {
+                if (declared_dest_column_names.get(i).equals(dest_column)) {
+                    temp_select_list.add(temp_column_names.get(i) + " " + dest_column);
+                    break;
+                }
+            }
+        }
+
+        // Execute a second query over the temp table with the final table as the destination
+        final String tempSelectQuery = "select " + StringUtils.join(temp_select_list, ",") + " from " + tempDataSet +
+                "." + tempTableid;
+        executeSelectWithDestination(tempSelectQuery, dataSetId, tableId, true);
+
+        return getNumRows(tempDataSet, tempTableid);
     }
 
     /**
