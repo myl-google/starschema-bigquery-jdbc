@@ -149,12 +149,25 @@ public class DataDefinitionTest {
         executeUpdateRequireSuccess("drop table if exists starschema.t2;", 0);
         executeUpdateRequireSuccess("create table starschema.t1 (c1 int, c2 string);", 0);
         executeUpdateRequireSuccess("insert into starschema.t1 (c1, c2) values (1, 'a')", 1);
+        executeUpdateRequireSuccess("insert into starschema.t1 (c1, c2) values (2, 'b')", 1);
         executeUpdateRequireSuccess("create table starschema.t2 (c3 int, c4 string, c5 int);", 0);
 
+        // Two rows affected
         final String insert = "insert into starschema.t2 (c5, c4) select * from starschema.t1";
         logger.info("Running test: insert from select:" + newLine + insert);
         int result = executeUpdate(insert);
-        Assert.assertEquals(1, result);
+        Assert.assertEquals(2, result);
+
+        // Empty tables
+        executeUpdateRequireSuccess("delete starschema.t1 where 1=1", 2);
+        executeUpdateRequireSuccess("delete starschema.t2 where 1=1", 2);
+        result = executeUpdate(insert);
+        Assert.assertEquals(0, result);
+
+        // Mismatched columns
+        final String mismatched_columns_insert = "insert into starschema.t2 (c5) select * from starschema.t1";
+        result = executeUpdate(mismatched_columns_insert);
+        Assert.assertEquals(-1, result);
     }
 
     // TODO - empty table
