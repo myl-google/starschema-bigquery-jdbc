@@ -305,8 +305,7 @@ public class BQQueryParser {
         } catch (Exception e) {
             this.logger.info("Parsing failed", e);
         }
-        if (tree.getText().equals("CREATETABLESTATEMENT") ||
-                tree.getText().equals("DROPTABLESTATEMENT")) {
+        if (tree.getText().equals("CREATETABLESTATEMENT") || tree.getText().equals("DROPTABLESTATEMENT")) {
             return tree;
         } else {
             return null;

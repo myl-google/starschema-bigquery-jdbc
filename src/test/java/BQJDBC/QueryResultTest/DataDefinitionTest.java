@@ -113,7 +113,7 @@ public class DataDefinitionTest {
     }
 
     /**
-     * Test CREATE TABLE statement
+     * Test CREATE TABLE and DROP TABLE statements
      */
     @Test
     public void createAndDropTable() {
@@ -139,6 +139,4 @@ public class DataDefinitionTest {
         result = executeUpdate(drop_table_if_exists);
         Assert.assertEquals(0, result);
     }
-
-
 }

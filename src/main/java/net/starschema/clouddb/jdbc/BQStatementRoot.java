@@ -436,7 +436,7 @@ public abstract class BQStatementRoot {
         return 0;
     }
 
-    protected int executeDropTable(Tree tree) throws SQLException {
+    private int executeDropTable(Tree tree) throws SQLException {
         // Extract table name from the first child.
         Tree table_name_tree = tree.getChild(0);
         if (table_name_tree.getText() != "SOURCETABLE" || table_name_tree.getChildCount() != 2) {
