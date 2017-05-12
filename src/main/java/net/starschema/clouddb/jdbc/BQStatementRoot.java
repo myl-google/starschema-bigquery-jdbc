@@ -190,6 +190,15 @@ public abstract class BQStatementRoot {
         throw new BQSQLFeatureNotSupportedException("execute(String, int)");
     }
 
+    /**
+     * <p>
+     * <h1>Implementation Details:</h1><br>
+     * Not implemented yet.
+     * </p>
+     *
+     * @throws BQSQLFeatureNotSupportedException
+     */
+
     public boolean execute(String arg0, int[] arg1) throws SQLException {
         throw new BQSQLFeatureNotSupportedException("execute(string,int[])");
     }
@@ -399,8 +408,6 @@ public abstract class BQStatementRoot {
                     schema_entry.setType("string");
                     break;
                 case "int":
-                    schema_entry.setType("integer");
-                    break;
                 case "bigint":
                     schema_entry.setType("integer");
                     break;
@@ -458,7 +465,7 @@ public abstract class BQStatementRoot {
             this.connection.getBigquery().tables().get(this.ProjectId, dataSetId, tableId).execute();
             found = true;
         } catch (IOException e) {
-            found = false;
+            // found is already false
         }
 
         if (!found) {
@@ -515,8 +522,7 @@ public abstract class BQStatementRoot {
                 }
                 Thread.sleep(500);
                 this.logger.debug("slept for 500ms, querytimeout is: " + this.querytimeout + "s");
-            }
-            while (System.currentTimeMillis() - this.starttime <= (long) this.querytimeout * 1000);
+            } while (System.currentTimeMillis() - this.starttime <= (long) this.querytimeout * 1000);
         } catch (IOException e) {
             throw new BQSQLException("Something went wrong with the query: " + selectQuery, e);
         } catch (InterruptedException e) {
@@ -538,7 +544,7 @@ public abstract class BQStatementRoot {
             table.getNumRows();
             return ret;
         } catch (IOException e) {
-            throw new BQSQLException("Failed to lookup table: ", e);
+            throw new BQSQLException("Failed to lookup table: " + dataSet + "." + tableId, e);
         }
     }
 
@@ -550,7 +556,7 @@ public abstract class BQStatementRoot {
             Table table = this.connection.getBigquery().tables().get(this.ProjectId, dataSet, tableId).execute();
             return table.getNumRows().intValue();
         } catch (IOException e) {
-            throw new BQSQLException("Failed to lookup table: ", e);
+            throw new BQSQLException("Failed to lookup table: " + dataSet + "." + tableId, e);
         }
     }
 
