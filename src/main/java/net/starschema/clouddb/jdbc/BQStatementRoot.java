@@ -190,15 +190,6 @@ public abstract class BQStatementRoot {
         throw new BQSQLFeatureNotSupportedException("execute(String, int)");
     }
 
-    /**
-     * <p>
-     * <h1>Implementation Details:</h1><br>
-     * Not implemented yet.
-     * </p>
-     *
-     * @throws BQSQLFeatureNotSupportedException
-     */
-
     public boolean execute(String arg0, int[] arg1) throws SQLException {
         throw new BQSQLFeatureNotSupportedException("execute(string,int[])");
     }
@@ -486,6 +477,10 @@ public abstract class BQStatementRoot {
         return 0;
     }
 
+    /**
+     *  Runs a select statement directs the output to the specified destination table. Either overwrites
+     *  or appends to the destination table based on the value of destinationAppend.
+     */
     private void executeSelectWithDestination(String selectQuery, String destinationDataSet, String destinationTableId,
                                               boolean destinationAppend) throws SQLException {
         Job referencedJob;
@@ -517,7 +512,7 @@ public abstract class BQStatementRoot {
                     }
                 }
                 Thread.sleep(500);
-                this.logger.debug("slept for 500" + "ms, querytimeout is: " + this.querytimeout + "s");
+                this.logger.debug("slept for 500ms, querytimeout is: " + this.querytimeout + "s");
             }
             while (System.currentTimeMillis() - this.starttime <= (long) this.querytimeout * 1000);
         } catch (IOException e) {
@@ -528,6 +523,9 @@ public abstract class BQStatementRoot {
         throw new BQSQLException("Query run took more than the specified timeout");
     }
 
+    /**
+     *  Looks up the given table using the bigquery API and returns the names of the columns.
+     */
     private ArrayList<String> getColumnNames(String dataSet, String tableId) throws BQSQLException {
         ArrayList<String> ret = new ArrayList<String>();
         try {
@@ -542,6 +540,9 @@ public abstract class BQStatementRoot {
         }
     }
 
+    /**
+     *  Looks up the table using the bigquery API and returns the number of rows.
+     */
     private int getNumRows(String dataSet, String tableId) throws BQSQLException {
         try {
             Table table = this.connection.getBigquery().tables().get(this.ProjectId, dataSet, tableId).execute();
@@ -551,6 +552,11 @@ public abstract class BQStatementRoot {
         }
     }
 
+    /**
+     *  Runs an INSERT from SELECT statement in two parts.  First we execute the SELECT and direct the
+     *  results to a temp table.  Then we select from the temp table with columns named as specified
+     *  in the INSERT list and direct the result to append to the final destination table.
+     */
     private int executeInsertFromSelect(Tree tree, String updateSql) throws SQLException {
         // Extract table name from the first child.
         Tree table_name_tree = tree.getChild(0);

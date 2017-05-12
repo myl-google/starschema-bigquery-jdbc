@@ -289,6 +289,9 @@ public class BQQueryParser {
         return this.queryToParse;
     }
 
+    /**
+     * @return true if the tree contains any error nodes
+     */
     private boolean treeContainsErrors(Tree tree) {
         if (tree instanceof CommonErrorNode) {
             return true;
