@@ -499,7 +499,7 @@ public abstract class BQStatementRoot {
                     this.ProjectId,
                     selectQuery,
                     connection.getDataSet(),
-                    this.connection.getUseLegacySql(),
+                    false,
                     this.connection.getMaxBillingBytes(),
                     destinationDataSet,
                     destinationTableId,

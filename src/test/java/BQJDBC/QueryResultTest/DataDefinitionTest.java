@@ -115,6 +115,7 @@ public class DataDefinitionTest {
      */
     @Test
     public void dropTable() {
+        executeUpdateRequireSuccess("drop table if exists starschema.t1;", 0);
         executeUpdateRequireSuccess("create table starschema.t1 (c1 int)", 0);
 
         final String drop_table = "drop table starschema.t1";
@@ -211,8 +212,24 @@ public class DataDefinitionTest {
         executeQueryAndCheckResult("select c1, c2 from starschema.t2 order by c1",
                 new String[][]{{"1", "2"}, {"a", "b"}});
 
-        // TODO(myl): cte query
-        // TODO(myl): empty source table
-        // TODO(myl): existing destination table with different schema
+        // Common table expression
+        final String insert_cte = "INTO starschema.t2 with cte as (select * from starschema.t1) select * from cte";
+        logger.info("Running test: select into:" + newLine + insert_cte);
+        result = executeUpdate(insert_cte);
+        Assert.assertEquals(2, result);
+        executeQueryAndCheckResult("select c1, c2 from starschema.t2 order by c1",
+                new String[][]{{"1", "2"}, {"a", "b"}});
+
+        // Existing destination table with different schema
+        final String insert_one_column = "INTO starschema.t2 select c1 from starschema.t1";
+        logger.info("Running test: select into:" + newLine + insert_one_column);
+        result = executeUpdate(insert_one_column);
+        Assert.assertEquals(2, result);
+        executeQueryAndCheckResult("select * from starschema.t2 order by c1", new String[][]{{"1", "2"}});
+
+        // Empty source table
+        executeUpdateRequireSuccess("delete starschema.t1 where 1=1", 2);
+        result = executeUpdate(insert);
+        Assert.assertEquals(0, result);
     }
 }
