@@ -397,6 +397,7 @@ public abstract class BQStatementRoot {
                 case "datetime":
                 case "timestamp":
                 case "time":
+                case "float64":
                     schema_entry.setType(type_name);
                     break;
                 case "char":
