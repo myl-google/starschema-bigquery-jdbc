@@ -357,6 +357,8 @@ public abstract class BQStatementRoot {
                 return executeDropTable(tree);
             case "INSERTFROMSELECTSTATEMENT":
                 return executeInsertFromSelect(tree, updateSql);
+            case "SELECTINTOSTATEMENT":
+                return executeSelectIntoStatement(tree, updateSql);
         }
         throw new BQSQLFeatureNotSupportedException(updateSql);
     }
@@ -611,6 +613,25 @@ public abstract class BQStatementRoot {
         executeSelectWithDestination(tempSelectQuery, dataSetId, tableId, true);
 
         return getNumRows(tempDataSet, tempTableid);
+    }
+
+    /**
+     *  Runs a SELECT INTO statement in two parts and overwrites the destination table.
+     */
+    private int executeSelectIntoStatement(Tree tree, String updateSql) throws SQLException {
+        // Extract table name from the first child.
+        Tree table_name_tree = tree.getChild(0);
+        if (table_name_tree.getText() != "SOURCETABLE" || table_name_tree.getChildCount() != 2) {
+            throw new BQSQLException("Error with table name in INSERT from SELECT");
+        }
+        final String dataSetId = table_name_tree.getChild(0).getText();
+        final String tableId = table_name_tree.getChild(1).getText();
+
+        // Extract and execute the query
+        final String selectQuery = updateSql.substring(tree.getChild(1).getCharPositionInLine());
+        executeSelectWithDestination(selectQuery, dataSetId, tableId, false);
+
+        return getNumRows(dataSetId, tableId);
     }
 
     /**

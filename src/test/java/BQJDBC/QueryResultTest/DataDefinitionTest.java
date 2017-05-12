@@ -32,6 +32,7 @@ import java.sql.SQLException;
 import junit.framework.Assert;
 import net.starschema.clouddb.jdbc.BQSupportFuncts;
 
+import net.starschema.clouddb.jdbc.BQSupportMethods;
 import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
@@ -87,6 +88,26 @@ public class DataDefinitionTest {
     private void executeUpdateRequireSuccess(String input, int expected_result) {
         int result = executeUpdate(input);
         Assert.assertEquals(expected_result, result);
+    }
+
+    private void executeQueryAndCheckResult(String query, String[][]expectation) {
+        ResultSet Result = null;
+        try {
+            Result = con.createStatement().executeQuery(query);
+        } catch (SQLException e) {
+            this.logger.error("SQLexception" + e.toString());
+            Assert.fail("SQLException" + e.toString());
+        }
+        Assert.assertNotNull(Result);
+        HelperFunctions.printer(expectation);
+        try {
+            Assert.assertTrue(
+                    "Comparing failed in the String[][] array",
+                    BQSupportMethods.comparer(expectation, BQSupportMethods.GetQueryResult(Result)));
+        } catch (SQLException e) {
+            this.logger.error("SQLexception" + e.toString());
+            Assert.fail(e.toString());
+        }
     }
 
     /**
@@ -157,6 +178,8 @@ public class DataDefinitionTest {
         logger.info("Running test: insert from select:" + newLine + insert);
         int result = executeUpdate(insert);
         Assert.assertEquals(2, result);
+        executeQueryAndCheckResult("select c3, c4, c5 from starschema.t2 order by c5",
+                new String[][]{{"null", "null"}, {"a", "b"}, {"1", "2"}});
 
         // Empty tables
         executeUpdateRequireSuccess("delete starschema.t1 where 1=1", 2);
@@ -170,5 +193,26 @@ public class DataDefinitionTest {
         Assert.assertEquals(-1, result);
     }
 
-    // TODO - empty table
+    /**
+     * Test SELECT INTO statement
+     */
+    @Test
+    public void testSelectInto() {
+        executeUpdateRequireSuccess("drop table if exists starschema.t1;", 0);
+        executeUpdateRequireSuccess("create table starschema.t1 (c1 int, c2 string);", 0);
+        executeUpdateRequireSuccess("insert into starschema.t1 (c1, c2) values (1, 'a')", 1);
+        executeUpdateRequireSuccess("insert into starschema.t1 (c1, c2) values (2, 'b')", 1);
+
+        // Two rows affected
+        final String insert = "INTO starschema.t2 select * from starschema.t1";
+        logger.info("Running test: select into:" + newLine + insert);
+        int result = executeUpdate(insert);
+        Assert.assertEquals(2, result);
+        executeQueryAndCheckResult("select c1, c2 from starschema.t2 order by c1",
+                new String[][]{{"1", "2"}, {"a", "b"}});
+
+        // TODO(myl): cte query
+        // TODO(myl): empty source table
+        // TODO(myl): existing destination table with different schema
+    }
 }
