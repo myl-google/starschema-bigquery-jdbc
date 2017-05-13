@@ -399,12 +399,13 @@ public abstract class BQStatementRoot {
                 case "datetime":
                 case "timestamp":
                 case "time":
+                case "float";
+                case "string":
                     schema_entry.setType(type_name);
                     break;
                 case "char":
                 case "varchar":
                 case "text":
-                case "string":
                     schema_entry.setType("string");
                     break;
                 case "int":
