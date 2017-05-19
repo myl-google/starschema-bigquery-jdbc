@@ -121,6 +121,9 @@ INTOKEYWORD:   I N T O;
 /** WITH keyword, case insensitive */
 WITHKEYWORD:   W I T H;
 
+/** TRUNCATE keyword, case insensitive */
+TRUNCATEKEYWORD:   T R U N C A T E;
+
 
 //Other strings
 
@@ -245,6 +248,7 @@ fragment DROPTABLESTATEMENT:;
 fragment COLUMNEXPRESSION:;
 fragment INSERTFROMSELECTSTATEMENT:;
 fragment SELECTINTOSTATEMENT:;
+fragment TRUNCATETABLESTATEMENT:;
 
 
 

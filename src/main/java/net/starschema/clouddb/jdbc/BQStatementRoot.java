@@ -364,6 +364,8 @@ public abstract class BQStatementRoot {
                 return executeCreateTable(tree);
             case "DROPTABLESTATEMENT":
                 return executeDropTable(tree);
+            case "TRUNCATETABLESTATEMENT":
+                return executeTruncateTable(tree);
             case "INSERTFROMSELECTSTATEMENT":
                 return executeInsertFromSelect(tree, updateSql);
             case "SELECTINTOSTATEMENT":
@@ -485,6 +487,47 @@ public abstract class BQStatementRoot {
             throw new BQSQLException("Failed to DROP TABLE: ", e);
         }
         return 0;
+    }
+
+    /**
+     *  Truncates a table (deletes all rows).
+     */
+    private int executeTruncateTable(Tree tree) throws SQLException {
+        // Extract table name from the first child.
+        Tree table_name_tree = tree.getChild(0);
+        if (table_name_tree.getText() != "SOURCETABLE" || table_name_tree.getChildCount() != 2) {
+            throw new BQSQLException("Error with table name in TRUNCATE TABLE");
+        }
+        final String dataSetId = table_name_tree.getChild(0).getText();
+        final String tableId = table_name_tree.getChild(1).getText();
+
+        Table table = null;
+        try {
+            table = this.connection.getBigquery().tables().get(this.ProjectId, dataSetId, tableId).execute();
+        } catch (IOException e) {
+            throw new BQSQLException("Table not found for TRUNCATE: ", e);
+        }
+        final int numRows = table.getNumRows().intValue();
+
+        try {
+            this.connection.getBigquery().tables().delete(this.ProjectId, dataSetId, tableId).execute();
+        } catch (IOException e) {
+            throw new BQSQLException("Failed to TRUNCATE TABLE: ", e);
+        }
+
+        try {
+            Table table_copy = new Table();
+            table_copy.setSchema(table.getSchema());
+            TableReference tableRef = new TableReference();
+            tableRef.setDatasetId(dataSetId);
+            tableRef.setProjectId(this.ProjectId);
+            tableRef.setTableId(tableId);
+            table_copy.setTableReference(tableRef);
+            this.connection.getBigquery().tables().insert(this.ProjectId, dataSetId, table_copy).execute();
+        } catch (IOException e) {
+            throw new BQSQLException("Failed to TRUNCATE TABLE: ", e);
+        }
+        return numRows;
     }
 
     /**

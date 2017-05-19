@@ -94,6 +94,7 @@ sqlstatement
 :   selectstatement
     | createtablestatement
     | droptablestatement
+    | truncatetablestatement
     | selectintostatement
     | insertfromselectstatement
 ;
@@ -120,6 +121,14 @@ Rule for parsing an sql drop table
 droptablestatement
 :   DROPKEYWORD TABLEKEYWORD (IFKEYWORD EXISTSKEYWORD)? tabledefinition
     ->^(DROPTABLESTATEMENT tabledefinition (IFKEYWORD EXISTSKEYWORD)?)
+;
+
+/**
+Rule for parsing an sql truncate table
+*/
+truncatetablestatement
+:   TRUNCATEKEYWORD TABLEKEYWORD tabledefinition
+    ->^(TRUNCATETABLESTATEMENT tabledefinition)
 ;
 
 selectintostatement
