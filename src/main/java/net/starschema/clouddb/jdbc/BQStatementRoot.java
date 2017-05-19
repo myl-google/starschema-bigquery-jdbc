@@ -35,6 +35,7 @@ import org.apache.log4j.Logger;
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 // import net.starschema.clouddb.bqjdbc.logging.Logger;
@@ -576,17 +577,13 @@ public abstract class BQStatementRoot {
     }
 
     /**
-     *  Looks up the given table using the bigquery API and returns the names of the columns.
+     *  Looks up the given table using the bigquery API and returns the schema of the columns.
      */
-    private ArrayList<String> getColumnNames(String dataSet, String tableId) throws BQSQLException {
-        ArrayList<String> ret = new ArrayList<String>();
+    private List<TableFieldSchema> getTableFields(String dataSet, String tableId)
+            throws BQSQLException {
         try {
-            Table table = this.connection.getBigquery().tables().get(this.ProjectId, dataSet, tableId).execute();
-            for (TableFieldSchema field : table.getSchema().getFields()) {
-                ret.add(field.getName());
-            }
-            table.getNumRows();
-            return ret;
+            final Table table = this.connection.getBigquery().tables().get(this.ProjectId, dataSet, tableId).execute();
+            return table.getSchema().getFields();
         } catch (IOException e) {
             throw new BQSQLException("Failed to lookup table: " + dataSet + "." + tableId, e);
         }
@@ -601,6 +598,20 @@ public abstract class BQStatementRoot {
             return table.getNumRows().intValue();
         } catch (IOException e) {
             throw new BQSQLException("Failed to lookup table: " + dataSet + "." + tableId, e);
+        }
+    }
+
+    /**
+     *  Converts legacy types to standard sql types
+     */
+    private String getStandardTypeFromLegacyType(String type) {
+        switch(type.toLowerCase()) {
+            case "integer":
+                return "int64";
+            case "float":
+                return "float64";
+            default:
+                return type;
         }
     }
 
@@ -638,20 +649,22 @@ public abstract class BQStatementRoot {
         executeSelectWithDestination(selectQuery, tempDataSet, tempTableid, false);
 
         // Find the column of the temporary table and check that there are many as expected.
-        ArrayList<String> temp_column_names = getColumnNames(tempDataSet, tempTableid);
-        if (temp_column_names.size() != declared_dest_column_names.size()) {
+        List<TableFieldSchema> temp_columns = getTableFields(tempDataSet, tempTableid);
+        if (temp_columns.size() != declared_dest_column_names.size()) {
             throw new BQSQLException("Mismatch in declared and actual columns executing INSERT from SELECT");
         }
 
         // Find the column names of the destination table.
-        ArrayList<String> dest_column_names = getColumnNames(dataSetId, tableId);
+        List<TableFieldSchema> dest_columns = getTableFields(dataSetId, tableId);
 
         // Construct a select list to populate the destination table.
         ArrayList<String> temp_select_list = new ArrayList<String>();
-        for (String dest_column : dest_column_names) {
+        for (TableFieldSchema dest_column : dest_columns) {
             for (int i = 0; i < declared_dest_column_names.size(); ++i) {
-                if (declared_dest_column_names.get(i).equals(dest_column)) {
-                    temp_select_list.add(temp_column_names.get(i) + " " + dest_column);
+                if (declared_dest_column_names.get(i).equals(dest_column.getName())) {
+                    temp_select_list.add("cast(" + temp_columns.get(i).getName() + " as " +
+                            getStandardTypeFromLegacyType(dest_column.getType()) +
+                            ") as " + dest_column.getName());
                     break;
                 }
             }
