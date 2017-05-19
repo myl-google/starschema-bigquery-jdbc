@@ -141,7 +141,7 @@ public class AchillesTest {
                 null, replacements_path);
         String[] translated_strings = SqlSplit.splitSql(translated_script);
 
-        for (int i=230; i<original_strings.length; ++i) {
+        for (int i=231; i<original_strings.length; ++i) {
             final String source_sql = original_strings[i];
             final String translated_sql = translated_strings[i];
             System.out.println("\nStatement number: " + i);
@@ -149,6 +149,9 @@ public class AchillesTest {
             System.out.println(source_sql);
             System.out.println("---------");
             System.out.println(translated_sql);
+
+            final int result = executeUpdate(translated_sql.toLowerCase());
+            Assert.assertTrue(result != -1);
         }
 
     }
