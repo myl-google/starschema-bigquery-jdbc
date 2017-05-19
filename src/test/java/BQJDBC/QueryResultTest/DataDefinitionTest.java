@@ -190,7 +190,7 @@ public class DataDefinitionTest {
         executeUpdateRequireSuccess("create table starschema.t1 (c1 int, c2 string);", 0);
         executeUpdateRequireSuccess("insert into starschema.t1 (c1, c2) values (1, 'a')", 1);
         executeUpdateRequireSuccess("insert into starschema.t1 (c1, c2) values (2, 'b')", 1);
-        executeUpdateRequireSuccess("create table starschema.t2 (c3 int, c4 string, c5 int);", 0);
+        executeUpdateRequireSuccess("create table starschema.t2 (c3 int, c4 string, c5 float);", 0);
 
         // Two rows affected
         final String insert = "insert into starschema.t2 (c5, c4) select * from starschema.t1";
@@ -198,7 +198,7 @@ public class DataDefinitionTest {
         int result = executeUpdate(insert);
         Assert.assertEquals(2, result);
         executeQueryAndCheckResult("select c3, c4, c5 from starschema.t2 order by c5",
-                new String[][]{{"null", "null"}, {"a", "b"}, {"1", "2"}});
+                new String[][]{{"null", "null"}, {"a", "b"}, {"1.0", "2.0"}});
 
         // Empty tables
         executeUpdateRequireSuccess("delete starschema.t1 where 1=1", 2);
