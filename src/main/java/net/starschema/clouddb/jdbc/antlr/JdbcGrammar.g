@@ -94,6 +94,7 @@ sqlstatement
 :   selectstatement
     | createtablestatement
     | droptablestatement
+    | selectintostatement
     | insertfromselectstatement
 ;
 
@@ -103,7 +104,6 @@ Rule for parsing an sql select
 selectstatement
 :   SELECTKEYWORD DISTINCT? expression fromexpression whereexpression? groupbyexpression? havingexpression? orderbyexpression? limitexpression?
     ->^(SELECTSTATEMENT SELECTKEYWORD expression fromexpression whereexpression? groupbyexpression? havingexpression? orderbyexpression? limitexpression?)
-
 ;
 
 /**
@@ -120,6 +120,11 @@ Rule for parsing an sql drop table
 droptablestatement
 :   DROPKEYWORD TABLEKEYWORD (IFKEYWORD EXISTSKEYWORD)? tabledefinition
     ->^(DROPTABLESTATEMENT tabledefinition (IFKEYWORD EXISTSKEYWORD)?)
+;
+
+selectintostatement
+:   INTOKEYWORD tabledefinition (SELECTKEYWORD|WITHKEYWORD) (.)+
+    ->^(SELECTINTOSTATEMENT tabledefinition SELECTKEYWORD? WITHKEYWORD?)
 ;
 
 insertfromselectstatement

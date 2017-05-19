@@ -118,6 +118,8 @@ INSERTKEYWORD:   I N S E R T;
 /** INTO keyword, case insensitive */
 INTOKEYWORD:   I N T O;
 
+/** WITH keyword, case insensitive */
+WITHKEYWORD:   W I T H;
 
 
 //Other strings
@@ -242,6 +244,7 @@ fragment CREATETABLESTATEMENT:;
 fragment DROPTABLESTATEMENT:;
 fragment COLUMNEXPRESSION:;
 fragment INSERTFROMSELECTSTATEMENT:;
+fragment SELECTINTOSTATEMENT:;
 
 
 
