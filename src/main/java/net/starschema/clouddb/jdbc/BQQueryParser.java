@@ -325,7 +325,9 @@ public class BQQueryParser {
             return null;
         }
         if (tree.getText().equals("CREATETABLESTATEMENT") || tree.getText().equals("DROPTABLESTATEMENT") ||
-                tree.getText().equals("INSERTFROMSELECTSTATEMENT") || tree.getText().equals("SELECTINTOSTATEMENT")) {
+                tree.getText().equals("TRUNCATETABLESTATEMENT") ||
+                tree.getText().equals("INSERTFROMSELECTSTATEMENT") ||
+                tree.getText().equals("SELECTINTOSTATEMENT")) {
             return tree;
         } else {
             return null;

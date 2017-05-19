@@ -135,10 +135,28 @@ public class DataDefinitionTest {
     }
 
     /**
+     * Test TRUNCATE TABLE statement
+     */
+    @Test
+    public void truncateTable() {
+        executeUpdateRequireSuccess("drop table if exists starschema.t1;", 0);
+        executeUpdateRequireSuccess("create table starschema.t1 (c1 int)", 0);
+        executeUpdateRequireSuccess("insert into starschema.t1 (c1) values (1)", 1);
+
+        final String truncate_table = "truncate table starschema.t1";
+        logger.info("Running test: truncate table:" + newLine + truncate_table);
+        int result = executeUpdate(truncate_table);
+        Assert.assertEquals(1, result);
+
+        executeUpdateRequireSuccess("drop table starschema.t1;", 0);
+    }
+
+    /**
      * Test CREATE TABLE and DROP TABLE statements
      */
     @Test
     public void createAndDropTable() {
+        executeUpdateRequireSuccess("drop table if exists starschema.t1;", 0);
         final String create_table = "create table starschema.t1 (c1 int, c2 char(10) null, c3 varchar(20) not null)";
         logger.info("Running test: create table:" + newLine + create_table);
         int result = executeUpdate(create_table);
