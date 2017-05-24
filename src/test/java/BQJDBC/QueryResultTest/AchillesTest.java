@@ -34,9 +34,11 @@ import org.ohdsi.sql.SqlSplit;
 import org.ohdsi.sql.SqlTranslate;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -129,6 +131,7 @@ public class AchillesTest {
         Assert.assertEquals(0, result);*/
         final String replacements_path = "/Users/myl/mylSqlRender/SqlRender/inst/csv/replacementPatterns.csv";
         Path achilles_path = Paths.get("/Users/myl/achilles-scripts", "output-rendered.sql");
+        Path achilles_translated_path = Paths.get("/Users/myl/achilles-scripts", "output-translated.sql");
         String achilles_script = null;
         try {
             achilles_script = new String(Files.readAllBytes(achilles_path));
@@ -139,9 +142,17 @@ public class AchillesTest {
         String[] original_strings = SqlSplit.splitSql(achilles_script);
         final String translated_script = SqlTranslate.translateSqlWithPath(achilles_script, "bigquery", null,
                 null, replacements_path);
+        try {
+            java.nio.file.OpenOption[] options = new java.nio.file.OpenOption[] { StandardOpenOption.WRITE,
+                    StandardOpenOption.TRUNCATE_EXISTING };
+            Files.write(achilles_translated_path, translated_script.getBytes(), options);
+        } catch (IOException e) {
+            this.logger.error("IOException" + e.toString());
+            Assert.fail(e.toString());
+        }
         String[] translated_strings = SqlSplit.splitSql(translated_script);
 
-        for (int i=231; i<original_strings.length; ++i) {
+        for (int i=287; i<original_strings.length; ++i) {
             final String source_sql = original_strings[i];
             final String translated_sql = translated_strings[i];
             System.out.println("\nStatement number: " + i);

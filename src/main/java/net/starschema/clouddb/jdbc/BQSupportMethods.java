@@ -75,7 +75,7 @@ public class BQSupportMethods {
     }
 
     /**
-     * Compares two String[][]
+     * Compares two String[][] arrays assuming they're the same dimensions.
      *
      * @param expected
      * @param reality
