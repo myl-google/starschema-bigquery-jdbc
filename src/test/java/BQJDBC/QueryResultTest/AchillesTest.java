@@ -122,13 +122,6 @@ public class AchillesTest {
      */
     @Test
     public void runAchillesScript() {
-        /*executeUpdateRequireSuccess("drop table if exists starschema.t1;", 0);
-        executeUpdateRequireSuccess("create table starschema.t1 (c1 int)", 0);
-
-        final String drop_table = "drop table starschema.t1";
-        logger.info("Running test: drop table:" + newLine + drop_table);
-        int result = executeUpdate(drop_table);
-        Assert.assertEquals(0, result);*/
         final String replacements_path = "/Users/myl/mylSqlRender/SqlRender/inst/csv/replacementPatterns.csv";
         Path achilles_path = Paths.get("/Users/myl/achilles-scripts", "output-rendered.sql");
         Path achilles_translated_path = Paths.get("/Users/myl/achilles-scripts", "output-translated.sql");
@@ -152,7 +145,7 @@ public class AchillesTest {
         }
         String[] translated_strings = SqlSplit.splitSql(translated_script);
 
-        for (int i=287; i<original_strings.length; ++i) {
+        for (int i=0; i<original_strings.length; ++i) {
             final String source_sql = original_strings[i];
             final String translated_sql = translated_strings[i];
             System.out.println("\nStatement number: " + i);
@@ -164,6 +157,5 @@ public class AchillesTest {
             final int result = executeUpdate(translated_sql.toLowerCase());
             Assert.assertTrue(result != -1);
         }
-
     }
 }
