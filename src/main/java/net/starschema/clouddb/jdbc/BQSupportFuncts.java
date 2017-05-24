@@ -679,6 +679,7 @@ public class BQSupportFuncts {
         JobConfigurationQuery queryConfig = new JobConfigurationQuery();
         queryConfig.setUseLegacySql(useLegacySql);
         queryConfig.setMaximumBytesBilled(maxBillingBytes);
+        queryConfig.setMaximumBillingTier(5);
         if (destinationDataSet != null && destinationTableId != null) {
             TableReference destination_table = new TableReference();
             destination_table.setProjectId(projectId);
