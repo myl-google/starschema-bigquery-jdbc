@@ -658,20 +658,21 @@ public abstract class BQStatementRoot {
         List<TableFieldSchema> dest_columns = getTableFields(dataSetId, tableId);
 
         // Construct a select list to populate the destination table.
-        ArrayList<String> temp_select_list = new ArrayList<String>();
+        String temp_select_list = "";
         for (TableFieldSchema dest_column : dest_columns) {
             for (int i = 0; i < declared_dest_column_names.size(); ++i) {
                 if (declared_dest_column_names.get(i).equals(dest_column.getName())) {
-                    temp_select_list.add("cast(" + temp_columns.get(i).getName() + " as " +
+                    temp_select_list = temp_select_list + "," +
+                            "cast(" + temp_columns.get(i).getName() + " as " +
                             getStandardTypeFromLegacyType(dest_column.getType()) +
-                            ") as " + dest_column.getName());
+                            ") as " + dest_column.getName();
                     break;
                 }
             }
         }
 
         // Execute a second query over the temp table with the final table as the destination
-        final String tempSelectQuery = "select " + StringUtils.join(temp_select_list, ",") + " from " + tempDataSet +
+        final String tempSelectQuery = "select " + temp_select_list.substring(1) + " from " + tempDataSet +
                 "." + tempTableid;
         executeSelectWithDestination(tempSelectQuery, dataSetId, tableId, true);
 
