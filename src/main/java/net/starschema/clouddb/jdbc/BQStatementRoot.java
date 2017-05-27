@@ -28,7 +28,6 @@
 package net.starschema.clouddb.jdbc;
 
 import com.google.api.services.bigquery.model.*;
-import com.sun.deploy.util.StringUtils;
 import org.antlr.runtime.tree.Tree;
 import org.apache.log4j.Logger;
 
