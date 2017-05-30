@@ -318,9 +318,9 @@ public class BQPreparedStatement extends BQStatementRoot implements
 
         // ANTLR Parser
         BQQueryParser parser = new BQQueryParser(this.RunnableStatement, this.connection);
-        Tree createTableTree = parser.parseCreateTable();
-        if (createTableTree != null) {
-            return executeCreateTable(createTableTree);
+        Tree dataDefinitionTree = parser.parseDataDefinition();
+        if (dataDefinitionTree != null) {
+            return executeDataDefinition(dataDefinitionTree, this.RunnableStatement);
         }
 
         try {

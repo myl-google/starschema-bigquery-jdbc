@@ -656,21 +656,42 @@ public class BQSupportFuncts {
      * @param bigquery  The bigquery instance, which is authorized
      * @param projectId The project's ID
      * @param querySql  The sql query which we want to run
+     * @param dataSet  The default dataSet for the query
+     * @param useLegacySql  Whether to use the legacy sql dialect
+     * @param maxBillingBytes  Sets a limit on the cost of the query
+     * @param destinationDataSet  If non-null, the dataset of the destination table
+     * @param destinationTableId  If non-null, the name of the destination table
+     * @param destinationAppend  If true, appends to an existing destination table, otherwise truncates
      * @return A JobReference which we'll use to poll the bigquery, for its
      * state, then for its mined data.
      * @throws IOException <p>
      *                     if the request for initializing or executing job fails
      *                     </p>
      */
-    public static Job startQuery(Bigquery bigquery, String projectId,
-                                 String querySql, String dataSet, Boolean useLegacySql,
-                                 Long maxBillingBytes) throws IOException {
+    public static Job startQueryWithDestination(Bigquery bigquery, String projectId,
+                                                String querySql, String dataSet, Boolean useLegacySql,
+                                                Long maxBillingBytes, String destinationDataSet,
+                                                String destinationTableId, boolean destinationAppend)
+            throws IOException {
         projectId = projectId.replace("__", ":").replace("_", ".");
         Job job = new Job();
         JobConfiguration config = new JobConfiguration();
         JobConfigurationQuery queryConfig = new JobConfigurationQuery();
         queryConfig.setUseLegacySql(useLegacySql);
         queryConfig.setMaximumBytesBilled(maxBillingBytes);
+        queryConfig.setMaximumBillingTier(5);
+        if (destinationDataSet != null && destinationTableId != null) {
+            TableReference destination_table = new TableReference();
+            destination_table.setProjectId(projectId);
+            destination_table.setDatasetId(destinationDataSet);
+            destination_table.setTableId(destinationTableId);
+            queryConfig.setDestinationTable(destination_table);
+            if (destinationAppend) {
+                queryConfig.setWriteDisposition("WRITE_APPEND");
+            } else {
+                queryConfig.setWriteDisposition("WRITE_TRUNCATE");
+            }
+        }
         config.setQuery(queryConfig);
         String jobId = UUID.randomUUID().toString().replace("-", "");
         JobReference jobReference = new JobReference().setProjectId(projectId).setJobId(jobId);
@@ -686,6 +707,28 @@ public class BQSupportFuncts {
         insert.setProjectId(projectId);
         BQSupportFuncts.logger.info("Inserting Query Job (" + jobId + "): " + querySql.replace("\t", "").replace("\n", " ").replace("\r", ""));
         return insert.execute();
+    }
+
+    /**
+     * Starts a new query in async mode.
+     *
+     * @param bigquery  The bigquery instance, which is authorized
+     * @param projectId The project's ID
+     * @param querySql  The sql query which we want to run
+     * @param dataSet  The default dataSet for the query
+     * @param useLegacySql  Whether to use the legacy sql dialect
+     * @param maxBillingBytes  Sets a limit on the cost of the query
+     * @return A JobReference which we'll use to poll the bigquery, for its
+     * state, then for its mined data.
+     * @throws IOException <p>
+     *                     if the request for initializing or executing job fails
+     *                     </p>
+     */
+    public static Job startQuery(Bigquery bigquery, String projectId,
+                                 String querySql, String dataSet, Boolean useLegacySql,
+                                 Long maxBillingBytes) throws IOException {
+        return startQueryWithDestination(bigquery, projectId, querySql, dataSet, useLegacySql, maxBillingBytes,
+                null, null, false);
     }
 
 }

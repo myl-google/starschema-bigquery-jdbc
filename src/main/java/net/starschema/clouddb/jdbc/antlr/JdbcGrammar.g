@@ -93,6 +93,10 @@ statement
 sqlstatement
 :   selectstatement
     | createtablestatement
+    | droptablestatement
+    | truncatetablestatement
+    | selectintostatement
+    | insertfromselectstatement
 ;
 
 /**
@@ -101,7 +105,6 @@ Rule for parsing an sql select
 selectstatement
 :   SELECTKEYWORD DISTINCT? expression fromexpression whereexpression? groupbyexpression? havingexpression? orderbyexpression? limitexpression?
     ->^(SELECTSTATEMENT SELECTKEYWORD expression fromexpression whereexpression? groupbyexpression? havingexpression? orderbyexpression? limitexpression?)
-
 ;
 
 /**
@@ -110,6 +113,32 @@ Rule for parsing an sql create table
 createtablestatement
 :   CREATEKEYWORD TABLEKEYWORD tabledefinition LPARAM columndefinition(COMMA columndefinition)* RPARAM
     ->^(CREATETABLESTATEMENT tabledefinition columndefinition*)
+;
+
+/**
+Rule for parsing an sql drop table
+*/
+droptablestatement
+:   DROPKEYWORD TABLEKEYWORD (IFKEYWORD EXISTSKEYWORD)? tabledefinition
+    ->^(DROPTABLESTATEMENT tabledefinition (IFKEYWORD EXISTSKEYWORD)?)
+;
+
+/**
+Rule for parsing an sql truncate table
+*/
+truncatetablestatement
+:   TRUNCATEKEYWORD TABLEKEYWORD tabledefinition
+    ->^(TRUNCATETABLESTATEMENT tabledefinition)
+;
+
+selectintostatement
+:   INTOKEYWORD tabledefinition (SELECTKEYWORD|WITHKEYWORD) (.)+
+    ->^(SELECTINTOSTATEMENT tabledefinition SELECTKEYWORD? WITHKEYWORD?)
+;
+
+insertfromselectstatement
+:   INSERTKEYWORD INTOKEYWORD tabledefinition LPARAM IDENTIFIER(COMMA IDENTIFIER)* RPARAM selectstatement
+    ->^(INSERTFROMSELECTSTATEMENT tabledefinition selectstatement IDENTIFIER*)
 ;
 
 columndefinition

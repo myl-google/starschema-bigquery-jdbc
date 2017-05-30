@@ -56,7 +56,11 @@ public class BQSupportMethods {
 
         while (result.next() == true) {
             for (int i = 0; i < ColumnCount; i++) {
-                returned.get(i).add(result.getString(i + 1));
+                String string_value = result.getString(i + 1);
+                if (string_value == null) {
+                    string_value = "null";
+                }
+                returned.get(i).add(string_value);
             }
         }
 
@@ -68,5 +72,23 @@ public class BQSupportMethods {
             }
         }
         return returning;
+    }
+
+    /**
+     * Compares two String[][] arrays assuming they're the same dimensions.
+     *
+     * @param expected
+     * @param reality
+     * @return true if they are equal false if not
+     */
+    public static boolean comparer(String[][] expected, String[][] reality) {
+        for (int i = 0; i < expected.length; i++) {
+            for (int j = 0; j < expected[i].length; j++) {
+                if (expected[i][j].toString().equals(reality[i][j]) == false) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }
