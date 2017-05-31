@@ -629,7 +629,7 @@ public abstract class BQStatementRoot {
         final String tableId = table_name_tree.getChild(1).getText();
 
         // Extract the select statement part
-        final Tree selectNode = tree.getChild(1).getChild(0);
+        final Tree selectNode = tree.getChild(1);
         if (!selectNode.getText().equalsIgnoreCase("select")) {
             throw new BQSQLException("Error with table name in INSERT from SELECT");
         }

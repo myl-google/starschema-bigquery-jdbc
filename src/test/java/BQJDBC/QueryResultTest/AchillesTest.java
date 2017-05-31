@@ -123,7 +123,7 @@ public class AchillesTest {
     @Test
     public void runAchillesScript() {
         final String replacements_path = "/Users/myl/mylSqlRender/SqlRender/inst/csv/replacementPatterns.csv";
-        Path achilles_path = Paths.get("/Users/myl/achilles-scripts", "output-rendered.sql");
+        Path achilles_path = Paths.get("/Users/myl/achilles-scripts", "output-heel-rendered.sql");
         Path achilles_translated_path = Paths.get("/Users/myl/achilles-scripts", "output-translated.sql");
         String achilles_script = null;
         try {
@@ -145,7 +145,7 @@ public class AchillesTest {
         }
         String[] translated_strings = SqlSplit.splitSql(translated_script);
 
-        for (int i=0; i<original_strings.length; ++i) {
+        for (int i=32; i<original_strings.length; ++i) {
             final String source_sql = original_strings[i];
             final String translated_sql = translated_strings[i];
             System.out.println("\nStatement number: " + i);

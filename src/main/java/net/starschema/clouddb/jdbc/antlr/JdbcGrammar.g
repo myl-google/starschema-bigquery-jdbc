@@ -137,8 +137,8 @@ selectintostatement
 ;
 
 insertfromselectstatement
-:   INSERTKEYWORD INTOKEYWORD tabledefinition LPARAM IDENTIFIER(COMMA IDENTIFIER)* RPARAM selectstatement
-    ->^(INSERTFROMSELECTSTATEMENT tabledefinition selectstatement IDENTIFIER*)
+:   INSERTKEYWORD INTOKEYWORD tabledefinition LPARAM IDENTIFIER(COMMA IDENTIFIER)* RPARAM (SELECTKEYWORD|WITHKEYWORD) (.)+
+    ->^(INSERTFROMSELECTSTATEMENT tabledefinition SELECTKEYWORD? WITHKEYWORD? IDENTIFIER*)
 ;
 
 columndefinition
