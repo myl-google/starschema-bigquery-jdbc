@@ -145,7 +145,7 @@ public class AchillesTest {
         }
         String[] translated_strings = SqlSplit.splitSql(translated_script);
 
-        for (int i=32; i<original_strings.length; ++i) {
+        for (int i=66; i<original_strings.length; ++i) {
             final String source_sql = original_strings[i];
             final String translated_sql = translated_strings[i];
             System.out.println("\nStatement number: " + i);
