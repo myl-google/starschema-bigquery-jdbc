@@ -316,11 +316,11 @@ public class BQPreparedStatement extends BQStatementRoot implements
         this.starttime = System.currentTimeMillis();
         Job referencedJob;
 
-        // ANTLR Parser
-        BQQueryParser parser = new BQQueryParser(this.RunnableStatement, this.connection);
-        Tree dataDefinitionTree = parser.parseDataDefinition();
+        // Try to parse and execute as a data definition statement.
+        final String normalizedUpdateSql = normalizeDataDefinitionForParsing(this.RunnableStatement);
+        Tree dataDefinitionTree = tryParseDataDefinition(normalizedUpdateSql);
         if (dataDefinitionTree != null) {
-            return executeDataDefinition(dataDefinitionTree, this.RunnableStatement);
+            return executeDataDefinition(dataDefinitionTree, normalizedUpdateSql);
         }
 
         try {

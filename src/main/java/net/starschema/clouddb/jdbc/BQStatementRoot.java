@@ -45,25 +45,34 @@ import java.util.Random;
  *
  * @author Horváth Attila
  * @author Balazs Gunics
- *
  */
 public abstract class BQStatementRoot {
 
-    /** Reference to store the ran Query run by Executequery or Execute */
+    /**
+     * Reference to store the ran Query run by Executequery or Execute
+     */
     ResultSet resset = null;
 
-    /** String containing the context of the Project */
+    /**
+     * String containing the context of the Project
+     */
     String ProjectId = null;
     // Logger logger = new Logger(BQStatementRoot.class.getName());
     Logger logger = Logger.getLogger(BQStatementRoot.class.getName());
 
-    /** Variable that stores the closed state of the statement */
+    /**
+     * Variable that stores the closed state of the statement
+     */
     boolean closed = false;
 
-    /** Reference for the Connection that created this Statement object */
+    /**
+     * Reference for the Connection that created this Statement object
+     */
     BQConnection connection;
 
-    /** Variable that stores the set query timeout */
+    /**
+     * Variable that stores the set query timeout
+     */
     int querytimeout = Integer.MAX_VALUE;
     /** Instance of log4j.Logger */
     /**
@@ -76,7 +85,9 @@ public abstract class BQStatementRoot {
      */
     int resultMaxRowCount = Integer.MAX_VALUE - 1;
 
-    /** Variable to Store EscapeProc state */
+    /**
+     * Variable to Store EscapeProc state
+     */
     boolean EscapeProc = false;
 
     /**
@@ -229,7 +240,9 @@ public abstract class BQStatementRoot {
         throw new BQSQLException("Not implemented." + "executeBatch()");
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
 
     public ResultSet executeQuery(String querySql) throws SQLException {
         if (this.isClosed()) {
@@ -293,19 +306,22 @@ public abstract class BQStatementRoot {
                 "Query run took more than the specified timeout");
     }
 
-    /** {@inheritDoc} */
 
+
+    /**
+     * {@inheritDoc}
+     */
     public int executeUpdate(String updateSql) throws SQLException {
         if (this.isClosed()) {
             throw new BQSQLException("This Statement is Closed");
         }
         this.starttime = System.currentTimeMillis();
 
-        // ANTLR Parsing
-        BQQueryParser parser = new BQQueryParser(updateSql, this.connection);
-        Tree dataDefinitionTree = parser.parseDataDefinition();
+        // Try to parse and execute as a data definition statement.
+        final String normalizedUpdateSql = normalizeDataDefinitionForParsing(updateSql);
+        Tree dataDefinitionTree = tryParseDataDefinition(normalizedUpdateSql);
         if (dataDefinitionTree != null) {
-            return executeDataDefinition(dataDefinitionTree, updateSql);
+            return executeDataDefinition(dataDefinitionTree, normalizedUpdateSql);
         }
 
         Job referencedJob;
@@ -349,6 +365,17 @@ public abstract class BQStatementRoot {
         // TODO(myl): cancel the job or set a timeout on the original request
         throw new BQSQLException(
                 "Update run took more than the specified timeout");
+    }
+
+    protected Tree tryParseDataDefinition(String normalizedUpdateSql) {
+        BQQueryParser parser = new BQQueryParser(normalizedUpdateSql, this.connection);
+        return parser.parseDataDefinition();
+    }
+
+    protected String normalizeDataDefinitionForParsing(String updateSql) {
+        // Remove line comments since the ANTLR parsing transforms the text in a way that breaks the
+        // recognition of these in the grammar
+        return updateSql.replaceAll("--[^\\n\\r]*\\r?\\n", "");
     }
 
     private void verifyChildText(Tree tree, int i, String expected_text) throws SQLException {
@@ -490,7 +517,7 @@ public abstract class BQStatementRoot {
     }
 
     /**
-     *  Truncates a table (deletes all rows).
+     * Truncates a table (deletes all rows).
      */
     private int executeTruncateTable(Tree tree) throws SQLException {
         // Extract table name from the first child.
@@ -531,8 +558,8 @@ public abstract class BQStatementRoot {
     }
 
     /**
-     *  Runs a select statement directs the output to the specified destination table. Either overwrites
-     *  or appends to the destination table based on the value of destinationAppend.
+     * Runs a select statement directs the output to the specified destination table. Either overwrites
+     * or appends to the destination table based on the value of destinationAppend.
      */
     private void executeSelectWithDestination(String selectQuery, String destinationDataSet, String destinationTableId,
                                               boolean destinationAppend) throws SQLException {
@@ -576,7 +603,7 @@ public abstract class BQStatementRoot {
     }
 
     /**
-     *  Looks up the given table using the bigquery API and returns the schema of the columns.
+     * Looks up the given table using the bigquery API and returns the schema of the columns.
      */
     private List<TableFieldSchema> getTableFields(String dataSet, String tableId)
             throws BQSQLException {
@@ -589,7 +616,7 @@ public abstract class BQStatementRoot {
     }
 
     /**
-     *  Looks up the table using the bigquery API and returns the number of rows.
+     * Looks up the table using the bigquery API and returns the number of rows.
      */
     private int getNumRows(String dataSet, String tableId) throws BQSQLException {
         try {
@@ -601,10 +628,10 @@ public abstract class BQStatementRoot {
     }
 
     /**
-     *  Converts legacy types to standard sql types
+     * Converts legacy types to standard sql types
      */
     private String getStandardTypeFromLegacyType(String type) {
-        switch(type.toLowerCase()) {
+        switch (type.toLowerCase()) {
             case "integer":
                 return "int64";
             case "float":
@@ -615,9 +642,9 @@ public abstract class BQStatementRoot {
     }
 
     /**
-     *  Runs an INSERT from SELECT statement in two parts.  First we execute the SELECT and direct the
-     *  results to a temp table.  Then we select from the temp table with columns named as specified
-     *  in the INSERT list and direct the result to append to the final destination table.
+     * Runs an INSERT from SELECT statement in two parts.  First we execute the SELECT and direct the
+     * results to a temp table.  Then we select from the temp table with columns named as specified
+     * in the INSERT list and direct the result to append to the final destination table.
      */
     private int executeInsertFromSelect(Tree tree, String updateSql) throws SQLException {
         // Extract table name from the first child.
@@ -629,7 +656,7 @@ public abstract class BQStatementRoot {
         final String tableId = table_name_tree.getChild(1).getText();
 
         // Extract the select statement part
-        final Tree selectNode = tree.getChild(1).getChild(0);
+        final Tree selectNode = tree.getChild(1);
         if (!selectNode.getText().equalsIgnoreCase("select")) {
             throw new BQSQLException("Error with table name in INSERT from SELECT");
         }
@@ -637,7 +664,7 @@ public abstract class BQStatementRoot {
 
         // Find the destination column names
         ArrayList<String> declared_dest_column_names = new ArrayList<String>();
-        for (int i=2; i < tree.getChildCount(); ++i) {
+        for (int i = 2; i < tree.getChildCount(); ++i) {
             declared_dest_column_names.add(tree.getChild(i).getText());
         }
 
@@ -679,7 +706,7 @@ public abstract class BQStatementRoot {
     }
 
     /**
-     *  Runs a SELECT INTO statement in two parts and overwrites the destination table.
+     * Runs a SELECT INTO statement in two parts and overwrites the destination table.
      */
     private int executeSelectIntoStatement(Tree tree, String updateSql) throws SQLException {
         // Extract table name from the first child.
@@ -691,6 +718,7 @@ public abstract class BQStatementRoot {
         final String tableId = table_name_tree.getChild(1).getText();
 
         // Extract and execute the query
+
         final String selectQuery = updateSql.substring(tree.getChild(1).getCharPositionInLine());
         executeSelectWithDestination(selectQuery, dataSetId, tableId, false);
 
@@ -851,11 +879,10 @@ public abstract class BQStatementRoot {
      * resultset or throw a FeatureNotSupportedException
      * </p>
      *
-     * @param current
-     *            - one of the following Statement constants indicating what
-     *            should happen to current ResultSet objects obtained using the
-     *            method getResultSet: Statement.CLOSE_CURRENT_RESULT,
-     *            Statement.KEEP_CURRENT_RESULT, or Statement.CLOSE_ALL_RESULTS
+     * @param current - one of the following Statement constants indicating what
+     *                should happen to current ResultSet objects obtained using the
+     *                method getResultSet: Statement.CLOSE_CURRENT_RESULT,
+     *                Statement.KEEP_CURRENT_RESULT, or Statement.CLOSE_ALL_RESULTS
      * @throws BQSQLException
      */
 
@@ -879,7 +906,9 @@ public abstract class BQStatementRoot {
         }
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
 
     public int getQueryTimeout() throws SQLException {
         if (this.isClosed()) {
@@ -1111,7 +1140,9 @@ public abstract class BQStatementRoot {
         throw new BQSQLException("Not implemented." + "setPoolable(bool)");
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     public void setQueryTimeout(int arg0) throws SQLException {
         if (this.isClosed()) {
             throw new BQSQLException("This Statement is Closed");
