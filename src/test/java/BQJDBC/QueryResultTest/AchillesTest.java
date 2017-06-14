@@ -157,6 +157,5 @@ public class AchillesTest {
             final int result = executeUpdate(translated_sql);
             Assert.assertTrue(result != -1);
         }
-        */
     }
 }
