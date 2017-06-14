@@ -410,7 +410,8 @@ public class BQConnection implements Connection {
     }
 
     public String getSchema() throws SQLException {
-        throw new BQSQLException("Not implemented.");
+        //throw new BQSQLException("Not implemented.");
+        return dataset;
     }
 
     public void abort(Executor executor) throws SQLException {
