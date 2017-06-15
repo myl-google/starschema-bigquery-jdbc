@@ -233,13 +233,17 @@ public class BQPreparedStatement extends BQStatementRoot implements
             throw new BQSQLException("Not all parameters set");
         }
         this.starttime = System.currentTimeMillis();
-        Job referencedJob;
+
+        if (isNextvalQuery(this.RunnableStatement)) {
+            executeNextvalQuery(this.RunnableStatement);
+        }
 
         // ANTLR Parser
         BQQueryParser parser = new BQQueryParser(this.RunnableStatement,
                 this.connection);
         this.RunnableStatement = parser.parse();
 
+        Job referencedJob;
         try {
             // Gets the Job reference of the completed job with give Query
             referencedJob = BQSupportFuncts.startQuery(
