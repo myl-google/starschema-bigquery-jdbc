@@ -128,7 +128,7 @@ public class BQResultSet extends ScrollableResultset<Object> implements
         }
         int columncount = this.getMetaData().getColumnCount();
         for (int i = 1; i <= columncount; i++) {
-            if (this.getMetaData().getCatalogName(i).equals(columnLabel)) {
+            if (this.getMetaData().getColumnName(i).equals(columnLabel)) {
                 return i;
             }
         }
