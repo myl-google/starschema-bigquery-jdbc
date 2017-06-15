@@ -633,7 +633,9 @@ class BQDatabaseMetadata implements DatabaseMetaData {
      */
     @Override
     public String getDatabaseProductName() throws SQLException {
-        return "Google Big Query";
+        //return "Google Big Query";
+        // TODO(myl): add support to org.springframework.batch.support.DatabaseType so that this isn't necessary
+        return "Microsoft SQL Server";
     }
 
     /**
