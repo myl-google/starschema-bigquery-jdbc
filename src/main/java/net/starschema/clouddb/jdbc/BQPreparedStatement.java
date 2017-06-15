@@ -235,7 +235,7 @@ public class BQPreparedStatement extends BQStatementRoot implements
         this.starttime = System.currentTimeMillis();
 
         if (isNextvalQuery(this.RunnableStatement)) {
-            executeNextvalQuery(this.RunnableStatement);
+            return executeNextvalQuery(this.RunnableStatement);
         }
 
         // ANTLR Parser
