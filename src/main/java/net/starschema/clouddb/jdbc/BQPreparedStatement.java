@@ -983,7 +983,7 @@ public class BQPreparedStatement extends BQStatementRoot implements
     }
 
     private String quoteSqlString(String s) {
-        return s.replaceAll("\"", "\\\"");
+        return s.replace("\"", "\\\"");
     }
 
     @Override
