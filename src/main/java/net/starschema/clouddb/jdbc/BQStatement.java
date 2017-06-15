@@ -105,8 +105,12 @@ public class BQStatement extends BQStatementRoot implements java.sql.Statement {
         if (this.job != null) {
             throw new BQSQLException("Already running job");
         }
-
         this.starttime = System.currentTimeMillis();
+
+        if (isNextvalQuery(querySql)) {
+            return executeNextvalQuery(querySql);
+        }
+
         Job referencedJob;
         // ANTLR Parsing
         BQQueryParser parser = new BQQueryParser(querySql, this.connection);

@@ -22,82 +22,26 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package BQJDBC.DataManipulationTest;
+package BQJDBC.QueryResultTest;
 
-import BQJDBC.QueryResultTest.PreparedStatementTests;
 import junit.framework.Assert;
-import net.starschema.clouddb.jdbc.BQConnection;
-import net.starschema.clouddb.jdbc.BQSupportFuncts;
-import org.apache.log4j.Logger;
-import org.junit.Before;
 import org.junit.Test;
 
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
+
 
 /**
  * This Junit tests if DML statements work as expected
  *
  * @author Matthew Young-Lai
  */
-public class DataManipulationTest {
-
-    private static java.sql.Connection con = null;
-    Logger logger = Logger.getLogger(DataManipulationTest.class.getName());
-
-    /**
-     * Makes a new Bigquery Connection to Hardcoded URL and gives back the
-     * Connection to static con member.
-     */
-    @Before
-    public void NewConnection() throws SQLException {
-        if (DataManipulationTest.con == null || !DataManipulationTest.con.isValid(0)) {
-
-            this.logger.info("Testing the JDBC driver");
-            try {
-                Class.forName("net.starschema.clouddb.jdbc.BQDriver");
-                DataManipulationTest.con = DriverManager
-                        .getConnection(
-                                BQSupportFuncts
-                                        .constructUrlFromPropertiesFile(BQSupportFuncts
-                                                .readFromPropFile(getClass().getResource(
-                                                        "/serviceaccount.properties").getFile())),
-                                BQSupportFuncts
-                                        .readFromPropFile(getClass().getResource(
-                                                "/serviceaccount.properties").getFile()));
-            } catch (Exception e) {
-                this.logger.error("Error in connection" + e.toString());
-                Assert.fail("General Exception:" + e.toString());
-            }
-            this.logger.info(((BQConnection) DataManipulationTest.con)
-                    .getURLPART());
-        }
-    }
-
-    private int runStatement(String sql, boolean prepared) {
-        this.logger.info("Running statement:" + sql);
-        int result = 0;
-        try {
-            if (prepared) {
-                result = con.prepareStatement(sql).executeUpdate();
-            } else {
-                result = con.createStatement().executeUpdate(sql);
-            }
-        } catch (SQLException e) {
-            this.logger.error("SQLexception" + e.toString());
-            Assert.fail("SQLException" + e.toString());
-        }
-        return result;
-    }
-
+public class DataManipulationTest extends BaseTest {
     @Test
     public void InsertTest() {
         final String sql = "insert into starschema.test(col) values ('a')";
 
         this.logger.info("Test number: InsertTest");
-        int result = runStatement(sql, false);
+        int result = executeUpdate(sql, false);
         Assert.assertEquals(result, 1);
     }
 
@@ -106,7 +50,7 @@ public class DataManipulationTest {
         final String sql = "insert into starschema.test(col) values ('a')";
 
         this.logger.info("Test number: PreparedInsertTest");
-        int result = runStatement(sql, true);
+        int result = executeUpdate(sql, true);
         Assert.assertEquals(1, result);
     }
 
@@ -132,16 +76,28 @@ public class DataManipulationTest {
         this.logger.info("Test number: InsertUpdateDeleteTest");
 
         final String insert_sql = "insert into starschema.test(col) values ('b')";
-        result = runStatement(insert_sql, false);
+        result = executeUpdate(insert_sql, false);
         Assert.assertEquals(1, result);
 
         final String update_sql = "update starschema.test set col='c' where col='b'";
-        result = runStatement(update_sql, false);
+        result = executeUpdate(update_sql, false);
         Assert.assertEquals(1, result);
 
         final String delete_sql = "delete starschema.test where col='c'";
-        result = runStatement(delete_sql, false);
+        result = executeUpdate(delete_sql, false);
         Assert.assertEquals(1, result );
+    }
+
+    @Test
+    public void NextvalTest() {
+        int result = 0;
+        this.logger.info("Test number: NEXTVAL");
+
+        executeUpdate("delete starschema.sequence where sequence_name='test_sequence'", false);
+        executeUpdateRequireSuccess("insert starschema.sequence (sequence_name, next_value) values ('test_sequence', 500)", 1);
+
+        executeQueryAndCheckResult("select nextval('test_sequence')", new String[][]{{"501"}});
+        executeQueryAndCheckResult("select nextval('test_sequence')", new String[][]{{"502"}});
     }
 }
 
