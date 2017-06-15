@@ -383,7 +383,14 @@ public class BQForwardOnlyResultSet implements java.sql.ResultSet {
         }
         int columncount = this.getMetaData().getColumnCount();
         for (int i = 1; i <= columncount; i++) {
-            if (this.getMetaData().getCatalogName(i).equals(columnLabel)) {
+            if (this.getMetaData().getColumnName(i).equalsIgnoreCase(columnLabel)) {
+                return i;
+            }
+        }
+        // TODO(myl): remove
+        columncount = this.getMetaData().getColumnCount();
+        for (int i = 1; i <= columncount; i++) {
+            if (this.getMetaData().getColumnName(i).equalsIgnoreCase(columnLabel)) {
                 return i;
             }
         }
