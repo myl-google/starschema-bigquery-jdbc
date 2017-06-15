@@ -27,6 +27,7 @@ package BQJDBC.QueryResultTest;
 import junit.framework.Assert;
 import org.junit.Test;
 
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 
@@ -98,6 +99,23 @@ public class DataManipulationTest extends BaseTest {
 
         executeQueryAndCheckResult("select nextval('test_sequence')", new String[][]{{"501"}});
         executeQueryAndCheckResult("select nextval('test_sequence')", new String[][]{{"502"}});
+    }
+
+    @Test
+    public void InsertQuotedString() {
+        final String insert_sql = "insert into starschema.test(col) values (?)";
+        final String param = "{\"a\"}";
+        try {
+            PreparedStatement prepared_statement = con.prepareStatement(insert_sql);
+            prepared_statement.setString(1, param);
+            int result = prepared_statement.executeUpdate();
+            Assert.assertEquals(result, 1);
+        } catch (SQLException e) {
+            this.logger.error("SQLexception" + e.toString());
+        }
+
+        final String delete_sql = "delete starschema.test where col='" + param + "'";
+        executeUpdateRequireSuccess(delete_sql, 1);
     }
 }
 
