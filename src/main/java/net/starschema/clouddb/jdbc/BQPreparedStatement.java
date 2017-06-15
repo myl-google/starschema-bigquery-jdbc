@@ -964,7 +964,6 @@ public class BQPreparedStatement extends BQStatementRoot implements
                     + "\"");
             // TODO Check conversion
         }
-
     }
 
     @Override
@@ -979,8 +978,12 @@ public class BQPreparedStatement extends BQStatementRoot implements
         if (parameterIndex < 1 || parameterIndex > this.Parameters.length) {
             throw new BQSQLException("Index is not valid");
         } else {
-            this.SetParameter(parameterIndex, "\"" + x + "\"");
+            this.SetParameter(parameterIndex, "\'" + quoteSqlString(x) + "\"");
         }
+    }
+
+    private String quoteSqlString(String s) {
+        return s.replaceAll("\"", "\\\"");
     }
 
     @Override
