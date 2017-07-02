@@ -271,10 +271,13 @@ public class BQConnection implements Connection {
      */
     @Override
     public void commit() throws SQLException {
+        logger.debug("BQConnection::commit skipping unsupported function");
+        /*
         if (this.isclosed) {
             throw new BQSQLException(
                     "There's no commit in Google BigQuery.\nConnection Status: Closed.");
-        }/*
+        }
+        logger.debug("BQConnection::commit ");
         else {
             throw new BQSQLException(
                     "There's no commit in Google BigQuery.\nConnection Status: Open.");
@@ -292,6 +295,7 @@ public class BQConnection implements Connection {
     @Override
     public Array createArrayOf(String typeName, Object[] elements)
             throws SQLException {
+        logger.debug("BQConnection::createArrayOf not implemented");
         throw new BQSQLException("Not implemented."
                 + "createArrayOf(String typeName, Object[] elements)");
     }
@@ -306,6 +310,7 @@ public class BQConnection implements Connection {
      */
     @Override
     public Blob createBlob() throws SQLException {
+        logger.debug("BQConnection::createBlob not implemented");
         throw new BQSQLException("Not implemented." + "createBlob()");
     }
 
@@ -319,6 +324,7 @@ public class BQConnection implements Connection {
      */
     @Override
     public Clob createClob() throws SQLException {
+        logger.debug("BQConnection::createClob not implemented");
         throw new BQSQLException("Not implemented." + "createClob()");
     }
 
@@ -332,6 +338,7 @@ public class BQConnection implements Connection {
      */
     @Override
     public NClob createNClob() throws SQLException {
+        logger.debug("BQConnection::createNClob not implemented");
         throw new BQSQLException("Not implemented." + "createNClob()");
     }
 
@@ -345,6 +352,7 @@ public class BQConnection implements Connection {
      */
     @Override
     public SQLXML createSQLXML() throws SQLException {
+        logger.debug("BQConnection::createSQLXML not implemented");
         throw new BQSQLException("Not implemented." + "createSQLXML()");
     }
 
@@ -401,11 +409,13 @@ public class BQConnection implements Connection {
     @Override
     public Struct createStruct(String typeName, Object[] attributes)
             throws SQLException {
+        logger.debug("BQConnection::createStruct not implemented");
         throw new BQSQLException("Not implemented."
                 + "createStruct(string,object[])");
     }
 
     public void setSchema(String schema) throws SQLException {
+        logger.debug("BQConnection::setSchema not implemented");
         throw new BQSQLException("Not implemented.");
     }
 
@@ -415,14 +425,17 @@ public class BQConnection implements Connection {
     }
 
     public void abort(Executor executor) throws SQLException {
+        logger.debug("BQConnection::abort not implemented");
         throw new BQSQLException("Not implemented.");
     }
 
     public void setNetworkTimeout(Executor executor, int milliseconds) throws SQLException {
+        logger.debug("BQConnection::setNetworkTimeout not implemented");
         throw new BQSQLException("Not implemented.");
     }
 
     public int getNetworkTimeout() throws SQLException {
+        logger.debug("BQConnection::getNetworkTimeout not implemented");
         throw new BQSQLException("Not implemented.");
     }
 
@@ -470,6 +483,7 @@ public class BQConnection implements Connection {
      */
     @Override
     public Properties getClientInfo() throws SQLException {
+        logger.debug("BQConnection::getClientInfo not implemented");
         throw new BQSQLException("Not implemented." + "getClientInfo()");
     }
 
@@ -483,6 +497,7 @@ public class BQConnection implements Connection {
      */
     @Override
     public String getClientInfo(String name) throws SQLException {
+        logger.debug("BQConnection::getClientInfo not implemented");
         throw new BQSQLException("Not implemented." + "");
     }
 
@@ -545,6 +560,7 @@ public class BQConnection implements Connection {
      */
     @Override
     public Map<String, Class<?>> getTypeMap() throws SQLException {
+        logger.debug("BQConnection::getTypeMap not implemented");
         throw new BQSQLException("Not implemented." + "getTypeMap()");
     }
 
@@ -649,6 +665,7 @@ public class BQConnection implements Connection {
     @Override
     public boolean isWrapperFor(Class<?> arg0) throws SQLException {
         // TODO Implement
+        logger.debug("BQConnection::isWrapperFor not implemented");
         return false;
     }
 
@@ -677,6 +694,7 @@ public class BQConnection implements Connection {
      */
     @Override
     public CallableStatement prepareCall(String sql) throws SQLException {
+        logger.debug("BQConnection::prepareCall not implemented");
         throw new BQSQLException("Not implemented." + "prepareCall(string)");
     }
 
@@ -691,6 +709,7 @@ public class BQConnection implements Connection {
     @Override
     public CallableStatement prepareCall(String sql, int resultSetType,
                                          int resultSetConcurrency) throws SQLException {
+        logger.debug("BQConnection::prepareCall not implemented");
         throw new BQSQLException("Not implemented."
                 + "prepareCall(String,int,int)");
     }
@@ -707,6 +726,7 @@ public class BQConnection implements Connection {
     public CallableStatement prepareCall(String sql, int resultSetType,
                                          int resultSetConcurrency, int resultSetHoldability)
             throws SQLException {
+        logger.debug("BQConnection::prepareCall not implemented");
         throw new BQSQLException("Not implemented."
                 + "prepareCall(string,int,int,int)");
     }
@@ -743,6 +763,7 @@ public class BQConnection implements Connection {
         if (autoGeneratedKeys == Statement.NO_GENERATED_KEYS) {
             return prepareStatement(sql);
         } else {
+            logger.debug("BQConnection::prepareStatement not implemented");
             throw new BQSQLException("Not implemented."
                     + "prepareStatement(string,int)");
         }
@@ -775,6 +796,7 @@ public class BQConnection implements Connection {
     public PreparedStatement prepareStatement(String sql, int resultSetType,
                                               int resultSetConcurrency, int resultSetHoldability)
             throws SQLException {
+        logger.debug("BQConnection::prepareStatement not implemented");
         throw new BQSQLException("Not implemented."
                 + "prepareStatement(String,int,int,int)");
     }
@@ -790,6 +812,7 @@ public class BQConnection implements Connection {
     @Override
     public PreparedStatement prepareStatement(String sql, int[] columnIndexes)
             throws SQLException {
+        logger.debug("BQConnection::prepareStatement not implemented");
         throw new BQSQLException("Not implemented."
                 + "prepareStatement(String,int[])");
     }
@@ -805,6 +828,7 @@ public class BQConnection implements Connection {
     @Override
     public PreparedStatement prepareStatement(String sql, String[] columnNames)
             throws SQLException {
+        logger.debug("BQConnection::prepareStatement not implemented");
         throw new BQSQLException("Not implemented."
                 + "prepareStatement(String,String[])");
     }
@@ -819,6 +843,7 @@ public class BQConnection implements Connection {
      */
     @Override
     public void releaseSavepoint(Savepoint savepoint) throws SQLException {
+        logger.debug("BQConnection::releaseSavepoint not implemented");
         throw new BQSQLException("Not implemented."
                 + "releaseSavepoint(Savepoint)");
     }
@@ -833,7 +858,7 @@ public class BQConnection implements Connection {
      */
     @Override
     public void rollback() throws SQLException {
-        logger.debug("function call: rollback() not implemented ");
+        logger.debug("BQConnection::rollback skipping unimplemented function");
         //throw new BQSQLException("Not implemented." + "rollback()");
     }
 
@@ -847,7 +872,8 @@ public class BQConnection implements Connection {
      */
     @Override
     public void rollback(Savepoint savepoint) throws SQLException {
-        throw new BQSQLException("Not implemented." + "rollback(savepoint)");
+        logger.debug("BQConnection::rollback(savepoint) skipping unimplemented function");
+        //throw new BQSQLException("Not implemented." + "rollback(savepoint)");
     }
 
     /**
@@ -873,6 +899,7 @@ public class BQConnection implements Connection {
      */
     @Override
     public void setCatalog(String catalog) throws SQLException {
+        logger.debug("BQConnection::setCatalog not implemented");
         throw new BQSQLException("Not implemented." + "setCatalog(catalog)");
     }
 
@@ -887,6 +914,7 @@ public class BQConnection implements Connection {
     @Override
     public void setClientInfo(Properties properties)
             throws SQLClientInfoException {
+        logger.debug("BQConnection::setClientInfo not implemented");
         SQLClientInfoException e = new SQLClientInfoException();
         e.setNextException(new BQSQLException(
                 "Not implemented. setClientInfo(properties)"));
@@ -904,6 +932,7 @@ public class BQConnection implements Connection {
     @Override
     public void setClientInfo(String name, String value)
             throws SQLClientInfoException {
+        logger.debug("BQConnection::setCatalog not implemented");
         SQLClientInfoException e = new SQLClientInfoException();
         e.setNextException(new BQSQLException(
                 "Not implemented. setClientInfo(properties)"));
@@ -920,6 +949,7 @@ public class BQConnection implements Connection {
      */
     @Override
     public void setHoldability(int holdability) throws SQLException {
+        logger.debug("BQConnection::setHoldability not implemented");
         if (this.isclosed) {
             throw new BQSQLException("Connection is closed.");
         }
@@ -951,6 +981,7 @@ public class BQConnection implements Connection {
      */
     @Override
     public Savepoint setSavepoint() throws SQLException {
+        logger.debug("BQConnection::setSavepoint not implemented");
         throw new BQSQLException("Not implemented." + "setSavepoint()");
     }
 
@@ -964,6 +995,7 @@ public class BQConnection implements Connection {
      */
     @Override
     public Savepoint setSavepoint(String name) throws SQLException {
+        logger.debug("BQConnection::setSavepoint not implemented");
         throw new BQSQLException("Not implemented." + "setSavepoint(String)");
     }
 
@@ -977,6 +1009,7 @@ public class BQConnection implements Connection {
      */
     @Override
     public void setTransactionIsolation(int level) throws SQLException {
+        logger.debug("BQConnection::setTransactionIsolation not implemented");
         throw new BQSQLException("Not implemented."
                 + "setTransactionIsolation(int)");
     }
@@ -991,6 +1024,7 @@ public class BQConnection implements Connection {
      */
     @Override
     public void setTypeMap(Map<String, Class<?>> map) throws SQLException {
+        logger.debug("BQConnection::setTypeMap not implemented");
         throw new BQSQLException("Not implemented."
                 + "setTypeMap(Map<String, Class<?>>");
     }
@@ -1007,6 +1041,7 @@ public class BQConnection implements Connection {
      */
     @Override
     public <T> T unwrap(Class<T> arg0) throws SQLException {
+        logger.debug("BQConnection::unwrap not implemented");
         throw new BQSQLException("Not found");
     }
 
