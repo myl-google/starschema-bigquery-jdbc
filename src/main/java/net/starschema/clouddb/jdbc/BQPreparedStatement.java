@@ -888,7 +888,7 @@ public class BQPreparedStatement extends BQStatementRoot implements
     @Override
     public void setObject(int parameterIndex, Object x, int targetSqlType)
             throws SQLException {
-        this.logger.debug("BQPreparedStatement::setObject ignoring targetSqlType");
+        this.logger.debug("BQPreparedStatement::setObject ignoring targetSqlType " + targetSqlType);
         setObject(parameterIndex, x);
         /*// TODO Implement
         this.logger.debug("BQPreparedStatement::setObject not implemented");
@@ -898,7 +898,7 @@ public class BQPreparedStatement extends BQStatementRoot implements
     @Override
     public void setObject(int parameterIndex, Object x, int targetSqlType,
                           int scaleOrLength) throws SQLException {
-        this.logger.debug("BQPreparedStatement::setObject ignoring targetSqlType and scaleOrLength");
+        this.logger.debug("BQPreparedStatement::setObject ignoring scalreOrLength and targetSqlType " + targetSqlType);
         setObject(parameterIndex, x);
         /*// TODO Implement
         this.logger.debug("BQPreparedStatement::setObject not implemented");
