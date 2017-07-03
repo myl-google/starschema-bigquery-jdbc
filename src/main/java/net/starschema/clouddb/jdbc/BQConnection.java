@@ -1009,9 +1009,9 @@ public class BQConnection implements Connection {
      */
     @Override
     public void setTransactionIsolation(int level) throws SQLException {
-        logger.debug("BQConnection::setTransactionIsolation not implemented");
-        throw new BQSQLException("Not implemented."
-                + "setTransactionIsolation(int)");
+        logger.error("skipping unimplemented function BQConnection::setTransactionIsolation");
+        /*throw new BQSQLException("Not implemented."
+                + "setTransactionIsolation(int)");*/
     }
 
     /**
