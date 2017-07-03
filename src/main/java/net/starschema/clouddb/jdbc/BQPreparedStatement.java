@@ -888,19 +888,21 @@ public class BQPreparedStatement extends BQStatementRoot implements
     @Override
     public void setObject(int parameterIndex, Object x, int targetSqlType)
             throws SQLException {
-        // setObject(parameterIndex, x);
-        // TODO Implement
+        this.logger.debug("BQPreparedStatement::setObject ignoring targetSqlType");
+        setObject(parameterIndex, x);
+        /*// TODO Implement
         this.logger.debug("BQPreparedStatement::setObject not implemented");
-        throw new BQSQLException(new SQLFeatureNotSupportedException());
+        throw new BQSQLException(new SQLFeatureNotSupportedException());*/
     }
 
     @Override
     public void setObject(int parameterIndex, Object x, int targetSqlType,
                           int scaleOrLength) throws SQLException {
-        // setObject(parameterIndex, x);
-        // TODO Implement
+        this.logger.debug("BQPreparedStatement::setObject ignoring targetSqlType and scaleOrLength");
+        setObject(parameterIndex, x);
+        /*// TODO Implement
         this.logger.debug("BQPreparedStatement::setObject not implemented");
-        throw new BQSQLException(new SQLFeatureNotSupportedException());
+        throw new BQSQLException(new SQLFeatureNotSupportedException());*/
     }
 
     /**
