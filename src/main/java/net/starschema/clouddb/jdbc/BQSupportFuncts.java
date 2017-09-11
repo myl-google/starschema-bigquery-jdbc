@@ -679,7 +679,7 @@ public class BQSupportFuncts {
         JobConfigurationQuery queryConfig = new JobConfigurationQuery();
         queryConfig.setUseLegacySql(useLegacySql);
         queryConfig.setMaximumBytesBilled(maxBillingBytes);
-        queryConfig.setMaximumBillingTier(5);
+        queryConfig.setMaximumBillingTier(15);
         if (destinationDataSet != null && destinationTableId != null) {
             TableReference destination_table = new TableReference();
             destination_table.setProjectId(projectId);
@@ -705,7 +705,7 @@ public class BQSupportFuncts {
 
         Insert insert = bigquery.jobs().insert(querySql, job);
         insert.setProjectId(projectId);
-        BQSupportFuncts.logger.info("Inserting Query Job (" + jobId + "): " + querySql.replace("\t", "").replace("\n", " ").replace("\r", ""));
+        BQSupportFuncts.logger.info("Inserting Query Job [maxbillingtier: 15, maxbillingbytes: " + maxBillingBytes + "] (" + jobId + "): " + querySql.replace("\t", "").replace("\n", " ").replace("\r", ""));
         return insert.execute();
     }
 

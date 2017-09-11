@@ -45,45 +45,7 @@ import org.junit.Test;
  * @author Horváth Attila
  * @author Gunics Balazs
  */
-public class QueryResultTest {
-
-    private static java.sql.Connection con = null;
-    //Logger logger = new Logger(QueryResultTest.class.getName());
-    Logger logger = Logger.getLogger(QueryResultTest.class.getName());
-
-
-
-    /**
-     * Makes a new Bigquery Connection to Hardcoded URL and gives back the
-     * Connection to static con member.
-     */
-    @Before
-    public void NewConnection() {
-        try {
-            if (QueryResultTest.con == null || !QueryResultTest.con.isValid(0)) {
-
-                this.logger.info("Testing the JDBC driver");
-                try {
-                    Class.forName("net.starschema.clouddb.jdbc.BQDriver");
-                    QueryResultTest.con = DriverManager
-                            .getConnection(
-                                    BQSupportFuncts
-                                            .constructUrlFromPropertiesFile(BQSupportFuncts
-                                                    .readFromPropFile(getClass().getResource("/serviceaccount.properties").getFile())),
-                                    BQSupportFuncts
-                                            .readFromPropFile(getClass().getResource("/serviceaccount.properties").getFile()));
-                } catch (Exception e) {
-                    this.logger.error("Error in connection" + e.toString());
-                    Assert.fail("General Exception:" + e.toString());
-                }
-                this.logger.info(((BQConnection) QueryResultTest.con)
-                        .getURLPART());
-            }
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
+public class QueryResultTest extends BaseTest {
 
     @Test
     public void QueryResultTest01() {

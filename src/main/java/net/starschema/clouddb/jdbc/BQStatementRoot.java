@@ -262,11 +262,27 @@ public abstract class BQStatementRoot {
             throw new BQSQLException("This Statement is Closed");
         }
         this.starttime = System.currentTimeMillis();
-        Job referencedJob;
+
+        if (isNextvalQuery(querySql)) {
+            return executeNextvalQuery(querySql);
+        }
+
         // ANTLR Parsing
         BQQueryParser parser = new BQQueryParser(querySql, this.connection);
         querySql = parser.parse();
 
+        return runQueryJob(querySql);
+    }
+
+    /**
+     * Starts a query job and polls for the status until it finishes
+     *
+     * @param querySql - the SQL of the query statement
+     * @return the ResultSet for the query
+     * @throws BQSQLException
+     */
+    private ResultSet runQueryJob(String querySql) throws SQLException {
+        Job referencedJob;
         try {
             // Gets the Job reference of the completed job with give Query
             referencedJob = BQSupportFuncts.startQuery(
@@ -350,7 +366,17 @@ public abstract class BQStatementRoot {
         if (dataDefinitionTree != null) {
             return executeDataDefinition(dataDefinitionTree, normalizedUpdateSql);
         }
+        return runUpdateJob(updateSql);
+    }
 
+    /**
+     * Starts an update job and polls for the status until it finishes
+     *
+     * @param updateSql - the SQL of the update statement
+     * @return the number of rows affected
+     * @throws BQSQLException
+     */
+    private int runUpdateJob(String updateSql) throws BQSQLException {
         Job referencedJob;
         try {
             // Gets the Job reference of the completed job
@@ -750,6 +776,33 @@ public abstract class BQStatementRoot {
         executeSelectWithDestination(selectQuery, dataSetId, tableId, false);
 
         return getNumRows(dataSetId, tableId);
+    }
+
+    /**
+     * Determines if the query uses the NEXTVAL function
+     *
+     * @param querySql - the query string
+     * @return true if the query uses NEXTVAL
+     */
+    protected boolean isNextvalQuery(String querySql) {
+        return querySql.contains("select nextval");
+    }
+
+    /**
+     * Executes a NEXTVAL query and returns the result set.
+     *
+     * @param querySql
+     * @return The ResultSet with a single column that contains the next value of the sequence.
+     * @throws SQLException
+     */
+    public ResultSet executeNextvalQuery(String querySql) throws SQLException {
+        final String sequence_name = querySql.substring(querySql.indexOf("(") + 1, querySql.indexOf(")"));
+        final String update_sql = "update starschema.sequence set next_value = next_value + 1 where sequence_name=" + sequence_name;
+        if (runUpdateJob(update_sql) != 1) {
+            throw new BQSQLException("Error getting next value for sequence: " + sequence_name);
+        }
+        final String select_query = "select next_value from starschema.sequence where sequence_name=" + sequence_name;
+        return runQueryJob(select_query);
     }
 
     /**

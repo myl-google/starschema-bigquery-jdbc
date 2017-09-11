@@ -24,91 +24,11 @@
  */
 package BQJDBC.QueryResultTest;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
 import junit.framework.Assert;
-import net.starschema.clouddb.jdbc.BQSupportFuncts;
 
-import net.starschema.clouddb.jdbc.BQSupportMethods;
-import org.apache.log4j.Logger;
-import org.junit.Before;
 import org.junit.Test;
 
-public class DataDefinitionTest {
-    /** String for System independent newline */
-    private static String newLine = System.getProperty("line.separator");
-    /**
-     * Static Connection holder
-     */
-    private Connection con;
-    /**
-     * Logger initialization
-     */
-    Logger logger = Logger.getLogger(this.toString());
-
-    /**
-     * Creates a new Connection to bigquery with the jdbc driver
-     */
-    @Before
-    public void NewConnection() {
-        try {
-            if (con == null || !con.isValid(0)) {
-                try {
-                    Class.forName("net.starschema.clouddb.jdbc.BQDriver");
-                    con = DriverManager.getConnection(
-                            BQSupportFuncts.constructUrlFromPropertiesFile(BQSupportFuncts
-                                    .readFromPropFile(getClass().getResource(
-                                            "/installedaccount.properties").getFile())),
-                            BQSupportFuncts.readFromPropFile(getClass().getResource(
-                                    "/installedaccount.properties").getFile()));
-                } catch (Exception e) {
-                    logger.debug("Failed to make connection trough the JDBC driver", e);
-                }
-            }
-            logger.debug("Running the next test");
-        } catch (SQLException e) {
-            logger.fatal("Something went wrong", e);
-        }
-    }
-
-    private int executeUpdate(String input) {
-        int result = -1;
-        try {
-            result = con.createStatement().executeUpdate(input);
-        } catch (SQLException e) {
-            logger.error("SQLexception" + e.toString());
-        }
-        return result;
-    }
-
-    // Used for setup statements that aren't the ones being tested.
-    private void executeUpdateRequireSuccess(String input, int expected_result) {
-        int result = executeUpdate(input);
-        Assert.assertEquals(expected_result, result);
-    }
-
-    private void executeQueryAndCheckResult(String query, String[][]expectation) {
-        ResultSet Result = null;
-        try {
-            Result = con.createStatement().executeQuery(query);
-        } catch (SQLException e) {
-            this.logger.error("SQLexception" + e.toString());
-            Assert.fail("SQLException" + e.toString());
-        }
-        Assert.assertNotNull(Result);
-        HelperFunctions.printer(expectation);
-        try {
-            Assert.assertTrue(
-                    "Comparing failed in the String[][] array",
-                    BQSupportMethods.comparer(expectation, BQSupportMethods.GetQueryResult(Result)));
-        } catch (SQLException e) {
-            this.logger.error("SQLexception" + e.toString());
-            Assert.fail(e.toString());
-        }
-    }
+public class DataDefinitionTest extends BaseTest {
 
     /**
      * Test DROP TABLE statement
@@ -120,7 +40,7 @@ public class DataDefinitionTest {
 
         final String drop_table = "drop table starschema.t1";
         logger.info("Running test: drop table:" + newLine + drop_table);
-        int result = executeUpdate(drop_table);
+        int result = executeUpdate(drop_table, false);
         Assert.assertEquals(0, result);
     }
 
@@ -130,7 +50,7 @@ public class DataDefinitionTest {
 
         final String drop_table = "drop table if exists starschema.t1";
         logger.info("Running test: drop table:" + newLine + drop_table);
-        int result = executeUpdate(drop_table);
+        int result = executeUpdate(drop_table, false);
         Assert.assertEquals(0, result);
     }
 
@@ -145,7 +65,7 @@ public class DataDefinitionTest {
 
         final String truncate_table = "truncate table starschema.t1";
         logger.info("Running test: truncate table:" + newLine + truncate_table);
-        int result = executeUpdate(truncate_table);
+        int result = executeUpdate(truncate_table, false);
         Assert.assertEquals(1, result);
 
         executeUpdateRequireSuccess("drop table starschema.t1;", 0);
@@ -159,24 +79,24 @@ public class DataDefinitionTest {
         executeUpdateRequireSuccess("drop table if exists starschema.t1;", 0);
         final String create_table = "create table starschema.t1 (c1 int, c2 char(10) null, c3 varchar(20) not null)";
         logger.info("Running test: create table:" + newLine + create_table);
-        int result = executeUpdate(create_table);
+        int result = executeUpdate(create_table, false);
         Assert.assertEquals(0, result);
 
         final String drop_table_if_exists = "drop table if exists starschema.t1";
         final String drop_table = "drop table starschema.t1";
 
         logger.info("Running test: drop table:" + newLine + drop_table);
-        result = executeUpdate(drop_table);
+        result = executeUpdate(drop_table, false);
         Assert.assertEquals(0, result);
 
         // Attempt to drop table that doesn't exist should fail
         logger.info("Running test: drop table:" + newLine + drop_table);
-        result = executeUpdate(drop_table);
+        result = executeUpdate(drop_table, false);
         Assert.assertEquals(-1, result);
 
         // Attempt to drop table that doesn't exists with IF EXISTS should succeed
         logger.info("Running test: drop table:" + newLine + drop_table_if_exists);
-        result = executeUpdate(drop_table_if_exists);
+        result = executeUpdate(drop_table_if_exists, false);
         Assert.assertEquals(0, result);
     }
 
@@ -195,7 +115,7 @@ public class DataDefinitionTest {
         // Two rows affected
         final String insert = "insert into starschema.t2 (c5, c4) select * from starschema.t1";
         logger.info("Running test: insert from select:" + newLine + insert);
-        int result = executeUpdate(insert);
+        int result = executeUpdate(insert, false);
         Assert.assertEquals(2, result);
         executeQueryAndCheckResult("select c3, c4, c5 from starschema.t2 order by c5",
                 new String[][]{{"null", "null"}, {"a", "b"}, {"1.0", "2.0"}});
@@ -203,12 +123,12 @@ public class DataDefinitionTest {
         // Empty tables
         executeUpdateRequireSuccess("delete starschema.t1 where 1=1", 2);
         executeUpdateRequireSuccess("delete starschema.t2 where 1=1", 2);
-        result = executeUpdate(insert);
+        result = executeUpdate(insert, false);
         Assert.assertEquals(0, result);
 
         // Mismatched columns
         final String mismatched_columns_insert = "insert into starschema.t2 (c5) select * from starschema.t1";
-        result = executeUpdate(mismatched_columns_insert);
+        result = executeUpdate(mismatched_columns_insert, false);
         Assert.assertEquals(-1, result);
     }
 
@@ -225,7 +145,7 @@ public class DataDefinitionTest {
         // Two rows affected
         final String insert = "INTO starschema.t2 select * from starschema.t1";
         logger.info("Running test: select into:" + newLine + insert);
-        int result = executeUpdate(insert);
+        int result = executeUpdate(insert, false);
         Assert.assertEquals(2, result);
         executeQueryAndCheckResult("select c1, c2 from starschema.t2 order by c1",
                 new String[][]{{"1", "2"}, {"a", "b"}});
@@ -233,7 +153,7 @@ public class DataDefinitionTest {
         // Common table expression
         final String insert_cte = "INTO starschema.t2 with cte as (select * from starschema.t1) select * from cte";
         logger.info("Running test: select into:" + newLine + insert_cte);
-        result = executeUpdate(insert_cte);
+        result = executeUpdate(insert_cte, false);
         Assert.assertEquals(2, result);
         executeQueryAndCheckResult("select c1, c2 from starschema.t2 order by c1",
                 new String[][]{{"1", "2"}, {"a", "b"}});
@@ -241,13 +161,13 @@ public class DataDefinitionTest {
         // Existing destination table with different schema
         final String insert_one_column = "INTO starschema.t2 select c1 from starschema.t1";
         logger.info("Running test: select into:" + newLine + insert_one_column);
-        result = executeUpdate(insert_one_column);
+        result = executeUpdate(insert_one_column, false);
         Assert.assertEquals(2, result);
         executeQueryAndCheckResult("select * from starschema.t2 order by c1", new String[][]{{"1", "2"}});
 
         // Empty source table
         executeUpdateRequireSuccess("delete starschema.t1 where 1=1", 2);
-        result = executeUpdate(insert);
+        result = executeUpdate(insert, false);
         Assert.assertEquals(0, result);
     }
 

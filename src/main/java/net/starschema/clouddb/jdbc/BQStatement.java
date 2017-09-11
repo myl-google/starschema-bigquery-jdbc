@@ -110,8 +110,12 @@ public class BQStatement extends BQStatementRoot implements java.sql.Statement {
         if (this.job != null) {
             throw new BQSQLException("Already running job");
         }
-
         this.starttime = System.currentTimeMillis();
+
+        if (isNextvalQuery(querySql)) {
+            return executeNextvalQuery(querySql);
+        }
+
         Job referencedJob;
         // ANTLR Parsing
         BQQueryParser parser = new BQQueryParser(querySql, this.connection);
@@ -124,6 +128,9 @@ public class BQStatement extends BQStatementRoot implements java.sql.Statement {
         }
         try {
             do {
+                if (this.connection.isClosed()) {
+                    throw new BQSQLException("Connection is closed");
+                }
                 if (BQSupportFuncts.getQueryState(referencedJob,
                         this.connection.getBigquery(),
                         this.ProjectId.replace("__", ":").replace("_", ".")).equals(

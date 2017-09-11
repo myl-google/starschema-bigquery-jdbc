@@ -113,6 +113,7 @@ public class BQPreparedStatement extends BQStatementRoot implements
                                BQConnection bqConnection, int resultSetType,
                                int resultSetConcurrency) throws BQSQLException {
         if (resultSetConcurrency == ResultSet.CONCUR_UPDATABLE) {
+            this.logger.debug("BQPreparedStatement constructor error");
             throw new BQSQLException(
                     "The Resultset Concurrency can't be ResultSet.CONCUR_UPDATABLE");
         }
@@ -145,12 +146,12 @@ public class BQPreparedStatement extends BQStatementRoot implements
      */
     @Override
     public void addBatch() throws SQLException {
+        this.logger.debug("BQPreparedStatement::addBatch not implemented");
         throw new BQSQLException("Not implemented." + "addBatch()");
     }
 
     @Override
     public void clearParameters() throws SQLException {
-
         int count = 0;
         for (int i = 0; i < this.PrecompiledSQL.length(); i++) {
             if (this.PrecompiledSQL.charAt(i) == '?') {
@@ -238,13 +239,17 @@ public class BQPreparedStatement extends BQStatementRoot implements
             throw new BQSQLException("Not all parameters set");
         }
         this.starttime = System.currentTimeMillis();
-        Job referencedJob;
+
+        if (isNextvalQuery(this.RunnableStatement)) {
+            return executeNextvalQuery(this.RunnableStatement);
+        }
 
         // ANTLR Parser
         BQQueryParser parser = new BQQueryParser(this.RunnableStatement,
                 this.connection);
         this.RunnableStatement = parser.parse();
 
+        Job referencedJob;
         try {
             // Gets the Job reference of the completed job with give Query
             referencedJob = BQSupportFuncts.startQuery(
@@ -383,8 +388,8 @@ public class BQPreparedStatement extends BQStatementRoot implements
 
     @Override
     public void setArray(int parameterIndex, Array x) throws SQLException {
+        this.logger.debug("BQPreparedStatement::setArray not implemented");
         throw new BQSQLException(new SQLFeatureNotSupportedException());
-
     }
 
     @Override
@@ -486,42 +491,42 @@ public class BQPreparedStatement extends BQStatementRoot implements
     @Override
     public void setBinaryStream(int parameterIndex, InputStream x)
             throws SQLException {
+        this.logger.debug("BQPreparedStatement::setBinaryStream not implemented");
         throw new BQSQLFeatureNotSupportedException();
-
     }
 
     @Override
     public void setBinaryStream(int parameterIndex, InputStream x, int length)
             throws SQLException {
+        this.logger.debug("BQPreparedStatement::setBinaryStream not implemented");
         throw new BQSQLFeatureNotSupportedException();
-
     }
 
     @Override
     public void setBinaryStream(int parameterIndex, InputStream x, long length)
             throws SQLException {
+        this.logger.debug("BQPreparedStatement::setBinaryStream not implemented");
         throw new BQSQLFeatureNotSupportedException();
-
     }
 
     @Override
     public void setBlob(int parameterIndex, Blob x) throws SQLException {
+        this.logger.debug("BQPreparedStatement::setBlob not implemented");
         throw new BQSQLFeatureNotSupportedException();
-
     }
 
     @Override
     public void setBlob(int parameterIndex, InputStream inputStream)
             throws SQLException {
+        this.logger.debug("BQPreparedStatement::setBlob not implemented");
         throw new BQSQLFeatureNotSupportedException();
-
     }
 
     @Override
     public void setBlob(int parameterIndex, InputStream inputStream, long length)
             throws SQLException {
+        this.logger.debug("BQPreparedStatement::setBlob not implemented");
         throw new BQSQLFeatureNotSupportedException();
-
     }
 
     @Override
@@ -538,7 +543,6 @@ public class BQPreparedStatement extends BQStatementRoot implements
         } else {
             this.SetParameter(parameterIndex, Boolean.toString(x));
         }
-
     }
 
     @Override
@@ -559,8 +563,8 @@ public class BQPreparedStatement extends BQStatementRoot implements
 
     @Override
     public void setBytes(int parameterIndex, byte[] x) throws SQLException {
+        this.logger.debug("BQPreparedStatement::setBytes not implemented");
         throw new BQSQLException(new SQLFeatureNotSupportedException());
-
     }
 
     @Override
@@ -605,21 +609,21 @@ public class BQPreparedStatement extends BQStatementRoot implements
 
     @Override
     public void setClob(int parameterIndex, Clob x) throws SQLException {
+        this.logger.debug("BQPreparedStatement::setClob not implemented");
         throw new BQSQLException(new SQLFeatureNotSupportedException());
-
     }
 
     @Override
     public void setClob(int parameterIndex, Reader reader) throws SQLException {
+        this.logger.debug("BQPreparedStatement::setClob not implemented");
         throw new BQSQLException(new SQLFeatureNotSupportedException());
-
     }
 
     @Override
     public void setClob(int parameterIndex, Reader reader, long length)
             throws SQLException {
+        this.logger.debug("BQPreparedStatement::setClob not implemented");
         throw new BQSQLException(new SQLFeatureNotSupportedException());
-
     }
 
     @Override
@@ -638,7 +642,6 @@ public class BQPreparedStatement extends BQStatementRoot implements
                     + Calendar.getInstance().getTimeZone().getRawOffset());
             this.SetParameter(parameterIndex, "\"" + s.toString() + "\"");
         }
-
     }
 
     @Override
@@ -659,7 +662,6 @@ public class BQPreparedStatement extends BQStatementRoot implements
                     .getRawOffset() : cal.getTimeZone().getRawOffset()));
             this.SetParameter(parameterIndex, "\"" + s.toString() + "\"");
         }
-
     }
 
     @Override
@@ -692,7 +694,6 @@ public class BQPreparedStatement extends BQStatementRoot implements
         } else {
             this.SetParameter(parameterIndex, Float.toString(x));
         }
-
     }
 
     @Override
@@ -709,7 +710,6 @@ public class BQPreparedStatement extends BQStatementRoot implements
         } else {
             this.SetParameter(parameterIndex, Integer.toString(x));
         }
-
     }
 
     @Override
@@ -726,7 +726,6 @@ public class BQPreparedStatement extends BQStatementRoot implements
         } else {
             this.SetParameter(parameterIndex, Long.toString(x));
         }
-
     }
 
     @Override
@@ -743,21 +742,21 @@ public class BQPreparedStatement extends BQStatementRoot implements
 
     @Override
     public void setNClob(int parameterIndex, NClob value) throws SQLException {
+        this.logger.debug("BQPreparedStatement::setNClob not implemented");
         throw new BQSQLException(new SQLFeatureNotSupportedException());
-
     }
 
     @Override
     public void setNClob(int parameterIndex, Reader reader) throws SQLException {
+        this.logger.debug("BQPreparedStatement::setNClob not implemented");
         throw new BQSQLException(new SQLFeatureNotSupportedException());
-
     }
 
     @Override
     public void setNClob(int parameterIndex, Reader reader, long length)
             throws SQLException {
+        this.logger.debug("BQPreparedStatement::setNClob not implemented");
         throw new BQSQLException(new SQLFeatureNotSupportedException());
-
     }
 
     @Override
@@ -780,7 +779,6 @@ public class BQPreparedStatement extends BQStatementRoot implements
         } else {
             this.SetParameter(parameterIndex, "NULL");
         }
-
     }
 
     @Override
@@ -798,7 +796,6 @@ public class BQPreparedStatement extends BQStatementRoot implements
         } else {
             this.SetParameter(parameterIndex, "NULL");
         }
-
     }
 
     @Override
@@ -891,24 +888,26 @@ public class BQPreparedStatement extends BQStatementRoot implements
                 throw new BQSQLException(
                         new SQLFeatureNotSupportedException());
             }
-
     }
 
     @Override
     public void setObject(int parameterIndex, Object x, int targetSqlType)
             throws SQLException {
-        // setObject(parameterIndex, x);
-        // TODO Implement
-        throw new BQSQLException(new SQLFeatureNotSupportedException());
-
+        this.logger.debug("BQPreparedStatement::setObject ignoring targetSqlType " + targetSqlType);
+        setObject(parameterIndex, x);
+        /*// TODO Implement
+        this.logger.debug("BQPreparedStatement::setObject not implemented");
+        throw new BQSQLException(new SQLFeatureNotSupportedException());*/
     }
 
     @Override
     public void setObject(int parameterIndex, Object x, int targetSqlType,
                           int scaleOrLength) throws SQLException {
-        // setObject(parameterIndex, x);
-        // TODO Implement
-        throw new BQSQLException(new SQLFeatureNotSupportedException());
+        this.logger.debug("BQPreparedStatement::setObject ignoring scalreOrLength and targetSqlType " + targetSqlType);
+        setObject(parameterIndex, x);
+        /*// TODO Implement
+        this.logger.debug("BQPreparedStatement::setObject not implemented");
+        throw new BQSQLException(new SQLFeatureNotSupportedException());*/
     }
 
     /**
@@ -922,6 +921,7 @@ public class BQPreparedStatement extends BQStatementRoot implements
 
     @Override
     public void setRef(int parameterIndex, Ref x) throws SQLException {
+        this.logger.debug("BQPreparedStatement::setRef not implemented");
         throw new BQSQLException(new SQLFeatureNotSupportedException());
     }
 
@@ -939,7 +939,6 @@ public class BQPreparedStatement extends BQStatementRoot implements
         } else {
             this.SetParameter(parameterIndex, "\"" + x.toString() + "\"");
         }
-
     }
 
     @Override
@@ -965,7 +964,6 @@ public class BQPreparedStatement extends BQStatementRoot implements
                     + "\"");
             // TODO Check conversion
         }
-
     }
 
     @Override
@@ -980,8 +978,12 @@ public class BQPreparedStatement extends BQStatementRoot implements
         if (parameterIndex < 1 || parameterIndex > this.Parameters.length) {
             throw new BQSQLException("Index is not valid");
         } else {
-            this.SetParameter(parameterIndex, "\"" + x + "\"");
+            this.SetParameter(parameterIndex, "\"" + quoteSqlString(x) + "\"");
         }
+    }
+
+    private String quoteSqlString(String s) {
+        return s.replace("\"", "\\\"");
     }
 
     @Override
@@ -1000,7 +1002,6 @@ public class BQPreparedStatement extends BQStatementRoot implements
                     + Calendar.getInstance().getTimeZone().getRawOffset());
             this.SetParameter(parameterIndex, "\"" + s.toString() + "\"");
         }
-
     }
 
     @Override
@@ -1021,7 +1022,6 @@ public class BQPreparedStatement extends BQStatementRoot implements
                     .getRawOffset() : cal.getTimeZone().getRawOffset()));
             this.SetParameter(parameterIndex, "\"" + s.toString() + "\"");
         }
-
     }
 
     @Override
@@ -1041,7 +1041,6 @@ public class BQPreparedStatement extends BQStatementRoot implements
                     + Calendar.getInstance().getTimeZone().getRawOffset());
             this.SetParameter(parameterIndex, "\"" + s.toString() + "\"");
         }
-
     }
 
     @Override
@@ -1062,7 +1061,6 @@ public class BQPreparedStatement extends BQStatementRoot implements
                     .getRawOffset() : cal.getTimeZone().getRawOffset()));
             this.SetParameter(parameterIndex, "\"" + s.toString() + "\"");
         }
-
     }
 
     @Override
@@ -1088,7 +1086,6 @@ public class BQPreparedStatement extends BQStatementRoot implements
             String theString = writer.toString();
             this.SetParameter(parameterIndex, "\"" + theString + "\"");
         }
-
     }
 
     @Override
@@ -1105,16 +1102,17 @@ public class BQPreparedStatement extends BQStatementRoot implements
         } else {
             this.SetParameter(parameterIndex, "\"" + x.toString() + "\"");
         }
-
     }
 
     @Override
     public void closeOnCompletion() throws SQLException {
+        this.logger.debug("BQPreparedStatement::closeOnCompletion");
         throw new BQSQLException("Not implemented.");
     }
 
     @Override
     public boolean isCloseOnCompletion() throws SQLException {
+        this.logger.debug("BQPreparedStatement::isCloseOnCompletion");
         throw new BQSQLException("Not implemented.");
     }
 }
