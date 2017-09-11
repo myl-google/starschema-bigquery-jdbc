@@ -123,6 +123,9 @@ public class BQStatement extends BQStatementRoot implements java.sql.Statement {
         }
         try {
             do {
+                if (this.connection.isClosed()) {
+                    throw new BQSQLException("Connection is closed");
+                }
                 if (BQSupportFuncts.getQueryState(referencedJob,
                         this.connection.getBigquery(),
                         this.ProjectId.replace("__", ":").replace("_", ".")).equals(
