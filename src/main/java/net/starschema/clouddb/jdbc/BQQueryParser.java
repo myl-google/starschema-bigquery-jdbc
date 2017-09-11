@@ -40,6 +40,7 @@ import net.starschema.clouddb.jdbc.list.SQLCleaner;
 import net.starschema.clouddb.jdbc.list.SelectStatement;
 import net.starschema.clouddb.jdbc.list.TreeBuilder;
 
+import org.antlr.runtime.tree.CommonErrorNode;
 import org.antlr.runtime.tree.Tree;
 import org.antlr.runtime.RecognitionException;
 import org.apache.logging.log4j.LogManager;
@@ -290,9 +291,24 @@ public class BQQueryParser {
     }
 
     /**
-     * @return a parsed CREATE TABLE statement
+     * @return true if the tree contains any error nodes
      */
-    public Tree parseCreateTable() {
+    private boolean treeContainsErrors(Tree tree) {
+        if (tree instanceof CommonErrorNode) {
+            return true;
+        }
+        for (int i=0; i < tree.getChildCount(); ++i) {
+            if (treeContainsErrors(tree.getChild(i))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * @return a parsed DDL statement, or null if the statement doesn't isn't DDL
+     */
+    public Tree parseDataDefinition() {
         this.successFullParsing = true;
         Tree tree = null;
         try {
@@ -306,7 +322,13 @@ public class BQQueryParser {
         } catch (Exception e) {
             this.logger.info("Parsing failed", e);
         }
-        if (tree.getText().equals("CREATETABLESTATEMENT")) {
+        if (treeContainsErrors(tree)) {
+            return null;
+        }
+        if (tree.getText().equals("CREATETABLESTATEMENT") || tree.getText().equals("DROPTABLESTATEMENT") ||
+                tree.getText().equals("TRUNCATETABLESTATEMENT") ||
+                tree.getText().equals("INSERTFROMSELECTSTATEMENT") ||
+                tree.getText().equals("SELECTINTOSTATEMENT")) {
             return tree;
         } else {
             return null;

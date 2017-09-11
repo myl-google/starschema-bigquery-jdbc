@@ -103,6 +103,27 @@ TABLEKEYWORD:   T A B L E;
 /** NULL keyword, case insensitive */
 NULLKEYWORD:   N U L L;
 
+/** DROP keyword, case insensitive */
+DROPKEYWORD:   D R O P;
+
+/** EXISTS keyword, case insensitive */
+EXISTSKEYWORD:   E X I S T S;
+
+/** IF keyword, case insensitive */
+IFKEYWORD:   I F;
+
+/** INSERT keyword, case insensitive */
+INSERTKEYWORD:   I N S E R T;
+
+/** INTO keyword, case insensitive */
+INTOKEYWORD:   I N T O;
+
+/** WITH keyword, case insensitive */
+WITHKEYWORD:   W I T H;
+
+/** TRUNCATE keyword, case insensitive */
+TRUNCATEKEYWORD:   T R U N C A T E;
+
 
 //Other strings
 
@@ -223,7 +244,11 @@ fragment TEXT:;
 fragment WHEREEXPRESSION:;
 fragment EXPRESSIONTEXT:;
 fragment CREATETABLESTATEMENT:;
+fragment DROPTABLESTATEMENT:;
 fragment COLUMNEXPRESSION:;
+fragment INSERTFROMSELECTSTATEMENT:;
+fragment SELECTINTOSTATEMENT:;
+fragment TRUNCATETABLESTATEMENT:;
 
 
 

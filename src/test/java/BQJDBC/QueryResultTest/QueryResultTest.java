@@ -46,62 +46,7 @@ import org.junit.Test;
  * @author Horváth Attila
  * @author Gunics Balazs
  */
-public class QueryResultTest {
-
-    private static java.sql.Connection con = null;
-    //Logger logger = new Logger(QueryResultTest.class.getName());
-    Logger logger = LogManager.getLogger(QueryResultTest.class.getName());
-
-    /**
-     * Compares two String[][]
-     *
-     * @param expected
-     * @param reality
-     * @return true if they are equal false if not
-     */
-    private boolean comparer(String[][] expected, String[][] reality) {
-        for (int i = 0; i < expected.length; i++) {
-            for (int j = 0; j < expected[i].length; j++) {
-                if (expected[i][j].toString().equals(reality[i][j]) == false) {
-                    return false;
-                }
-            }
-        }
-
-        return true;
-    }
-
-    /**
-     * Makes a new Bigquery Connection to Hardcoded URL and gives back the
-     * Connection to static con member.
-     */
-    @Before
-    public void NewConnection() {
-        try {
-            if (QueryResultTest.con == null || !QueryResultTest.con.isValid(0)) {
-
-                this.logger.info("Testing the JDBC driver");
-                try {
-                    Class.forName("net.starschema.clouddb.jdbc.BQDriver");
-                    QueryResultTest.con = DriverManager
-                            .getConnection(
-                                    BQSupportFuncts
-                                            .constructUrlFromPropertiesFile(BQSupportFuncts
-                                                    .readFromPropFile(getClass().getResource("/serviceaccount.properties").getFile())),
-                                    BQSupportFuncts
-                                            .readFromPropFile(getClass().getResource("/serviceaccount.properties").getFile()));
-                } catch (Exception e) {
-                    this.logger.error("Error in connection" + e.toString());
-                    Assert.fail("General Exception:" + e.toString());
-                }
-                this.logger.info(((BQConnection) QueryResultTest.con)
-                        .getURLPART());
-            }
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
+public class QueryResultTest extends BaseTest {
 
     @Test
     public void QueryResultTest01() {
@@ -129,7 +74,7 @@ public class QueryResultTest {
         try {
             Assert.assertTrue(
                     "Comparing failed in the String[][] array",
-                    this.comparer(expectation,
+                    BQSupportMethods.comparer(expectation,
                             BQSupportMethods.GetQueryResult(Result)));
         } catch (SQLException e) {
             this.logger.error("SQLexception" + e.toString());
@@ -160,7 +105,7 @@ public class QueryResultTest {
         try {
             Assert.assertTrue(
                     "Comparing failed in the String[][] array",
-                    this.comparer(expectation,
+                    BQSupportMethods.comparer(expectation,
                             BQSupportMethods.GetQueryResult(Result)));
         } catch (SQLException e) {
             this.logger.error("SQLexception" + e.toString());
@@ -213,7 +158,7 @@ public class QueryResultTest {
         try {
             Assert.assertTrue(
                     "Comparing failed in the String[][] array",
-                    this.comparer(expectation,
+                    BQSupportMethods.comparer(expectation,
                             BQSupportMethods.GetQueryResult(Result)));
         } catch (SQLException e) {
             this.logger.error("SQLexception" + e.toString());
@@ -274,7 +219,7 @@ public class QueryResultTest {
         try {
             Assert.assertTrue(
                     "Comparing failed in the String[][] array",
-                    this.comparer(expectation,
+                    BQSupportMethods.comparer(expectation,
                             BQSupportMethods.GetQueryResult(Result)));
         } catch (SQLException e) {
             this.logger.error("SQLexception" + e.toString());
@@ -310,7 +255,7 @@ public class QueryResultTest {
         try {
             Assert.assertTrue(
                     "Comparing failed in the String[][] array",
-                    this.comparer(expectation,
+                    BQSupportMethods.comparer(expectation,
                             BQSupportMethods.GetQueryResult(Result)));
         } catch (SQLException e) {
             this.logger.error("SQLexception" + e.toString());
@@ -347,7 +292,7 @@ public class QueryResultTest {
         try {
             Assert.assertTrue(
                     "Comparing failed in the String[][] array",
-                    this.comparer(expectation,
+                    BQSupportMethods.comparer(expectation,
                             BQSupportMethods.GetQueryResult(Result)));
         } catch (SQLException e) {
             this.logger.error("SQLexception" + e.toString());
@@ -382,7 +327,7 @@ public class QueryResultTest {
         try {
             Assert.assertTrue(
                     "Comparing failed in the String[][] array",
-                    this.comparer(expectation,
+                    BQSupportMethods.comparer(expectation,
                             BQSupportMethods.GetQueryResult(Result)));
         } catch (SQLException e) {
             this.logger.error("SQLexception" + e.toString());
