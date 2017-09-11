@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d6ef31bd-1050-4e2a-8c48-8529a0385966" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/SqlRender1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/SqlRender1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/AchillesTest.java" afterPath="$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/AchillesTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,8 +38,8 @@
       <file leaf-file-name="AchillesTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/AchillesTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="55" column="7" lean-forward="false" selection-start-line="55" selection-start-column="7" selection-end-line="55" selection-end-column="7" />
+            <state relative-caret-position="221">
+              <caret line="126" column="53" lean-forward="false" selection-start-line="126" selection-start-column="53" selection-end-line="126" selection-end-column="53" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -219,7 +218,6 @@
         <option value="$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/antlr/JdbcGrammar.g" />
         <option value="$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/list/TreeBuilder.java" />
         <option value="$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/PreparedStatementTests.java" />
-        <option value="$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/AchillesTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQResultSet.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQForwardOnlyResultSet.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQDatabaseMetadata.java" />
@@ -232,6 +230,7 @@
         <option value="$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQPreparedStatement.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQConnection.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQSupportFuncts.java" />
+        <option value="$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/AchillesTest.java" />
       </list>
     </option>
   </component>
@@ -351,7 +350,65 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.DataManipulationTest.InsertQuotedString">
+  <component name="RunManager" selected="JUnit.AchillesTest">
+    <configuration name="AchillesTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="BQJDBC.QueryResultTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="bqjdbc" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="BQJDBC.QueryResultTest" />
+      <option name="MAIN_CLASS_NAME" value="BQJDBC.QueryResultTest.AchillesTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs>
+        <env name="starschema.pguser" value="postgres" />
+        <env name="starschema.pgpassword" value="ohdsi-password" />
+        <env name="starschema.pgurl" value="jdbc:postgresql://localhost:5432/postgres" />
+      </envs>
+      <patterns />
+    </configuration>
+    <configuration name="BQJDBC.QueryResultTest in bqjdbc" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="BQJDBC.QueryResultTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="bqjdbc" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="BQJDBC.QueryResultTest" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs>
+        <env name="starschema.pguser" value="postgres" />
+        <env name="starschema.pgpassword" value="ohdsi-password" />
+        <env name="starschema.pgurl" value="jdbc:postgresql://localhost:5432/postgres" />
+      </envs>
+      <patterns />
+    </configuration>
     <configuration name="DataDefinitionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -423,64 +480,6 @@
       <option name="PACKAGE_NAME" value="BQJDBC.QueryResultTest" />
       <option name="MAIN_CLASS_NAME" value="BQJDBC.QueryResultTest.DataManipulationTest" />
       <option name="METHOD_NAME" value="InsertQuotedString" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs>
-        <env name="starschema.pguser" value="postgres" />
-        <env name="starschema.pgpassword" value="ohdsi-password" />
-        <env name="starschema.pgurl" value="jdbc:postgresql://localhost:5432/postgres" />
-      </envs>
-      <patterns />
-    </configuration>
-    <configuration name="DataManipulationTest.NextvalTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="BQJDBC.QueryResultTest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="bqjdbc" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="BQJDBC.QueryResultTest" />
-      <option name="MAIN_CLASS_NAME" value="BQJDBC.QueryResultTest.DataManipulationTest" />
-      <option name="METHOD_NAME" value="NextvalTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs>
-        <env name="starschema.pguser" value="postgres" />
-        <env name="starschema.pgpassword" value="ohdsi-password" />
-        <env name="starschema.pgurl" value="jdbc:postgresql://localhost:5432/postgres" />
-      </envs>
-      <patterns />
-    </configuration>
-    <configuration name="PreparedStatementTests.ParameterlessTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="BQJDBC.QueryResultTest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="bqjdbc" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="BQJDBC.QueryResultTest" />
-      <option name="MAIN_CLASS_NAME" value="BQJDBC.QueryResultTest.PreparedStatementTests" />
-      <option name="METHOD_NAME" value="ParameterlessTest" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" value="" />
@@ -723,18 +722,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="JUnit.DataDefinitionTest" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.PreparedStatementTests.ParameterlessTest" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.DataManipulationTest" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.DataManipulationTest.NextvalTest" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.DataManipulationTest.InsertQuotedString" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.DataManipulationTest" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.DataManipulationTest.InsertQuotedString" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.BQJDBC.QueryResultTest in bqjdbc" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.AchillesTest" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.DataManipulationTest.InsertQuotedString" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.DataManipulationTest" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.DataDefinitionTest" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.DataManipulationTest.NextvalTest" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.PreparedStatementTests.ParameterlessTest" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.AchillesTest" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.BQJDBC.QueryResultTest in bqjdbc" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.DataManipulationTest.InsertQuotedString" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.DataManipulationTest" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.DataDefinitionTest" />
       </list>
     </recent_temporary>
   </component>
@@ -755,14 +754,14 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="DataDefinitionTest - 2017.06.15 at 15h 39m 22s.xml">
-      <configuration name="DataDefinitionTest" configurationId="JUnit" />
+    <history-entry file="AchillesTest - 2017.09.11 at 12h 08m 19s.xml">
+      <configuration name="AchillesTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DataDefinitionTest - 2017.06.15 at 15h 41m 38s.xml">
-      <configuration name="DataDefinitionTest" configurationId="JUnit" />
+    <history-entry file="AchillesTest - 2017.09.11 at 12h 09m 38s.xml">
+      <configuration name="AchillesTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DataManipulationTest - 2017.06.15 at 15h 42m 05s.xml">
-      <configuration name="DataManipulationTest" configurationId="JUnit" />
+    <history-entry file="BQJDBC_QueryResultTest_in_bqjdbc - 2017.09.11 at 12h 08m 09s.xml">
+      <configuration name="BQJDBC.QueryResultTest in bqjdbc" configurationId="JUnit" />
     </history-entry>
     <history-entry file="DataManipulationTest - 2017.06.15 at 15h 43m 30s.xml">
       <configuration name="DataManipulationTest" configurationId="JUnit" />
@@ -788,18 +787,17 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-541" y="-1458" width="2219" height="1245" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.43307757" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43307757" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25072324" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25063938" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1257,8 +1255,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/AchillesTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="55" column="7" lean-forward="false" selection-start-line="55" selection-start-column="7" selection-end-line="55" selection-end-column="7" />
+        <state relative-caret-position="221">
+          <caret line="126" column="53" lean-forward="false" selection-start-line="126" selection-start-column="53" selection-end-line="126" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
