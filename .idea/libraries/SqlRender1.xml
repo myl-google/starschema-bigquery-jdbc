@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="SqlRender1">
     <CLASSES>
-      <root url="jar://$USER_HOME$/mylSqlRender/SqlRender/inst/java/SqlRender.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../SqlRender/inst/java/SqlRender.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
