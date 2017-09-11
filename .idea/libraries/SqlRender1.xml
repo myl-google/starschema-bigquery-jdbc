@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="SqlRender1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../SqlRender/inst/java/SqlRender.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
