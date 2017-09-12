@@ -280,7 +280,7 @@ public abstract class BQStatementRoot {
                     this.connection.getUseLegacySql(),
                     this.connection.getMaxBillingBytes()
             );
-            this.logger.info("Executing Query: " + querySql);
+            this.logger.info("BQStatementRoot::runQueryJob: " + querySql);
         } catch (IOException e) {
             throw new BQSQLException("Something went wrong with the query: " + querySql, e);
         }
@@ -360,7 +360,7 @@ public abstract class BQStatementRoot {
                     false,
                     this.connection.getMaxBillingBytes()
             );
-            this.logger.info("Executing Update: " + updateSql);
+            this.logger.info("BQStatementRoot::runUpdateJob: " + updateSql);
         } catch (IOException e) {
             throw new BQSQLException("Something went wrong with the update: " + updateSql, e);
         }
@@ -601,7 +601,7 @@ public abstract class BQStatementRoot {
                     destinationTableId,
                     destinationAppend
             );
-            this.logger.info("Executing Query: " + selectQuery);
+            this.logger.info("BQStatementRoot::executeSelectWithDestination: " + selectQuery);
         } catch (IOException e) {
             throw new BQSQLException("Something went wrong with the query: " + selectQuery, e);
         }
