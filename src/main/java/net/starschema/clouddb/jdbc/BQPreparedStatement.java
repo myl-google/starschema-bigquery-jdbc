@@ -255,7 +255,7 @@ public class BQPreparedStatement extends BQStatementRoot implements
                     this.connection.getUseLegacySql(),
                     this.connection.getMaxBillingBytes()
             );
-            this.logger.info("Executing Query: " + this.RunnableStatement);
+            this.logger.info("BQPreparedStatement::executeQuery: " + this.RunnableStatement);
         } catch (IOException e) {
             throw new BQSQLException("Something went wrong with the query: " + this.RunnableStatement, e);
         }
@@ -338,7 +338,7 @@ public class BQPreparedStatement extends BQStatementRoot implements
                     false,
                     this.connection.getMaxBillingBytes()
             );
-            this.logger.info("Executing Update: " + this.RunnableStatement);
+            this.logger.info("BQPreparedStatement::executeUpdate: " + this.RunnableStatement);
         } catch (IOException e) {
             throw new BQSQLException("Something went wrong with the update: " + this.RunnableStatement, e);
         }

@@ -177,7 +177,7 @@ public class BQStatement extends BQStatementRoot implements java.sql.Statement {
                 this.connection.getUseLegacySql(),
                 this.connection.getMaxBillingBytes()
         );
-        this.logger.debug("Executing Query: " + querySql);
+        this.logger.debug("BQStatement::startQuery: " + querySql);
         return this.job;
     }
 
