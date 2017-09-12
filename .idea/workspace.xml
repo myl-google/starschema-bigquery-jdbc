@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d6ef31bd-1050-4e2a-8c48-8529a0385966" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQPreparedStatement.java" afterPath="$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQPreparedStatement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQStatement.java" afterPath="$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQStatement.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQStatementRoot.java" afterPath="$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQStatementRoot.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/BaseTest.java" afterPath="$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/BaseTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/DataDefinitionTest.java" afterPath="$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/DataDefinitionTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,33 +29,36 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="BQStatementRoot.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="BQStatementRoot.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQStatementRoot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="321">
-              <caret line="362" column="59" lean-forward="false" selection-start-line="362" selection-start-column="59" selection-end-line="362" selection-end-column="59" />
+            <state relative-caret-position="-705">
+              <caret line="186" column="24" lean-forward="true" selection-start-line="186" selection-start-column="24" selection-end-line="186" selection-end-column="24" />
               <folding>
-                <marker date="1505228245000" expanded="true" signature="4370:4441" ph="{...}" />
-                <marker date="1505228245000" expanded="false" signature="15290:15308" ph="&lt;~&gt;" />
-                <marker date="1505228245000" expanded="false" signature="26081:26089" ph="&lt;~&gt;" />
-                <marker date="1505228245000" expanded="false" signature="29281:29292" ph=" { " />
-                <marker date="1505228245000" expanded="false" signature="29335:29341" ph=" }" />
+                <marker date="1505230170000" expanded="true" signature="4383:4454" ph="{...}" />
+                <marker date="1505230170000" expanded="false" signature="15577:15595" ph="&lt;~&gt;" />
+                <marker date="1505230170000" expanded="false" signature="26368:26376" ph="&lt;~&gt;" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataDefinitionTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DataDefinitionTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/DataDefinitionTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="94" column="40" lean-forward="false" selection-start-line="94" selection-start-column="40" selection-end-line="94" selection-end-column="40" />
-              <folding>
-                <marker date="1505227961000" expanded="true" signature="4332:4384" ph="/**...*/" />
-                <marker date="1505227961000" expanded="true" signature="4434:5948" ph="{...}" />
-                <marker date="1505227961000" expanded="true" signature="5954:5999" ph="/**...*/" />
-                <marker date="1505227961000" expanded="true" signature="6043:7907" ph="{...}" />
-              </folding>
+            <state relative-caret-position="452">
+              <caret line="115" column="52" lean-forward="false" selection-start-line="115" selection-start-column="52" selection-end-line="115" selection-end-column="52" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BaseTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/BaseTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="196">
+              <caret line="57" column="30" lean-forward="false" selection-start-line="57" selection-start-column="30" selection-end-line="57" selection-end-column="30" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -61,8 +66,8 @@
       <file leaf-file-name="AchillesTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/AchillesTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="706">
-              <caret line="139" column="25" lean-forward="false" selection-start-line="139" selection-start-column="25" selection-end-line="139" selection-end-column="25" />
+            <state relative-caret-position="230">
+              <caret line="102" column="43" lean-forward="false" selection-start-line="102" selection-start-column="43" selection-end-line="102" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -70,211 +75,46 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="GUI.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/net/starschema/clouddb/initializer/GUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="217">
+              <caret line="472" column="45" lean-forward="false" selection-start-line="472" selection-start-column="45" selection-end-line="472" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="BQDriver.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQDriver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="78" column="40" lean-forward="false" selection-start-line="78" selection-start-column="40" selection-end-line="78" selection-end-column="40" />
+            <state relative-caret-position="360">
+              <caret line="77" column="40" lean-forward="false" selection-start-line="77" selection-start-column="40" selection-end-line="77" selection-end-column="40" />
               <folding>
-                <marker date="1505227966000" expanded="true" signature="4029:4266" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="4272:4393" ph="/**...*/" />
-                <marker date="1505227966000" expanded="false" signature="4441:4452" ph=" { " />
-                <marker date="1505227966000" expanded="false" signature="4482:4488" ph=" }" />
-                <marker date="1505227966000" expanded="true" signature="4494:4615" ph="/**...*/" />
-                <marker date="1505227966000" expanded="false" signature="4663:4674" ph=" { " />
-                <marker date="1505227966000" expanded="false" signature="4704:4710" ph=" }" />
-                <marker date="1505227966000" expanded="true" signature="4716:4767" ph="/**...*/" />
-                <marker date="1505227966000" expanded="false" signature="4807:4818" ph=" { " />
-                <marker date="1505227966000" expanded="false" signature="4845:4851" ph=" }" />
-                <marker date="1505227966000" expanded="true" signature="4857:4877" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="4954:5013" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="5019:5162" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="5273:5534" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="5540:5560" ph="/**...*/" />
-                <marker date="1505227966000" expanded="false" signature="5607:5618" ph=" { " />
-                <marker date="1505227966000" expanded="false" signature="5648:5654" ph=" }" />
-                <marker date="1505227966000" expanded="true" signature="5660:5680" ph="/**...*/" />
-                <marker date="1505227966000" expanded="false" signature="5727:5738" ph=" { " />
-                <marker date="1505227966000" expanded="false" signature="5768:5774" ph=" }" />
-                <marker date="1505227966000" expanded="true" signature="5780:5980" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="6164:6213" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="6219:6364" ph="/**...*/" />
-                <marker date="1505227966000" expanded="false" signature="6413:6424" ph=" { " />
-                <marker date="1505227966000" expanded="false" signature="6437:6443" ph=" }" />
-                <marker date="1505227966000" expanded="true" signature="6552:6630" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Logger.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/log4j/log4j/1.2.17/log4j-1.2.17-sources.jar!/org/apache/log4j/Logger.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1395">
-              <caret line="112" column="5" lean-forward="false" selection-start-line="112" selection-start-column="5" selection-end-line="112" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="40" column="48" lean-forward="false" selection-start-line="40" selection-start-column="48" selection-end-line="40" selection-end-column="48" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BQConnection.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQConnection.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15330">
-              <caret line="1077" column="0" lean-forward="false" selection-start-line="1077" selection-start-column="0" selection-end-line="1077" selection-end-column="0" />
-              <folding>
-                <marker date="1505227966000" expanded="true" signature="1892:2033" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="2088:2129" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="2182:2210" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="2234:2295" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="2374:2436" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="2478:2533" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="2733:2800" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="2850:2882" ph="/**...*/" />
-                <marker date="1505227966000" expanded="false" signature="2921:2932" ph=" { " />
-                <marker date="1505227966000" expanded="false" signature="2954:2960" ph=" }" />
-                <marker date="1505227966000" expanded="true" signature="2966:3043" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="3090:3120" ph="/**...*/" />
-                <marker date="1505227966000" expanded="false" signature="3157:3168" ph=" { " />
-                <marker date="1505227966000" expanded="false" signature="3188:3194" ph=" }" />
-                <marker date="1505227966000" expanded="true" signature="3200:3238" ph="/**...*/" />
-                <marker date="1505227966000" expanded="false" signature="3298:3310" ph="&lt;~&gt;" />
-                <marker date="1505227966000" expanded="true" signature="3319:3373" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="3414:3688" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="3767:8924" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="8930:9065" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="9132:9278" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="9284:9490" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="9549:9705" ph="{...}" />
-                <marker date="1505227966000" expanded="false" signature="9737:9748" ph=" { " />
-                <marker date="1505227966000" expanded="false" signature="9768:9774" ph=" }" />
-                <marker date="1505227966000" expanded="true" signature="9780:10041" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="10101:10562" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="10568:10711" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="10825:11025" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="11031:11174" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="11238:11382" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="11388:11531" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="11595:11739" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="11745:11888" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="11954:12100" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="12106:12249" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="12317:12465" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="12471:12787" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="12861:13146" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="13152:13172" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="13301:13661" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="13667:13687" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="13879:13988" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="13994:14137" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="14253:14432" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="14495:14621" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="14673:14760" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="14823:14945" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="15038:15172" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="15229:15363" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="15369:15524" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="15594:15640" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="15646:15713" ph="/**...*/" />
-                <marker date="1505227966000" expanded="false" signature="15747:15758" ph=" { " />
-                <marker date="1505227966000" expanded="false" signature="15779:15785" ph=" }" />
-                <marker date="1505227966000" expanded="true" signature="15791:15963" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="16029:16151" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="16157:16300" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="16373:16523" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="16529:16672" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="16752:16887" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="16893:17043" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="17110:17167" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="17173:17457" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="17534:17634" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="17640:17686" ph="/**...*/" />
-                <marker date="1505227966000" expanded="false" signature="17719:17730" ph=" { " />
-                <marker date="1505227966000" expanded="false" signature="17752:17758" ph=" }" />
-                <marker date="1505227966000" expanded="true" signature="17764:17920" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="17996:18056" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="18062:18205" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="18286:18430" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="18436:18521" ph="/**...*/" />
-                <marker date="1505227966000" expanded="false" signature="18552:18563" ph=" { " />
-                <marker date="1505227966000" expanded="false" signature="18583:18589" ph=" }" />
-                <marker date="1505227966000" expanded="true" signature="18595:18963" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="19034:19530" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="19536:19660" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="19725:19762" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="19768:19919" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="19986:20014" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="20020:20297" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="20372:20887" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="20893:21034" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="21116:21239" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="21245:21419" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="21494:21597" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="21603:21746" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="21834:21986" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="21992:22135" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="22309:22485" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="22491:22634" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="22846:23026" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="23032:23201" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="23294:23582" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="23588:23731" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="23859:24186" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="24192:24212" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="24396:24914" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="24920:25063" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="25285:25475" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="25481:25624" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="25750:25934" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="25940:26083" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="26210:26397" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="26403:26546" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="26635:26816" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="26822:26965" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="27027:27185" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="27191:27334" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="27415:27593" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="27599:27727" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="27812:27864" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="27870:28013" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="28091:28242" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="28248:28391" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="28501:28770" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="28776:28919" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="29033:29299" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="29305:29448" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="29531:29788" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="29794:29962" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="30043:30158" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="30164:30307" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="30378:30526" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="30532:30675" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="30757:30911" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="30917:31060" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="31146:31355" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="31361:31504" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="31593:31773" ph="{...}" />
-                <marker date="1505227966000" expanded="true" signature="31779:31975" ph="/**...*/" />
-                <marker date="1505227966000" expanded="true" signature="32049:32165" ph="{...}" />
-                <marker date="1505227966000" expanded="false" signature="32224:32235" ph=" { " />
-                <marker date="1505227966000" expanded="false" signature="32268:32274" ph=" }" />
-                <marker date="1505227966000" expanded="false" signature="32336:32347" ph=" { " />
-                <marker date="1505227966000" expanded="false" signature="32383:32389" ph=" }" />
-                <marker date="1505227966000" expanded="false" signature="32431:32442" ph=" { " />
-                <marker date="1505227966000" expanded="false" signature="32479:32485" ph=" }" />
-                <marker date="1505227966000" expanded="true" signature="32525:32873" ph="{...}" />
-                <marker date="1505227966000" expanded="false" signature="32911:32922" ph=" { " />
-                <marker date="1505227966000" expanded="false" signature="32945:32951" ph=" }" />
+                <marker date="1505228287000" expanded="true" signature="3982:4219" ph="{...}" />
+                <marker date="1505228287000" expanded="true" signature="4225:4346" ph="/**...*/" />
+                <marker date="1505228287000" expanded="false" signature="4435:4441" ph=" }" />
+                <marker date="1505228287000" expanded="true" signature="4447:4568" ph="/**...*/" />
+                <marker date="1505228287000" expanded="false" signature="4657:4663" ph=" }" />
+                <marker date="1505228287000" expanded="true" signature="4669:4720" ph="/**...*/" />
+                <marker date="1505228287000" expanded="false" signature="4760:4771" ph=" { " />
+                <marker date="1505228287000" expanded="false" signature="4798:4804" ph=" }" />
+                <marker date="1505228287000" expanded="true" signature="4810:4830" ph="/**...*/" />
+                <marker date="1505228287000" expanded="true" signature="4907:4966" ph="{...}" />
+                <marker date="1505228287000" expanded="true" signature="4972:5115" ph="/**...*/" />
+                <marker date="1505228287000" expanded="true" signature="5226:5487" ph="{...}" />
+                <marker date="1505228287000" expanded="true" signature="5493:5513" ph="/**...*/" />
+                <marker date="1505228287000" expanded="false" signature="5560:5571" ph=" { " />
+                <marker date="1505228287000" expanded="false" signature="5601:5607" ph=" }" />
+                <marker date="1505228287000" expanded="true" signature="5613:5633" ph="/**...*/" />
+                <marker date="1505228287000" expanded="false" signature="5680:5691" ph=" { " />
+                <marker date="1505228287000" expanded="false" signature="5721:5727" ph=" }" />
+                <marker date="1505228287000" expanded="true" signature="5733:5933" ph="/**...*/" />
+                <marker date="1505228287000" expanded="true" signature="6117:6166" ph="{...}" />
+                <marker date="1505228287000" expanded="true" signature="6172:6317" ph="/**...*/" />
+                <marker date="1505228287000" expanded="false" signature="6366:6377" ph=" { " />
+                <marker date="1505228287000" expanded="false" signature="6390:6396" ph=" }" />
+                <marker date="1505228287000" expanded="true" signature="6505:6583" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -286,10 +126,52 @@
             <state relative-caret-position="482">
               <caret line="726" column="28" lean-forward="false" selection-start-line="726" selection-start-column="28" selection-end-line="726" selection-end-column="28" />
               <folding>
-                <marker date="1505227966000" expanded="false" signature="9082:9092" ph="&lt;~&gt;" />
-                <marker date="1505227966000" expanded="false" signature="12154:12164" ph="&lt;~&gt;" />
-                <marker date="1505227966000" expanded="false" signature="20632:20640" ph="&lt;~&gt;" />
-                <marker date="1505227966000" expanded="false" signature="22342:22349" ph="&lt;~&gt;" />
+                <marker date="1505228287000" expanded="true" signature="2332:2451" ph="/**...*/" />
+                <marker date="1505228287000" expanded="true" signature="2487:2515" ph="/**...*/" />
+                <marker date="1505228287000" expanded="true" signature="2674:3021" ph="/**...*/" />
+                <marker date="1505228287000" expanded="true" signature="3179:5206" ph="{...}" />
+                <marker date="1505228287000" expanded="true" signature="5323:5402" ph="{...}" />
+                <marker date="1505228287000" expanded="true" signature="5524:6146" ph="{...}" />
+                <marker date="1505228287000" expanded="true" signature="6152:6680" ph="/**...*/" />
+                <marker date="1505228287000" expanded="true" signature="6841:7433" ph="{...}" />
+                <marker date="1505228287000" expanded="true" signature="7439:7946" ph="/**...*/" />
+                <marker date="1505228287000" expanded="true" signature="8103:9611" ph="{...}" />
+                <marker date="1505228287000" expanded="true" signature="8361:8476" ph="//..." />
+                <marker date="1505228287000" expanded="true" signature="9617:9824" ph="/**...*/" />
+                <marker date="1505228287000" expanded="true" signature="9896:10124" ph="{...}" />
+                <marker date="1505228287000" expanded="true" signature="10130:10333" ph="/**...*/" />
+                <marker date="1505228287000" expanded="true" signature="10403:10677" ph="{...}" />
+                <marker date="1505228287000" expanded="true" signature="10683:11400" ph="/**...*/" />
+                <marker date="1505228287000" expanded="true" signature="11575:12750" ph="{...}" />
+                <marker date="1505228287000" expanded="true" signature="12756:13006" ph="/**...*/" />
+                <marker date="1505228287000" expanded="true" signature="13071:13455" ph="{...}" />
+                <marker date="1505228287000" expanded="true" signature="13210:13296" ph="//..." />
+                <marker date="1505228287000" expanded="true" signature="13461:14031" ph="/**...*/" />
+                <marker date="1505228287000" expanded="true" signature="14222:15047" ph="{...}" />
+                <marker date="1505228287000" expanded="true" signature="15053:15623" ph="/**...*/" />
+                <marker date="1505228287000" expanded="true" signature="15867:16200" ph="{...}" />
+                <marker date="1505228287000" expanded="true" signature="16206:16668" ph="/**...*/" />
+                <marker date="1505228287000" expanded="true" signature="16804:17330" ph="{...}" />
+                <marker date="1505228287000" expanded="true" signature="17336:17785" ph="/**...*/" />
+                <marker date="1505228287000" expanded="true" signature="17928:18014" ph="{...}" />
+                <marker date="1505228287000" expanded="true" signature="18020:18326" ph="/**...*/" />
+                <marker date="1505228287000" expanded="true" signature="18440:18541" ph="{...}" />
+                <marker date="1505228287000" expanded="true" signature="18547:18746" ph="/**...*/" />
+                <marker date="1505228287000" expanded="true" signature="18814:18881" ph="{...}" />
+                <marker date="1505228287000" expanded="true" signature="18887:19639" ph="/**...*/" />
+                <marker date="1505228287000" expanded="true" signature="19839:21295" ph="{...}" />
+                <marker date="1505228287000" expanded="true" signature="21301:22138" ph="/**...*/" />
+                <marker date="1505228287000" expanded="true" signature="22312:25227" ph="{...}" />
+                <marker date="1505228287000" expanded="true" signature="25233:25933" ph="/**...*/" />
+                <marker date="1505228287000" expanded="true" signature="26003:26898" ph="{...}" />
+                <marker date="1505228287000" expanded="true" signature="26904:27085" ph="/**...*/" />
+                <marker date="1505228287000" expanded="true" signature="27147:27659" ph="{...}" />
+                <marker date="1505228287000" expanded="true" signature="27665:27914" ph="/**...*/" />
+                <marker date="1505228287000" expanded="true" signature="28009:28183" ph="{...}" />
+                <marker date="1505228287000" expanded="true" signature="28189:29136" ph="/**...*/" />
+                <marker date="1505228287000" expanded="true" signature="29555:31361" ph="{...}" />
+                <marker date="1505228287000" expanded="true" signature="31367:32045" ph="/**...*/" />
+                <marker date="1505228287000" expanded="true" signature="32278:32433" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -298,8 +180,8 @@
       <file leaf-file-name="BQPreparedStatement.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQPreparedStatement.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="340" column="64" lean-forward="false" selection-start-line="340" selection-start-column="64" selection-end-line="340" selection-end-column="64" />
+            <state relative-caret-position="296">
+              <caret line="222" column="38" lean-forward="true" selection-start-line="222" selection-start-column="38" selection-end-line="222" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -308,8 +190,18 @@
       <file leaf-file-name="BQStatement.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQStatement.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="179" column="51" lean-forward="false" selection-start-line="179" selection-start-column="51" selection-end-line="179" selection-end-column="51" />
+            <state relative-caret-position="278">
+              <caret line="88" column="29" lean-forward="false" selection-start-line="88" selection-start-column="29" selection-end-line="88" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CancelTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/CancelTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="534">
+              <caret line="146" column="31" lean-forward="false" selection-start-line="146" selection-start-column="31" selection-end-line="146" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -326,8 +218,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>maxbi</find>
-      <find>maxbil</find>
       <find>maxbill</find>
       <find>maxbillin</find>
       <find>maxbilling</find>
@@ -355,6 +245,9 @@
       <find>Inserting query j</find>
       <find>Inserting query job</find>
       <find>Inserting Query Job</find>
+      <find>execute</find>
+      <find>normalizedat</find>
+      <find>execute(</find>
     </findStrings>
     <replaceStrings>
       <replace>apache.logging.log4j</replace>
@@ -424,15 +317,15 @@
         <option value="$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQForwardOnlyResultSet.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQDatabaseMetadata.java" />
         <option value="$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/QueryResultTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/DataDefinitionTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/BaseTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/DataManipulationTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQConnection.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQSupportFuncts.java" />
         <option value="$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/AchillesTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQPreparedStatement.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQStatement.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQStatementRoot.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQPreparedStatement.java" />
+        <option value="$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/DataDefinitionTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/BaseTest.java" />
       </list>
     </option>
   </component>
@@ -552,7 +445,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.AchillesTest">
+  <component name="RunManager" selected="JUnit.DataDefinitionTest.executeCreateTable">
     <configuration name="AchillesTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -611,7 +504,7 @@
       </envs>
       <patterns />
     </configuration>
-    <configuration name="DataDefinitionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DataDefinitionTest.executeCreateTable" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="BQJDBC.QueryResultTest.*" />
@@ -623,8 +516,8 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="BQJDBC.QueryResultTest" />
       <option name="MAIN_CLASS_NAME" value="BQJDBC.QueryResultTest.DataDefinitionTest" />
-      <option name="METHOD_NAME" value="" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="METHOD_NAME" value="executeCreateTable" />
+      <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
@@ -923,19 +816,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.DataDefinitionTest" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.DataManipulationTest" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.DataManipulationTest.InsertQuotedString" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.BQJDBC.QueryResultTest in bqjdbc" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.AchillesTest" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.DataManipulationTest" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.DataManipulationTest.InsertQuotedString" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.BQJDBC.QueryResultTest in bqjdbc" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.AchillesTest" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.DataDefinitionTest.executeCreateTable" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.AchillesTest" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.BQJDBC.QueryResultTest in bqjdbc" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.DataManipulationTest.InsertQuotedString" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.DataManipulationTest" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.DataDefinitionTest" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.DataDefinitionTest.executeCreateTable" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.AchillesTest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.BQJDBC.QueryResultTest in bqjdbc" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.DataManipulationTest.InsertQuotedString" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.DataManipulationTest" />
       </list>
     </recent_temporary>
   </component>
@@ -956,14 +849,14 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="AchillesTest - 2017.09.11 at 12h 08m 19s.xml">
-      <configuration name="AchillesTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="AchillesTest - 2017.09.11 at 12h 09m 38s.xml">
       <configuration name="AchillesTest" configurationId="JUnit" />
     </history-entry>
     <history-entry file="BQJDBC_QueryResultTest_in_bqjdbc - 2017.09.11 at 12h 08m 09s.xml">
       <configuration name="BQJDBC.QueryResultTest in bqjdbc" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DataDefinitionTest_executeCreateTable - 2017.09.12 at 11h 30m 13s.xml">
+      <configuration name="DataDefinitionTest.executeCreateTable" configurationId="JUnit" />
     </history-entry>
     <history-entry file="DataManipulationTest - 2017.06.15 at 15h 43m 30s.xml">
       <configuration name="DataManipulationTest" configurationId="JUnit" />
@@ -993,13 +886,13 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.43307757" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43307757" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3486786" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3486786" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1096,7 +989,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQStatementRoot.java</url>
-          <line>1025</line>
+          <line>1033</line>
           <properties />
           <option name="timeStamp" value="86" />
         </line-breakpoint>
@@ -1108,13 +1001,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQStatementRoot.java</url>
-          <line>1215</line>
+          <line>1223</line>
           <properties />
           <option name="timeStamp" value="108" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQStatementRoot.java</url>
-          <line>1152</line>
+          <line>1160</line>
           <properties />
           <option name="timeStamp" value="113" />
         </line-breakpoint>
@@ -1258,13 +1151,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/starschema/clouddb/initializer/GUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3990">
-          <caret line="368" column="25" lean-forward="false" selection-start-line="368" selection-start-column="25" selection-end-line="368" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/antlr/JdbcGrammar.g">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1935">
@@ -1340,14 +1226,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/CancelTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/GrammarTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -1376,20 +1254,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/DataDefinitionTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="94" column="40" lean-forward="false" selection-start-line="94" selection-start-column="40" selection-end-line="94" selection-end-column="40" />
-          <folding>
-            <marker date="1505227961000" expanded="true" signature="4332:4384" ph="/**...*/" />
-            <marker date="1505227961000" expanded="true" signature="4434:5948" ph="{...}" />
-            <marker date="1505227961000" expanded="true" signature="5954:5999" ph="/**...*/" />
-            <marker date="1505227961000" expanded="true" signature="6043:7907" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/BaseTest.java" />
     <entry file="file://$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/DataManipulationTest.java" />
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/src.zip!/java/sql/DriverManager.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1433,148 +1297,7 @@
         <state relative-caret-position="15330">
           <caret line="1077" column="0" lean-forward="false" selection-start-line="1077" selection-start-column="0" selection-end-line="1077" selection-end-column="0" />
           <folding>
-            <marker date="1505227966000" expanded="true" signature="1892:2033" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="2088:2129" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="2182:2210" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="2234:2295" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="2374:2436" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="2478:2533" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="2733:2800" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="2850:2882" ph="/**...*/" />
-            <marker date="1505227966000" expanded="false" signature="2921:2932" ph=" { " />
-            <marker date="1505227966000" expanded="false" signature="2954:2960" ph=" }" />
-            <marker date="1505227966000" expanded="true" signature="2966:3043" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="3090:3120" ph="/**...*/" />
-            <marker date="1505227966000" expanded="false" signature="3157:3168" ph=" { " />
-            <marker date="1505227966000" expanded="false" signature="3188:3194" ph=" }" />
-            <marker date="1505227966000" expanded="true" signature="3200:3238" ph="/**...*/" />
-            <marker date="1505227966000" expanded="false" signature="3298:3310" ph="&lt;~&gt;" />
-            <marker date="1505227966000" expanded="true" signature="3319:3373" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="3414:3688" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="3767:8924" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="8930:9065" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="9132:9278" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="9284:9490" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="9549:9705" ph="{...}" />
-            <marker date="1505227966000" expanded="false" signature="9737:9748" ph=" { " />
-            <marker date="1505227966000" expanded="false" signature="9768:9774" ph=" }" />
-            <marker date="1505227966000" expanded="true" signature="9780:10041" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="10101:10562" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="10568:10711" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="10825:11025" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="11031:11174" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="11238:11382" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="11388:11531" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="11595:11739" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="11745:11888" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="11954:12100" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="12106:12249" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="12317:12465" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="12471:12787" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="12861:13146" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="13152:13172" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="13301:13661" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="13667:13687" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="13879:13988" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="13994:14137" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="14253:14432" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="14495:14621" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="14673:14760" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="14823:14945" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="15038:15172" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="15229:15363" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="15369:15524" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="15594:15640" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="15646:15713" ph="/**...*/" />
-            <marker date="1505227966000" expanded="false" signature="15747:15758" ph=" { " />
-            <marker date="1505227966000" expanded="false" signature="15779:15785" ph=" }" />
-            <marker date="1505227966000" expanded="true" signature="15791:15963" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="16029:16151" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="16157:16300" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="16373:16523" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="16529:16672" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="16752:16887" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="16893:17043" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="17110:17167" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="17173:17457" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="17534:17634" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="17640:17686" ph="/**...*/" />
-            <marker date="1505227966000" expanded="false" signature="17719:17730" ph=" { " />
-            <marker date="1505227966000" expanded="false" signature="17752:17758" ph=" }" />
-            <marker date="1505227966000" expanded="true" signature="17764:17920" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="17996:18056" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="18062:18205" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="18286:18430" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="18436:18521" ph="/**...*/" />
-            <marker date="1505227966000" expanded="false" signature="18552:18563" ph=" { " />
-            <marker date="1505227966000" expanded="false" signature="18583:18589" ph=" }" />
-            <marker date="1505227966000" expanded="true" signature="18595:18963" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="19034:19530" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="19536:19660" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="19725:19762" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="19768:19919" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="19986:20014" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="20020:20297" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="20372:20887" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="20893:21034" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="21116:21239" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="21245:21419" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="21494:21597" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="21603:21746" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="21834:21986" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="21992:22135" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="22309:22485" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="22491:22634" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="22846:23026" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="23032:23201" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="23294:23582" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="23588:23731" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="23859:24186" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="24192:24212" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="24396:24914" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="24920:25063" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="25285:25475" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="25481:25624" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="25750:25934" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="25940:26083" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="26210:26397" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="26403:26546" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="26635:26816" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="26822:26965" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="27027:27185" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="27191:27334" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="27415:27593" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="27599:27727" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="27812:27864" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="27870:28013" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="28091:28242" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="28248:28391" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="28501:28770" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="28776:28919" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="29033:29299" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="29305:29448" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="29531:29788" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="29794:29962" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="30043:30158" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="30164:30307" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="30378:30526" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="30532:30675" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="30757:30911" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="30917:31060" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="31146:31355" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="31361:31504" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="31593:31773" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="31779:31975" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="32049:32165" ph="{...}" />
-            <marker date="1505227966000" expanded="false" signature="32224:32235" ph=" { " />
-            <marker date="1505227966000" expanded="false" signature="32268:32274" ph=" }" />
-            <marker date="1505227966000" expanded="false" signature="32336:32347" ph=" { " />
-            <marker date="1505227966000" expanded="false" signature="32383:32389" ph=" }" />
-            <marker date="1505227966000" expanded="false" signature="32431:32442" ph=" { " />
-            <marker date="1505227966000" expanded="false" signature="32479:32485" ph=" }" />
-            <marker date="1505227966000" expanded="true" signature="32525:32873" ph="{...}" />
-            <marker date="1505227966000" expanded="false" signature="32911:32922" ph=" { " />
-            <marker date="1505227966000" expanded="false" signature="32945:32951" ph=" }" />
+            <marker date="1505228287000" expanded="false" signature="32958:32964" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -1588,45 +1311,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQDriver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="78" column="40" lean-forward="false" selection-start-line="78" selection-start-column="40" selection-end-line="78" selection-end-column="40" />
+        <state relative-caret-position="360">
+          <caret line="77" column="40" lean-forward="false" selection-start-line="77" selection-start-column="40" selection-end-line="77" selection-end-column="40" />
           <folding>
-            <marker date="1505227966000" expanded="true" signature="4029:4266" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="4272:4393" ph="/**...*/" />
-            <marker date="1505227966000" expanded="false" signature="4441:4452" ph=" { " />
-            <marker date="1505227966000" expanded="false" signature="4482:4488" ph=" }" />
-            <marker date="1505227966000" expanded="true" signature="4494:4615" ph="/**...*/" />
-            <marker date="1505227966000" expanded="false" signature="4663:4674" ph=" { " />
-            <marker date="1505227966000" expanded="false" signature="4704:4710" ph=" }" />
-            <marker date="1505227966000" expanded="true" signature="4716:4767" ph="/**...*/" />
-            <marker date="1505227966000" expanded="false" signature="4807:4818" ph=" { " />
-            <marker date="1505227966000" expanded="false" signature="4845:4851" ph=" }" />
-            <marker date="1505227966000" expanded="true" signature="4857:4877" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="4954:5013" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="5019:5162" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="5273:5534" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="5540:5560" ph="/**...*/" />
-            <marker date="1505227966000" expanded="false" signature="5607:5618" ph=" { " />
-            <marker date="1505227966000" expanded="false" signature="5648:5654" ph=" }" />
-            <marker date="1505227966000" expanded="true" signature="5660:5680" ph="/**...*/" />
-            <marker date="1505227966000" expanded="false" signature="5727:5738" ph=" { " />
-            <marker date="1505227966000" expanded="false" signature="5768:5774" ph=" }" />
-            <marker date="1505227966000" expanded="true" signature="5780:5980" ph="/**...*/" />
-            <marker date="1505227966000" expanded="true" signature="6164:6213" ph="{...}" />
-            <marker date="1505227966000" expanded="true" signature="6219:6364" ph="/**...*/" />
-            <marker date="1505227966000" expanded="false" signature="6413:6424" ph=" { " />
-            <marker date="1505227966000" expanded="false" signature="6437:6443" ph=" }" />
-            <marker date="1505227966000" expanded="true" signature="6552:6630" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/AchillesTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="706">
-          <caret line="139" column="25" lean-forward="false" selection-start-line="139" selection-start-column="25" selection-end-line="139" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <marker date="1505228287000" expanded="true" signature="3982:4219" ph="{...}" />
+            <marker date="1505228287000" expanded="true" signature="4225:4346" ph="/**...*/" />
+            <marker date="1505228287000" expanded="false" signature="4435:4441" ph=" }" />
+            <marker date="1505228287000" expanded="true" signature="4447:4568" ph="/**...*/" />
+            <marker date="1505228287000" expanded="false" signature="4657:4663" ph=" }" />
+            <marker date="1505228287000" expanded="true" signature="4669:4720" ph="/**...*/" />
+            <marker date="1505228287000" expanded="false" signature="4760:4771" ph=" { " />
+            <marker date="1505228287000" expanded="false" signature="4798:4804" ph=" }" />
+            <marker date="1505228287000" expanded="true" signature="4810:4830" ph="/**...*/" />
+            <marker date="1505228287000" expanded="true" signature="4907:4966" ph="{...}" />
+            <marker date="1505228287000" expanded="true" signature="4972:5115" ph="/**...*/" />
+            <marker date="1505228287000" expanded="true" signature="5226:5487" ph="{...}" />
+            <marker date="1505228287000" expanded="true" signature="5493:5513" ph="/**...*/" />
+            <marker date="1505228287000" expanded="false" signature="5560:5571" ph=" { " />
+            <marker date="1505228287000" expanded="false" signature="5601:5607" ph=" }" />
+            <marker date="1505228287000" expanded="true" signature="5613:5633" ph="/**...*/" />
+            <marker date="1505228287000" expanded="false" signature="5680:5691" ph=" { " />
+            <marker date="1505228287000" expanded="false" signature="5721:5727" ph=" }" />
+            <marker date="1505228287000" expanded="true" signature="5733:5933" ph="/**...*/" />
+            <marker date="1505228287000" expanded="true" signature="6117:6166" ph="{...}" />
+            <marker date="1505228287000" expanded="true" signature="6172:6317" ph="/**...*/" />
+            <marker date="1505228287000" expanded="false" signature="6366:6377" ph=" { " />
+            <marker date="1505228287000" expanded="false" signature="6390:6396" ph=" }" />
+            <marker date="1505228287000" expanded="true" signature="6505:6583" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1636,41 +1347,123 @@
         <state relative-caret-position="482">
           <caret line="726" column="28" lean-forward="false" selection-start-line="726" selection-start-column="28" selection-end-line="726" selection-end-column="28" />
           <folding>
-            <marker date="1505227966000" expanded="false" signature="9082:9092" ph="&lt;~&gt;" />
-            <marker date="1505227966000" expanded="false" signature="12154:12164" ph="&lt;~&gt;" />
-            <marker date="1505227966000" expanded="false" signature="20632:20640" ph="&lt;~&gt;" />
-            <marker date="1505227966000" expanded="false" signature="22342:22349" ph="&lt;~&gt;" />
+            <marker date="1505228287000" expanded="true" signature="2332:2451" ph="/**...*/" />
+            <marker date="1505228287000" expanded="true" signature="2487:2515" ph="/**...*/" />
+            <marker date="1505228287000" expanded="true" signature="2674:3021" ph="/**...*/" />
+            <marker date="1505228287000" expanded="true" signature="3179:5206" ph="{...}" />
+            <marker date="1505228287000" expanded="true" signature="5323:5402" ph="{...}" />
+            <marker date="1505228287000" expanded="true" signature="5524:6146" ph="{...}" />
+            <marker date="1505228287000" expanded="true" signature="6152:6680" ph="/**...*/" />
+            <marker date="1505228287000" expanded="true" signature="6841:7433" ph="{...}" />
+            <marker date="1505228287000" expanded="true" signature="7439:7946" ph="/**...*/" />
+            <marker date="1505228287000" expanded="true" signature="8103:9611" ph="{...}" />
+            <marker date="1505228287000" expanded="true" signature="8361:8476" ph="//..." />
+            <marker date="1505228287000" expanded="true" signature="9617:9824" ph="/**...*/" />
+            <marker date="1505228287000" expanded="true" signature="9896:10124" ph="{...}" />
+            <marker date="1505228287000" expanded="true" signature="10130:10333" ph="/**...*/" />
+            <marker date="1505228287000" expanded="true" signature="10403:10677" ph="{...}" />
+            <marker date="1505228287000" expanded="true" signature="10683:11400" ph="/**...*/" />
+            <marker date="1505228287000" expanded="true" signature="11575:12750" ph="{...}" />
+            <marker date="1505228287000" expanded="true" signature="12756:13006" ph="/**...*/" />
+            <marker date="1505228287000" expanded="true" signature="13071:13455" ph="{...}" />
+            <marker date="1505228287000" expanded="true" signature="13210:13296" ph="//..." />
+            <marker date="1505228287000" expanded="true" signature="13461:14031" ph="/**...*/" />
+            <marker date="1505228287000" expanded="true" signature="14222:15047" ph="{...}" />
+            <marker date="1505228287000" expanded="true" signature="15053:15623" ph="/**...*/" />
+            <marker date="1505228287000" expanded="true" signature="15867:16200" ph="{...}" />
+            <marker date="1505228287000" expanded="true" signature="16206:16668" ph="/**...*/" />
+            <marker date="1505228287000" expanded="true" signature="16804:17330" ph="{...}" />
+            <marker date="1505228287000" expanded="true" signature="17336:17785" ph="/**...*/" />
+            <marker date="1505228287000" expanded="true" signature="17928:18014" ph="{...}" />
+            <marker date="1505228287000" expanded="true" signature="18020:18326" ph="/**...*/" />
+            <marker date="1505228287000" expanded="true" signature="18440:18541" ph="{...}" />
+            <marker date="1505228287000" expanded="true" signature="18547:18746" ph="/**...*/" />
+            <marker date="1505228287000" expanded="true" signature="18814:18881" ph="{...}" />
+            <marker date="1505228287000" expanded="true" signature="18887:19639" ph="/**...*/" />
+            <marker date="1505228287000" expanded="true" signature="19839:21295" ph="{...}" />
+            <marker date="1505228287000" expanded="true" signature="21301:22138" ph="/**...*/" />
+            <marker date="1505228287000" expanded="true" signature="22312:25227" ph="{...}" />
+            <marker date="1505228287000" expanded="true" signature="25233:25933" ph="/**...*/" />
+            <marker date="1505228287000" expanded="true" signature="26003:26898" ph="{...}" />
+            <marker date="1505228287000" expanded="true" signature="26904:27085" ph="/**...*/" />
+            <marker date="1505228287000" expanded="true" signature="27147:27659" ph="{...}" />
+            <marker date="1505228287000" expanded="true" signature="27665:27914" ph="/**...*/" />
+            <marker date="1505228287000" expanded="true" signature="28009:28183" ph="{...}" />
+            <marker date="1505228287000" expanded="true" signature="28189:29136" ph="/**...*/" />
+            <marker date="1505228287000" expanded="true" signature="29555:31361" ph="{...}" />
+            <marker date="1505228287000" expanded="true" signature="31367:32045" ph="/**...*/" />
+            <marker date="1505228287000" expanded="true" signature="32278:32433" ph="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/CancelTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="534">
+          <caret line="146" column="31" lean-forward="false" selection-start-line="146" selection-start-column="31" selection-end-line="146" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/AchillesTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="102" column="43" lean-forward="false" selection-start-line="102" selection-start-column="43" selection-end-line="102" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/starschema/clouddb/initializer/GUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="472" column="45" lean-forward="false" selection-start-line="472" selection-start-column="45" selection-end-line="472" selection-end-column="45" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQPreparedStatement.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="340" column="64" lean-forward="false" selection-start-line="340" selection-start-column="64" selection-end-line="340" selection-end-column="64" />
+        <state relative-caret-position="296">
+          <caret line="222" column="38" lean-forward="true" selection-start-line="222" selection-start-column="38" selection-end-line="222" selection-end-column="38" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQStatement.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="179" column="51" lean-forward="false" selection-start-line="179" selection-start-column="51" selection-end-line="179" selection-end-column="51" />
+        <state relative-caret-position="278">
+          <caret line="88" column="29" lean-forward="false" selection-start-line="88" selection-start-column="29" selection-end-line="88" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQStatementRoot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="362" column="59" lean-forward="false" selection-start-line="362" selection-start-column="59" selection-end-line="362" selection-end-column="59" />
+        <state relative-caret-position="-705">
+          <caret line="186" column="24" lean-forward="true" selection-start-line="186" selection-start-column="24" selection-end-line="186" selection-end-column="24" />
           <folding>
-            <marker date="1505228245000" expanded="true" signature="4370:4441" ph="{...}" />
-            <marker date="1505228245000" expanded="false" signature="15290:15308" ph="&lt;~&gt;" />
-            <marker date="1505228245000" expanded="false" signature="26081:26089" ph="&lt;~&gt;" />
-            <marker date="1505228245000" expanded="false" signature="29281:29292" ph=" { " />
-            <marker date="1505228245000" expanded="false" signature="29335:29341" ph=" }" />
+            <marker date="1505230170000" expanded="true" signature="4383:4454" ph="{...}" />
+            <marker date="1505230170000" expanded="false" signature="15577:15595" ph="&lt;~&gt;" />
+            <marker date="1505230170000" expanded="false" signature="26368:26376" ph="&lt;~&gt;" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/BaseTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="57" column="30" lean-forward="false" selection-start-line="57" selection-start-column="30" selection-end-line="57" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/DataDefinitionTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="452">
+          <caret line="115" column="52" lean-forward="false" selection-start-line="115" selection-start-column="52" selection-end-line="115" selection-end-column="52" />
+          <folding />
         </state>
       </provider>
     </entry>

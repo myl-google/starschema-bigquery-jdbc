@@ -204,7 +204,7 @@ public class BQPreparedStatement extends BQStatementRoot implements
      * <p>
      * <h1>Implementation Details:</h1><br>
      * Executes the PreCompiledSQL statement on BigQuery (note: it returns only
-     * 1 resultset). This function directly uses executeQuery() function
+     * 1 resultset).
      * </p>
      */
     @Override
@@ -212,12 +212,19 @@ public class BQPreparedStatement extends BQStatementRoot implements
         if (this.isClosed()) {
             throw new BQSQLException("This Statement is Closed");
         }
-        this.resset = this.executeQuery();
-        this.logger.info("Executing Query: " + this.RunnableStatement);
-        if (this.resset != null) {
+        final String normalizedUpdateSql = normalizeDataDefinitionForParsing(this.RunnableStatement);
+        Tree dataDefinitionTree = tryParseDataDefinition(normalizedUpdateSql);
+        if (dataDefinitionTree != null) {
+            this.executeUpdate(this.RunnableStatement);
             return true;
         } else {
-            return false;
+            this.resset = this.executeQuery();
+            this.logger.info("Executing Query: " + this.RunnableStatement);
+            if (this.resset != null) {
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 

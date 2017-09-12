@@ -171,7 +171,7 @@ public abstract class BQStatementRoot {
      * <p>
      * <h1>Implementation Details:</h1><br>
      * Executes the given SQL statement on BigQuery (note: it returns only 1
-     * resultset). This function directly uses executeQuery function
+     * resultset).
      * </p>
      */
 
@@ -179,12 +179,20 @@ public abstract class BQStatementRoot {
         if (this.isClosed()) {
             throw new BQSQLException("This Statement is Closed");
         }
-        this.resset = this.executeQuery(arg0);
-        this.logger.info("Executing Query: " + arg0);
-        if (this.resset != null) {
+
+        final String normalizedUpdateSql = normalizeDataDefinitionForParsing(arg0);
+        Tree dataDefinitionTree = tryParseDataDefinition(normalizedUpdateSql);
+        if (dataDefinitionTree != null) {
+            this.executeUpdate(arg0);
             return true;
         } else {
-            return false;
+            this.resset = this.executeQuery(arg0);
+            this.logger.info("Executing Query: " + arg0);
+            if (this.resset != null) {
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 

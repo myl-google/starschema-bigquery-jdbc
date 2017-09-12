@@ -53,6 +53,22 @@ public class BaseTest {
         }
     }
 
+    protected boolean execute(String sql, boolean prepared) {
+        this.logger.info("Running statement:" + sql);
+        boolean result = false;
+        try {
+            if (prepared) {
+                result = con.prepareStatement(sql).execute();
+            } else {
+                result = con.createStatement().execute(sql);
+            }
+        } catch (SQLException e) {
+            this.logger.error("SQLexception" + e.toString());
+            //Assert.fail("SQLException" + e.toString());
+        }
+        return result;
+    }
+
     protected int executeUpdate(String sql, boolean prepared) {
         this.logger.info("Running statement:" + sql);
         int result = -1;

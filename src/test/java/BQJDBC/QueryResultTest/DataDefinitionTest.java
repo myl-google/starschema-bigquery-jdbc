@@ -101,6 +101,22 @@ public class DataDefinitionTest extends BaseTest {
     }
 
     /**
+     * Test CREATE TABLE through execute() rather than executeUpdate()
+     */
+    @Test
+    public void executeCreateTable() {
+        final String create_table = "create table starschema.t1 (c1 int, c2 char(10) null, c3 varchar(20) not null)";
+
+        executeUpdateRequireSuccess("drop table if exists starschema.t1;", 0);
+        logger.info("Running test: create table:" + newLine + create_table);
+        Assert.assertTrue(execute(create_table, false));
+
+        executeUpdateRequireSuccess("drop table if exists starschema.t1;", 0);
+        logger.info("Running test: create table:" + newLine + create_table);
+        Assert.assertTrue(execute(create_table, true));
+    }
+
+    /**
      * Test INSERT from SELECT statement
      */
     @Test
