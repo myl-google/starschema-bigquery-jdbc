@@ -5,8 +5,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQPreparedStatement.java" afterPath="$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQPreparedStatement.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQStatementRoot.java" afterPath="$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQStatementRoot.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/BaseTest.java" afterPath="$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/BaseTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/DataDefinitionTest.java" afterPath="$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/DataDefinitionTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/DataManipulationTest.java" afterPath="$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/DataManipulationTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,22 +31,20 @@
       <file leaf-file-name="BQStatementRoot.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQStatementRoot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-705">
-              <caret line="186" column="24" lean-forward="true" selection-start-line="186" selection-start-column="24" selection-end-line="186" selection-end-column="24" />
+            <state relative-caret-position="177">
+              <caret line="344" column="34" lean-forward="false" selection-start-line="344" selection-start-column="34" selection-end-line="344" selection-end-column="34" />
               <folding>
-                <marker date="1505230170000" expanded="true" signature="4383:4454" ph="{...}" />
-                <marker date="1505230170000" expanded="false" signature="15577:15595" ph="&lt;~&gt;" />
-                <marker date="1505230170000" expanded="false" signature="26368:26376" ph="&lt;~&gt;" />
+                <marker date="1505484915000" expanded="true" signature="4383:4454" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataDefinitionTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DataDefinitionTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/DataDefinitionTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="452">
-              <caret line="115" column="52" lean-forward="false" selection-start-line="115" selection-start-column="52" selection-end-line="115" selection-end-column="52" />
+            <state relative-caret-position="-562">
+              <caret line="88" column="37" lean-forward="false" selection-start-line="88" selection-start-column="37" selection-end-line="88" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -56,21 +53,19 @@
       <file leaf-file-name="BaseTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/BaseTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="57" column="30" lean-forward="false" selection-start-line="57" selection-start-column="30" selection-end-line="57" selection-end-column="30" />
+            <state relative-caret-position="213">
+              <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AchillesTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/AchillesTest.java">
+      <file leaf-file-name="BQConnection.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQConnection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="102" column="43" lean-forward="false" selection-start-line="102" selection-start-column="43" selection-end-line="102" selection-end-column="43" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="212">
+              <caret line="370" column="0" lean-forward="false" selection-start-line="370" selection-start-column="0" selection-end-line="370" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -78,101 +73,9 @@
       <file leaf-file-name="GUI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/starschema/clouddb/initializer/GUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
+            <state relative-caret-position="5490">
               <caret line="472" column="45" lean-forward="false" selection-start-line="472" selection-start-column="45" selection-end-line="472" selection-end-column="45" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BQDriver.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQDriver.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="77" column="40" lean-forward="false" selection-start-line="77" selection-start-column="40" selection-end-line="77" selection-end-column="40" />
-              <folding>
-                <marker date="1505228287000" expanded="true" signature="3982:4219" ph="{...}" />
-                <marker date="1505228287000" expanded="true" signature="4225:4346" ph="/**...*/" />
-                <marker date="1505228287000" expanded="false" signature="4435:4441" ph=" }" />
-                <marker date="1505228287000" expanded="true" signature="4447:4568" ph="/**...*/" />
-                <marker date="1505228287000" expanded="false" signature="4657:4663" ph=" }" />
-                <marker date="1505228287000" expanded="true" signature="4669:4720" ph="/**...*/" />
-                <marker date="1505228287000" expanded="false" signature="4760:4771" ph=" { " />
-                <marker date="1505228287000" expanded="false" signature="4798:4804" ph=" }" />
-                <marker date="1505228287000" expanded="true" signature="4810:4830" ph="/**...*/" />
-                <marker date="1505228287000" expanded="true" signature="4907:4966" ph="{...}" />
-                <marker date="1505228287000" expanded="true" signature="4972:5115" ph="/**...*/" />
-                <marker date="1505228287000" expanded="true" signature="5226:5487" ph="{...}" />
-                <marker date="1505228287000" expanded="true" signature="5493:5513" ph="/**...*/" />
-                <marker date="1505228287000" expanded="false" signature="5560:5571" ph=" { " />
-                <marker date="1505228287000" expanded="false" signature="5601:5607" ph=" }" />
-                <marker date="1505228287000" expanded="true" signature="5613:5633" ph="/**...*/" />
-                <marker date="1505228287000" expanded="false" signature="5680:5691" ph=" { " />
-                <marker date="1505228287000" expanded="false" signature="5721:5727" ph=" }" />
-                <marker date="1505228287000" expanded="true" signature="5733:5933" ph="/**...*/" />
-                <marker date="1505228287000" expanded="true" signature="6117:6166" ph="{...}" />
-                <marker date="1505228287000" expanded="true" signature="6172:6317" ph="/**...*/" />
-                <marker date="1505228287000" expanded="false" signature="6366:6377" ph=" { " />
-                <marker date="1505228287000" expanded="false" signature="6390:6396" ph=" }" />
-                <marker date="1505228287000" expanded="true" signature="6505:6583" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BQSupportFuncts.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQSupportFuncts.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="482">
-              <caret line="726" column="28" lean-forward="false" selection-start-line="726" selection-start-column="28" selection-end-line="726" selection-end-column="28" />
-              <folding>
-                <marker date="1505228287000" expanded="true" signature="2332:2451" ph="/**...*/" />
-                <marker date="1505228287000" expanded="true" signature="2487:2515" ph="/**...*/" />
-                <marker date="1505228287000" expanded="true" signature="2674:3021" ph="/**...*/" />
-                <marker date="1505228287000" expanded="true" signature="3179:5206" ph="{...}" />
-                <marker date="1505228287000" expanded="true" signature="5323:5402" ph="{...}" />
-                <marker date="1505228287000" expanded="true" signature="5524:6146" ph="{...}" />
-                <marker date="1505228287000" expanded="true" signature="6152:6680" ph="/**...*/" />
-                <marker date="1505228287000" expanded="true" signature="6841:7433" ph="{...}" />
-                <marker date="1505228287000" expanded="true" signature="7439:7946" ph="/**...*/" />
-                <marker date="1505228287000" expanded="true" signature="8103:9611" ph="{...}" />
-                <marker date="1505228287000" expanded="true" signature="8361:8476" ph="//..." />
-                <marker date="1505228287000" expanded="true" signature="9617:9824" ph="/**...*/" />
-                <marker date="1505228287000" expanded="true" signature="9896:10124" ph="{...}" />
-                <marker date="1505228287000" expanded="true" signature="10130:10333" ph="/**...*/" />
-                <marker date="1505228287000" expanded="true" signature="10403:10677" ph="{...}" />
-                <marker date="1505228287000" expanded="true" signature="10683:11400" ph="/**...*/" />
-                <marker date="1505228287000" expanded="true" signature="11575:12750" ph="{...}" />
-                <marker date="1505228287000" expanded="true" signature="12756:13006" ph="/**...*/" />
-                <marker date="1505228287000" expanded="true" signature="13071:13455" ph="{...}" />
-                <marker date="1505228287000" expanded="true" signature="13210:13296" ph="//..." />
-                <marker date="1505228287000" expanded="true" signature="13461:14031" ph="/**...*/" />
-                <marker date="1505228287000" expanded="true" signature="14222:15047" ph="{...}" />
-                <marker date="1505228287000" expanded="true" signature="15053:15623" ph="/**...*/" />
-                <marker date="1505228287000" expanded="true" signature="15867:16200" ph="{...}" />
-                <marker date="1505228287000" expanded="true" signature="16206:16668" ph="/**...*/" />
-                <marker date="1505228287000" expanded="true" signature="16804:17330" ph="{...}" />
-                <marker date="1505228287000" expanded="true" signature="17336:17785" ph="/**...*/" />
-                <marker date="1505228287000" expanded="true" signature="17928:18014" ph="{...}" />
-                <marker date="1505228287000" expanded="true" signature="18020:18326" ph="/**...*/" />
-                <marker date="1505228287000" expanded="true" signature="18440:18541" ph="{...}" />
-                <marker date="1505228287000" expanded="true" signature="18547:18746" ph="/**...*/" />
-                <marker date="1505228287000" expanded="true" signature="18814:18881" ph="{...}" />
-                <marker date="1505228287000" expanded="true" signature="18887:19639" ph="/**...*/" />
-                <marker date="1505228287000" expanded="true" signature="19839:21295" ph="{...}" />
-                <marker date="1505228287000" expanded="true" signature="21301:22138" ph="/**...*/" />
-                <marker date="1505228287000" expanded="true" signature="22312:25227" ph="{...}" />
-                <marker date="1505228287000" expanded="true" signature="25233:25933" ph="/**...*/" />
-                <marker date="1505228287000" expanded="true" signature="26003:26898" ph="{...}" />
-                <marker date="1505228287000" expanded="true" signature="26904:27085" ph="/**...*/" />
-                <marker date="1505228287000" expanded="true" signature="27147:27659" ph="{...}" />
-                <marker date="1505228287000" expanded="true" signature="27665:27914" ph="/**...*/" />
-                <marker date="1505228287000" expanded="true" signature="28009:28183" ph="{...}" />
-                <marker date="1505228287000" expanded="true" signature="28189:29136" ph="/**...*/" />
-                <marker date="1505228287000" expanded="true" signature="29555:31361" ph="{...}" />
-                <marker date="1505228287000" expanded="true" signature="31367:32045" ph="/**...*/" />
-                <marker date="1505228287000" expanded="true" signature="32278:32433" ph="{...}" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -180,8 +83,8 @@
       <file leaf-file-name="BQPreparedStatement.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQPreparedStatement.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="222" column="38" lean-forward="true" selection-start-line="222" selection-start-column="38" selection-end-line="222" selection-end-column="38" />
+            <state relative-caret-position="318">
+              <caret line="332" column="34" lean-forward="false" selection-start-line="332" selection-start-column="34" selection-end-line="332" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -190,8 +93,8 @@
       <file leaf-file-name="BQStatement.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQStatement.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="88" column="29" lean-forward="false" selection-start-line="88" selection-start-column="29" selection-end-line="88" selection-end-column="29" />
+            <state relative-caret-position="-13">
+              <caret line="88" column="28" lean-forward="false" selection-start-line="88" selection-start-column="21" selection-end-line="88" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -200,8 +103,28 @@
       <file leaf-file-name="CancelTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/CancelTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="534">
-              <caret line="146" column="31" lean-forward="false" selection-start-line="146" selection-start-column="31" selection-end-line="146" selection-end-column="31" />
+            <state relative-caret-position="109">
+              <caret line="128" column="4" lean-forward="false" selection-start-line="128" selection-start-column="4" selection-end-line="128" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DataManipulationTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/DataManipulationTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="304">
+              <caret line="98" column="0" lean-forward="false" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JdbcGrammar.g" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/antlr/JdbcGrammar.g">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-888">
+              <caret line="28" column="3" lean-forward="false" selection-start-line="28" selection-start-column="3" selection-end-line="28" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -218,8 +141,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>maxbill</find>
-      <find>maxbillin</find>
       <find>maxbilling</find>
       <find>maxbillingb</find>
       <find>maxbillingby</find>
@@ -245,8 +166,10 @@
       <find>Inserting query j</find>
       <find>Inserting query job</find>
       <find>Inserting Query Job</find>
-      <find>execute</find>
       <find>normalizedat</find>
+      <find>BQStatement::startQuery</find>
+      <find>delete</find>
+      <find>execute</find>
       <find>execute(</find>
     </findStrings>
     <replaceStrings>
@@ -317,15 +240,15 @@
         <option value="$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQForwardOnlyResultSet.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQDatabaseMetadata.java" />
         <option value="$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/QueryResultTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/DataManipulationTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQConnection.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQSupportFuncts.java" />
         <option value="$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/AchillesTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQStatement.java" />
+        <option value="$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/BaseTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/DataDefinitionTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/DataManipulationTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQStatementRoot.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQPreparedStatement.java" />
-        <option value="$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/DataDefinitionTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/BaseTest.java" />
       </list>
     </option>
   </component>
@@ -349,10 +272,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-541" />
-    <option name="y" value="-1458" />
-    <option name="width" value="2219" />
-    <option name="height" value="1245" />
+    <option name="x" value="-188" />
+    <option name="y" value="-1504" />
+    <option name="width" value="1919" />
+    <option name="height" value="974" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -370,8 +293,6 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
-      <pane id="Scope" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -383,6 +304,46 @@
               <item name="bqjdbc" type="b2602c69:ProjectViewProjectNode" />
               <item name="starschema-bigquery-jdbc" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bqjdbc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="starschema-bigquery-jdbc" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bqjdbc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="starschema-bigquery-jdbc" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bqjdbc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="starschema-bigquery-jdbc" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="clouddb" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bqjdbc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="starschema-bigquery-jdbc" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="clouddb" type="462c0819:PsiDirectoryNode" />
+              <item name="jdbc" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bqjdbc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="starschema-bigquery-jdbc" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="clouddb" type="462c0819:PsiDirectoryNode" />
+              <item name="jdbc" type="462c0819:PsiDirectoryNode" />
+              <item name="antlr" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="bqjdbc" type="b2602c69:ProjectViewProjectNode" />
@@ -409,6 +370,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -445,7 +408,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.DataDefinitionTest.executeCreateTable">
+  <component name="RunManager" selected="JUnit.DataManipulationTest.ExecuteInsertUpdateDeleteTest">
     <configuration name="AchillesTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -533,7 +496,7 @@
       </envs>
       <patterns />
     </configuration>
-    <configuration name="DataManipulationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DataManipulationTest.ExecuteInsertUpdateDeleteTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="BQJDBC.QueryResultTest.*" />
@@ -545,8 +508,8 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="BQJDBC.QueryResultTest" />
       <option name="MAIN_CLASS_NAME" value="BQJDBC.QueryResultTest.DataManipulationTest" />
-      <option name="METHOD_NAME" value="" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="METHOD_NAME" value="ExecuteInsertUpdateDeleteTest" />
+      <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
@@ -816,19 +779,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.DataManipulationTest" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.DataManipulationTest.InsertQuotedString" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.BQJDBC.QueryResultTest in bqjdbc" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.AchillesTest" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.DataDefinitionTest.executeCreateTable" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.DataManipulationTest.InsertQuotedString" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.BQJDBC.QueryResultTest in bqjdbc" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.AchillesTest" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.DataDefinitionTest.executeCreateTable" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.DataManipulationTest.ExecuteInsertUpdateDeleteTest" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.DataDefinitionTest.executeCreateTable" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.AchillesTest" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.BQJDBC.QueryResultTest in bqjdbc" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.DataManipulationTest.InsertQuotedString" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.DataManipulationTest" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.DataManipulationTest.ExecuteInsertUpdateDeleteTest" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.DataDefinitionTest.executeCreateTable" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.AchillesTest" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.BQJDBC.QueryResultTest in bqjdbc" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.DataManipulationTest.InsertQuotedString" />
       </list>
     </recent_temporary>
   </component>
@@ -849,17 +812,17 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="AchillesTest - 2017.09.11 at 12h 09m 38s.xml">
-      <configuration name="AchillesTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="BQJDBC_QueryResultTest_in_bqjdbc - 2017.09.11 at 12h 08m 09s.xml">
-      <configuration name="BQJDBC.QueryResultTest in bqjdbc" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="DataDefinitionTest_executeCreateTable - 2017.09.12 at 11h 30m 13s.xml">
-      <configuration name="DataDefinitionTest.executeCreateTable" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="DataManipulationTest - 2017.06.15 at 15h 43m 30s.xml">
       <configuration name="DataManipulationTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DataManipulationTest_ExecuteInsertUpdateDeleteTest - 2017.09.15 at 10h 06m 30s.xml">
+      <configuration name="DataManipulationTest.ExecuteInsertUpdateDeleteTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DataManipulationTest_ExecuteInsertUpdateDeleteTest - 2017.09.15 at 10h 07m 06s.xml">
+      <configuration name="DataManipulationTest.ExecuteInsertUpdateDeleteTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DataManipulationTest_ExecuteInsertUpdateDeleteTest - 2017.09.15 at 10h 15m 26s.xml">
+      <configuration name="DataManipulationTest.ExecuteInsertUpdateDeleteTest" configurationId="JUnit" />
     </history-entry>
     <history-entry file="DataManipulationTest_InsertQuotedString - 2017.06.15 at 16h 58m 11s.xml">
       <configuration name="DataManipulationTest.InsertQuotedString" configurationId="JUnit" />
@@ -881,60 +844,39 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-541" y="-1458" width="2219" height="1245" extended-state="0" />
+    <frame x="-188" y="-1504" width="1919" height="974" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43307757" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4323725" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3486786" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25055432" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21180712" sideWeight="0.49405771" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36999148" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2615946" sideWeight="0.49405771" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32815966" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35044548" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2671167" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2660754" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2798848" sideWeight="0.5059423" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Dynamic Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35044548" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2671167" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43307757" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970384" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25063938" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21180712" sideWeight="0.49405771" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37029895" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2798848" sideWeight="0.5059423" order="6" side_tool="true" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -952,18 +894,18 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35044548" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2671167" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2671167" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4349084" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43307757" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25063938" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25072324" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970384" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27319586" sideWeight="0.49405771" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21180555" sideWeight="0.49405771" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37029895" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2798848" sideWeight="0.5059423" order="6" side_tool="true" content_ui="tabs" />
@@ -989,7 +931,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQStatementRoot.java</url>
-          <line>1033</line>
+          <line>1038</line>
           <properties />
           <option name="timeStamp" value="86" />
         </line-breakpoint>
@@ -1001,24 +943,30 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQStatementRoot.java</url>
-          <line>1223</line>
+          <line>1228</line>
           <properties />
           <option name="timeStamp" value="108" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQStatementRoot.java</url>
-          <line>1160</line>
+          <line>1165</line>
           <properties />
           <option name="timeStamp" value="113" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/DataManipulationTest.java</url>
-          <line>109</line>
+          <line>128</line>
           <properties />
           <option name="timeStamp" value="120" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/DataManipulationTest.java</url>
+          <line>97</line>
+          <properties />
+          <option name="timeStamp" value="121" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="121" />
+      <option name="time" value="122" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1151,13 +1099,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/antlr/JdbcGrammar.g">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1935">
-          <caret line="129" column="48" lean-forward="false" selection-start-line="129" selection-start-column="48" selection-end-line="129" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/BQResultSetFunctionTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -1254,7 +1195,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/DataManipulationTest.java" />
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/src.zip!/java/sql/DriverManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="337">
@@ -1273,7 +1213,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1395">
           <caret line="112" column="5" lean-forward="false" selection-start-line="112" selection-start-column="5" selection-end-line="112" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1292,16 +1231,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15330">
-          <caret line="1077" column="0" lean-forward="false" selection-start-line="1077" selection-start-column="0" selection-end-line="1077" selection-end-column="0" />
-          <folding>
-            <marker date="1505228287000" expanded="false" signature="32958:32964" ph=" }" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/google/apis/google-api-services-bigquery/v2-rev336-1.22.0/google-api-services-bigquery-v2-rev336-1.22.0-sources.jar!/com/google/api/services/bigquery/model/JobConfigurationQuery.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1096">
@@ -1311,103 +1240,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQDriver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
+        <state relative-caret-position="255">
           <caret line="77" column="40" lean-forward="false" selection-start-line="77" selection-start-column="40" selection-end-line="77" selection-end-column="40" />
           <folding>
-            <marker date="1505228287000" expanded="true" signature="3982:4219" ph="{...}" />
-            <marker date="1505228287000" expanded="true" signature="4225:4346" ph="/**...*/" />
-            <marker date="1505228287000" expanded="false" signature="4435:4441" ph=" }" />
-            <marker date="1505228287000" expanded="true" signature="4447:4568" ph="/**...*/" />
-            <marker date="1505228287000" expanded="false" signature="4657:4663" ph=" }" />
-            <marker date="1505228287000" expanded="true" signature="4669:4720" ph="/**...*/" />
-            <marker date="1505228287000" expanded="false" signature="4760:4771" ph=" { " />
-            <marker date="1505228287000" expanded="false" signature="4798:4804" ph=" }" />
-            <marker date="1505228287000" expanded="true" signature="4810:4830" ph="/**...*/" />
-            <marker date="1505228287000" expanded="true" signature="4907:4966" ph="{...}" />
-            <marker date="1505228287000" expanded="true" signature="4972:5115" ph="/**...*/" />
-            <marker date="1505228287000" expanded="true" signature="5226:5487" ph="{...}" />
-            <marker date="1505228287000" expanded="true" signature="5493:5513" ph="/**...*/" />
-            <marker date="1505228287000" expanded="false" signature="5560:5571" ph=" { " />
-            <marker date="1505228287000" expanded="false" signature="5601:5607" ph=" }" />
-            <marker date="1505228287000" expanded="true" signature="5613:5633" ph="/**...*/" />
-            <marker date="1505228287000" expanded="false" signature="5680:5691" ph=" { " />
-            <marker date="1505228287000" expanded="false" signature="5721:5727" ph=" }" />
-            <marker date="1505228287000" expanded="true" signature="5733:5933" ph="/**...*/" />
-            <marker date="1505228287000" expanded="true" signature="6117:6166" ph="{...}" />
-            <marker date="1505228287000" expanded="true" signature="6172:6317" ph="/**...*/" />
-            <marker date="1505228287000" expanded="false" signature="6366:6377" ph=" { " />
-            <marker date="1505228287000" expanded="false" signature="6390:6396" ph=" }" />
-            <marker date="1505228287000" expanded="true" signature="6505:6583" ph="{...}" />
+            <marker date="1505230253000" expanded="true" signature="3982:4219" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQSupportFuncts.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="482">
+        <state relative-caret-position="10230">
           <caret line="726" column="28" lean-forward="false" selection-start-line="726" selection-start-column="28" selection-end-line="726" selection-end-column="28" />
-          <folding>
-            <marker date="1505228287000" expanded="true" signature="2332:2451" ph="/**...*/" />
-            <marker date="1505228287000" expanded="true" signature="2487:2515" ph="/**...*/" />
-            <marker date="1505228287000" expanded="true" signature="2674:3021" ph="/**...*/" />
-            <marker date="1505228287000" expanded="true" signature="3179:5206" ph="{...}" />
-            <marker date="1505228287000" expanded="true" signature="5323:5402" ph="{...}" />
-            <marker date="1505228287000" expanded="true" signature="5524:6146" ph="{...}" />
-            <marker date="1505228287000" expanded="true" signature="6152:6680" ph="/**...*/" />
-            <marker date="1505228287000" expanded="true" signature="6841:7433" ph="{...}" />
-            <marker date="1505228287000" expanded="true" signature="7439:7946" ph="/**...*/" />
-            <marker date="1505228287000" expanded="true" signature="8103:9611" ph="{...}" />
-            <marker date="1505228287000" expanded="true" signature="8361:8476" ph="//..." />
-            <marker date="1505228287000" expanded="true" signature="9617:9824" ph="/**...*/" />
-            <marker date="1505228287000" expanded="true" signature="9896:10124" ph="{...}" />
-            <marker date="1505228287000" expanded="true" signature="10130:10333" ph="/**...*/" />
-            <marker date="1505228287000" expanded="true" signature="10403:10677" ph="{...}" />
-            <marker date="1505228287000" expanded="true" signature="10683:11400" ph="/**...*/" />
-            <marker date="1505228287000" expanded="true" signature="11575:12750" ph="{...}" />
-            <marker date="1505228287000" expanded="true" signature="12756:13006" ph="/**...*/" />
-            <marker date="1505228287000" expanded="true" signature="13071:13455" ph="{...}" />
-            <marker date="1505228287000" expanded="true" signature="13210:13296" ph="//..." />
-            <marker date="1505228287000" expanded="true" signature="13461:14031" ph="/**...*/" />
-            <marker date="1505228287000" expanded="true" signature="14222:15047" ph="{...}" />
-            <marker date="1505228287000" expanded="true" signature="15053:15623" ph="/**...*/" />
-            <marker date="1505228287000" expanded="true" signature="15867:16200" ph="{...}" />
-            <marker date="1505228287000" expanded="true" signature="16206:16668" ph="/**...*/" />
-            <marker date="1505228287000" expanded="true" signature="16804:17330" ph="{...}" />
-            <marker date="1505228287000" expanded="true" signature="17336:17785" ph="/**...*/" />
-            <marker date="1505228287000" expanded="true" signature="17928:18014" ph="{...}" />
-            <marker date="1505228287000" expanded="true" signature="18020:18326" ph="/**...*/" />
-            <marker date="1505228287000" expanded="true" signature="18440:18541" ph="{...}" />
-            <marker date="1505228287000" expanded="true" signature="18547:18746" ph="/**...*/" />
-            <marker date="1505228287000" expanded="true" signature="18814:18881" ph="{...}" />
-            <marker date="1505228287000" expanded="true" signature="18887:19639" ph="/**...*/" />
-            <marker date="1505228287000" expanded="true" signature="19839:21295" ph="{...}" />
-            <marker date="1505228287000" expanded="true" signature="21301:22138" ph="/**...*/" />
-            <marker date="1505228287000" expanded="true" signature="22312:25227" ph="{...}" />
-            <marker date="1505228287000" expanded="true" signature="25233:25933" ph="/**...*/" />
-            <marker date="1505228287000" expanded="true" signature="26003:26898" ph="{...}" />
-            <marker date="1505228287000" expanded="true" signature="26904:27085" ph="/**...*/" />
-            <marker date="1505228287000" expanded="true" signature="27147:27659" ph="{...}" />
-            <marker date="1505228287000" expanded="true" signature="27665:27914" ph="/**...*/" />
-            <marker date="1505228287000" expanded="true" signature="28009:28183" ph="{...}" />
-            <marker date="1505228287000" expanded="true" signature="28189:29136" ph="/**...*/" />
-            <marker date="1505228287000" expanded="true" signature="29555:31361" ph="{...}" />
-            <marker date="1505228287000" expanded="true" signature="31367:32045" ph="/**...*/" />
-            <marker date="1505228287000" expanded="true" signature="32278:32433" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/CancelTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="534">
-          <caret line="146" column="31" lean-forward="false" selection-start-line="146" selection-start-column="31" selection-end-line="146" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/AchillesTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
+        <state relative-caret-position="915">
           <caret line="102" column="43" lean-forward="false" selection-start-line="102" selection-start-column="43" selection-end-line="102" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1417,52 +1268,82 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/starschema/clouddb/initializer/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
+        <state relative-caret-position="5490">
           <caret line="472" column="45" lean-forward="false" selection-start-line="472" selection-start-column="45" selection-end-line="472" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQPreparedStatement.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/CancelTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="222" column="38" lean-forward="true" selection-start-line="222" selection-start-column="38" selection-end-line="222" selection-end-column="38" />
+        <state relative-caret-position="109">
+          <caret line="128" column="4" lean-forward="false" selection-start-line="128" selection-start-column="4" selection-end-line="128" selection-end-column="4" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQStatement.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQConnection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="88" column="29" lean-forward="false" selection-start-line="88" selection-start-column="29" selection-end-line="88" selection-end-column="29" />
+        <state relative-caret-position="212">
+          <caret line="370" column="0" lean-forward="false" selection-start-line="370" selection-start-column="0" selection-end-line="370" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQStatementRoot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-705">
-          <caret line="186" column="24" lean-forward="true" selection-start-line="186" selection-start-column="24" selection-end-line="186" selection-end-column="24" />
-          <folding>
-            <marker date="1505230170000" expanded="true" signature="4383:4454" ph="{...}" />
-            <marker date="1505230170000" expanded="false" signature="15577:15595" ph="&lt;~&gt;" />
-            <marker date="1505230170000" expanded="false" signature="26368:26376" ph="&lt;~&gt;" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/BaseTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="57" column="30" lean-forward="false" selection-start-line="57" selection-start-column="30" selection-end-line="57" selection-end-column="30" />
+        <state relative-caret-position="213">
+          <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/antlr/JdbcGrammar.g">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-888">
+          <caret line="28" column="3" lean-forward="false" selection-start-line="28" selection-start-column="3" selection-end-line="28" selection-end-column="3" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/DataDefinitionTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="452">
-          <caret line="115" column="52" lean-forward="false" selection-start-line="115" selection-start-column="52" selection-end-line="115" selection-end-column="52" />
+        <state relative-caret-position="-562">
+          <caret line="88" column="37" lean-forward="false" selection-start-line="88" selection-start-column="37" selection-end-line="88" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-13">
+          <caret line="88" column="28" lean-forward="false" selection-start-line="88" selection-start-column="21" selection-end-line="88" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQPreparedStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="332" column="34" lean-forward="false" selection-start-line="332" selection-start-column="34" selection-end-line="332" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/starschema/clouddb/jdbc/BQStatementRoot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="344" column="34" lean-forward="false" selection-start-line="344" selection-start-column="34" selection-end-line="344" selection-end-column="34" />
+          <folding>
+            <marker date="1505484915000" expanded="true" signature="4383:4454" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/BQJDBC/QueryResultTest/DataManipulationTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="98" column="0" lean-forward="false" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
           <folding />
         </state>
       </provider>

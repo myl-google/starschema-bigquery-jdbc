@@ -214,7 +214,7 @@ public class BQPreparedStatement extends BQStatementRoot implements
         }
         final String normalizedUpdateSql = normalizeDataDefinitionForParsing(this.RunnableStatement);
         Tree dataDefinitionTree = tryParseDataDefinition(normalizedUpdateSql);
-        if (dataDefinitionTree != null) {
+        if (dataDefinitionTree != null || isSupportedDML(normalizedUpdateSql)) {
             this.executeUpdate(this.RunnableStatement);
             return true;
         } else {

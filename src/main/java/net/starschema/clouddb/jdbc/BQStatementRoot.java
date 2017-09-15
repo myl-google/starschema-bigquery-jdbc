@@ -182,7 +182,7 @@ public abstract class BQStatementRoot {
 
         final String normalizedUpdateSql = normalizeDataDefinitionForParsing(arg0);
         Tree dataDefinitionTree = tryParseDataDefinition(normalizedUpdateSql);
-        if (dataDefinitionTree != null) {
+        if (dataDefinitionTree != null || isSupportedDML(normalizedUpdateSql)) {
             this.executeUpdate(arg0);
             return true;
         } else {
@@ -409,6 +409,11 @@ public abstract class BQStatementRoot {
         // Remove line comments since the ANTLR parsing transforms the text in a way that breaks the
         // recognition of these in the grammar
         return updateSql.replaceAll("--[^\\n\\r]*\\r?\\n", "");
+    }
+
+    protected boolean isSupportedDML(String sql) {
+        String normalized_sql = sql.trim().toLowerCase();
+        return normalized_sql.startsWith("insert") || normalized_sql.startsWith("update") || normalized_sql.startsWith("delete");
     }
 
     private void verifyChildText(Tree tree, int i, String expected_text) throws SQLException {

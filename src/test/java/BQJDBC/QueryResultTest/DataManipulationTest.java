@@ -25,6 +25,7 @@
 package BQJDBC.QueryResultTest;
 
 import junit.framework.Assert;
+import org.apache.commons.io.filefilter.FalseFileFilter;
 import org.junit.Test;
 
 import java.sql.PreparedStatement;
@@ -87,6 +88,24 @@ public class DataManipulationTest extends BaseTest {
         final String delete_sql = "delete starschema.test where col='c'";
         result = executeUpdate(delete_sql, false);
         Assert.assertEquals(1, result );
+    }
+
+    @Test
+    public void ExecuteInsertUpdateDeleteTest() {
+        boolean result = false;
+        this.logger.info("Test number: ExecuteInsertUpdateDeleteTest");
+
+        final String insert_sql = "insert into starschema.test(col) values ('b')";
+        result = execute(insert_sql, false);
+        Assert.assertTrue(result);
+
+        final String update_sql = "update starschema.test set col='c' where col='b'";
+        result = execute(update_sql, false);
+        Assert.assertTrue(result);
+
+        final String delete_sql = "delete starschema.test where col='c'";
+        result = execute(delete_sql, false);
+        Assert.assertTrue(result );
     }
 
     @Test
