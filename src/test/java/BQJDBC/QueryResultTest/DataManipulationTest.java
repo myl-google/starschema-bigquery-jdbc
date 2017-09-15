@@ -92,20 +92,20 @@ public class DataManipulationTest extends BaseTest {
 
     @Test
     public void ExecuteInsertUpdateDeleteTest() {
-        boolean result = false;
+        int result = 0;
         this.logger.info("Test number: ExecuteInsertUpdateDeleteTest");
 
         final String insert_sql = "insert into starschema.test(col) values ('b')";
         result = execute(insert_sql, false);
-        Assert.assertTrue(result);
+        Assert.assertEquals(1, result);
 
         final String update_sql = "update starschema.test set col='c' where col='b'";
         result = execute(update_sql, false);
-        Assert.assertTrue(result);
+        Assert.assertEquals(1, result);
 
         final String delete_sql = "delete starschema.test where col='c'";
         result = execute(delete_sql, false);
-        Assert.assertTrue(result );
+        Assert.assertEquals(1, result);
     }
 
     @Test

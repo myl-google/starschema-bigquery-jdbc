@@ -54,6 +54,11 @@ public abstract class BQStatementRoot {
     ResultSet resset = null;
 
     /**
+     * Stores the result of execute when the the statement is an update
+     */
+    int updateCount = 0;
+
+    /**
      * String containing the context of the Project
      */
     String ProjectId = null;
@@ -183,8 +188,8 @@ public abstract class BQStatementRoot {
         final String normalizedUpdateSql = normalizeDataDefinitionForParsing(arg0);
         Tree dataDefinitionTree = tryParseDataDefinition(normalizedUpdateSql);
         if (dataDefinitionTree != null || isSupportedDML(normalizedUpdateSql)) {
-            this.executeUpdate(arg0);
-            return true;
+            this.updateCount = this.executeUpdate(arg0);
+            return false;
         } else {
             this.resset = this.executeQuery(arg0);
             this.logger.info("Executing Query: " + arg0);
@@ -1053,14 +1058,13 @@ public abstract class BQStatementRoot {
     /**
      * <p>
      * <h1>Implementation Details:</h1><br>
-     * Result will be a ResultSet object.
      * </p>
      *
-     * @return -1
+     * @return updateCount
      */
 
     public int getUpdateCount() throws SQLException {
-        return -1;
+        return this.updateCount;
     }
 
     /**

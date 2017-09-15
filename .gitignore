@@ -1,3 +1,4 @@
 /target/
 *.iml
+.idea/workspace.xml
 .DS_Store

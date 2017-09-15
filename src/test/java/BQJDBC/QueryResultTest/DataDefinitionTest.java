@@ -109,11 +109,11 @@ public class DataDefinitionTest extends BaseTest {
 
         executeUpdateRequireSuccess("drop table if exists starschema.t1;", 0);
         logger.info("Running test: create table:" + newLine + create_table);
-        Assert.assertTrue(execute(create_table, false));
+        Assert.assertEquals(0, execute(create_table, false));
 
         executeUpdateRequireSuccess("drop table if exists starschema.t1;", 0);
         logger.info("Running test: create table:" + newLine + create_table);
-        Assert.assertTrue(execute(create_table, true));
+        Assert.assertEquals(0, execute(create_table, true));
     }
 
     /**

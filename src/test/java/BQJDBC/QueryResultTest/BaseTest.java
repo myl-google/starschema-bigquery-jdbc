@@ -3,6 +3,7 @@ package BQJDBC.QueryResultTest;
 import BQJDBC.QueryResultTest.QueryResultTest;
 import junit.framework.Assert;
 import net.starschema.clouddb.jdbc.BQConnection;
+import net.starschema.clouddb.jdbc.BQPreparedStatement;
 import net.starschema.clouddb.jdbc.BQSupportFuncts;
 import net.starschema.clouddb.jdbc.BQSupportMethods;
 import org.apache.log4j.Logger;
@@ -53,20 +54,30 @@ public class BaseTest {
         }
     }
 
-    protected boolean execute(String sql, boolean prepared) {
+    protected int execute(String sql, boolean prepared) {
         this.logger.info("Running statement:" + sql);
-        boolean result = false;
         try {
             if (prepared) {
-                result = con.prepareStatement(sql).execute();
+                java.sql.PreparedStatement stmt = con.prepareStatement(sql);
+                if (stmt.execute()) {
+                    // Should not be used with statement that returns a result set
+                    return -1;
+                } else {
+                    return stmt.getUpdateCount();
+                }
             } else {
-                result = con.createStatement().execute(sql);
+                java.sql.Statement stmt = con.createStatement();
+                if (stmt.execute(sql)) {
+                    // Should not be used with statement that returns a result set
+                    return -1;
+                } else {
+                    return stmt.getUpdateCount();
+                }
             }
         } catch (SQLException e) {
             this.logger.error("SQLexception" + e.toString());
-            //Assert.fail("SQLException" + e.toString());
+            return -2;
         }
-        return result;
     }
 
     protected int executeUpdate(String sql, boolean prepared) {
