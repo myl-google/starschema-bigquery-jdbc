@@ -433,7 +433,7 @@ public abstract class BQStatementRoot {
             case "CREATETABLESTATEMENT":
                 return executeCreateTable(tree);
             case "DROPTABLESTATEMENT":
-                return executeDropTable(tree);
+                return executeDropTable(tree, updateSql);
             case "TRUNCATETABLESTATEMENT":
                 return executeTruncateTable(tree);
             case "INSERTFROMSELECTSTATEMENT":
@@ -515,11 +515,11 @@ public abstract class BQStatementRoot {
         return 0;
     }
 
-    private int executeDropTable(Tree tree) throws SQLException {
+    private int executeDropTable(Tree tree, String updateSql) throws SQLException {
         // Extract table name from the first child.
         Tree table_name_tree = tree.getChild(0);
         if (table_name_tree.getText() != "SOURCETABLE" || table_name_tree.getChildCount() != 2) {
-            throw new BQSQLException("Error with table name in DROP TABLE");
+            throw new BQSQLException("Error with table name in DROP TABLE: " + updateSql);
         }
         final String dataSetId = table_name_tree.getChild(0).getText();
         final String tableId = table_name_tree.getChild(1).getText();
