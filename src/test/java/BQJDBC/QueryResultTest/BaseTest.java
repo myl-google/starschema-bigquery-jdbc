@@ -40,9 +40,9 @@ public class BaseTest {
                             .getConnection(
                                     BQSupportFuncts
                                             .constructUrlFromPropertiesFile(BQSupportFuncts
-                                                    .readFromPropFile(getClass().getResource("/serviceaccount.properties").getFile())),
+                                                    .readFromPropFile(getClass().getResource(/*"/serviceaccount.properties"*/ "/application_default.properties").getFile())),
                                     BQSupportFuncts
-                                            .readFromPropFile(getClass().getResource("/serviceaccount.properties").getFile()));
+                                            .readFromPropFile(getClass().getResource(/*"/serviceaccount.properties"*/ "/application_default.properties").getFile()));
                 } catch (Exception e) {
                     this.logger.error("Error in connection" + e.toString());
                     Assert.fail("General Exception:" + e.toString());

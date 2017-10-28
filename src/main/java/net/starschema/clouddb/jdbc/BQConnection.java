@@ -110,7 +110,11 @@ public class BQConnection implements Connection {
         this.isclosed = false;
 
         try {
-            String pathParams = URLDecoder.decode(url.substring(url.lastIndexOf(":") + 1, url.indexOf('?')), "UTF-8");
+            int endPathIndex = url.indexOf('?');
+            if (endPathIndex == -1) {
+                endPathIndex = url.length();
+            }
+            String pathParams = URLDecoder.decode(url.substring(url.lastIndexOf(":") + 1, endPathIndex), "UTF-8");
             Pattern projectAndDatasetMatcher = Pattern.compile("^([^/$]+)(?:/([^$]*))?$");
 
             Matcher matchData = projectAndDatasetMatcher.matcher(pathParams);
@@ -218,8 +222,12 @@ public class BQConnection implements Connection {
         }
         //let use Oauth
         else {
-            this.bigquery = Oauth2Bigquery.authorizeviainstalled(userId, userKey, userAgent);
-            this.logger.info("Authorized with Oauth");
+            if (userId == null && userKey == null && userAgent == null) {
+                this.bigquery = Oauth2Bigquery.authorizeviadefaultcredentials();
+            } else {
+                this.bigquery = Oauth2Bigquery.authorizeviainstalled(userId, userKey, userAgent);
+                this.logger.info("Authorized with Oauth");
+            }
         }
         logger.debug("The project id for this connections is: " + this.projectId);
     }

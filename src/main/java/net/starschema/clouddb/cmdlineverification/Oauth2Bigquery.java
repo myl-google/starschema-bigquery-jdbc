@@ -204,6 +204,37 @@ public class Oauth2Bigquery {
     }
 
     /**
+     * Authorizes a bigquery Connection using application default credentials
+     *
+     * @return Authorized bigquery Connection
+     * @throws SQLException
+     */
+    public static Bigquery authorizeviadefaultcredentials() throws SQLException {
+        LocalServerReceiver rcvr = new LocalServerReceiver();
+        //List<String> Scopes = new ArrayList<String>();
+        //Scopes.add(BigqueryScopes.BIGQUERY);
+        Credential credential = null;
+        try {
+            logger.debug("Authorizing with application default credentials.");
+            credential = GoogleCredential.getApplicationDefault();
+        } catch (Exception e) {
+            throw new SQLException(e);
+        }
+
+        logger.debug("Creating a new bigquery client.");
+        Builder bqBuilder = new Builder(
+                CmdlineUtils.getHttpTransport(),
+                CmdlineUtils.getJsonFactory(), credential
+        );
+
+        Bigquery bigquery = bqBuilder.build();
+
+        Oauth2Bigquery.servicepath = bigquery.getServicePath();
+        return bigquery;
+    }
+
+
+    /**
      * This function gives back an built GoogleCredential Ojbect from a p12 keyfile
      *
      * @param serviceaccountemail

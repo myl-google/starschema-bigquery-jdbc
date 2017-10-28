@@ -105,15 +105,19 @@ public class BQSupportFuncts {
             } else {
                 return null;
             }
-        } else {
-            return null;
+        } else if (properties.getProperty("type").equals("default-credentials")) {
+            if (ProjectId != null) {
+                forreturn = BQDriver.getURLPrefix()
+                        + URLEncoder.encode(ProjectId, "UTF-8");
+            } else {
+                return null;
+            }
         }
 
         if (transformQuery != null && !full) {
             if (properties.getProperty("type").equals("service")) {
                 return forreturn + "&transformQuery=" + transformQuery;
-            }
-            else {
+            } else {
                 return forreturn + "?transformQuery=" + transformQuery;
             }
 
