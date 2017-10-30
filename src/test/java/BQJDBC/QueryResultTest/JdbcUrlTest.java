@@ -114,7 +114,7 @@ public class JdbcUrlTest {
         String url = getUrl("/protectedaccount.properties", null);
         BQConnection bqConn = new BQConnection(url, new Properties());
         // default false
-        Assert.assertEquals(bqConn.getUseLegacySql(), true);
+        Assert.assertEquals(bqConn.getUseLegacySql(), false);
 
         String newUrl = url + "&useLegacySql=false";
         BQConnection bqConn2 = new BQConnection(newUrl, new Properties());
