@@ -29,7 +29,7 @@ public class BaseTest {
      * Connection to static con member.
      */
     @Before
-    public void NewConnection() {
+    public void NewConnectionWithServiceAccount() {
         try {
             if (con == null || !con.isValid(0)) {
 
@@ -40,9 +40,9 @@ public class BaseTest {
                             .getConnection(
                                     BQSupportFuncts
                                             .constructUrlFromPropertiesFile(BQSupportFuncts
-                                                    .readFromPropFile(getClass().getResource(/*"/serviceaccount.properties"*/ "/application_default.properties").getFile())),
+                                                    .readFromPropFile(getClass().getResource("/serviceaccount.properties").getFile())),
                                     BQSupportFuncts
-                                            .readFromPropFile(getClass().getResource(/*"/serviceaccount.properties"*/ "/application_default.properties").getFile()));
+                                            .readFromPropFile(getClass().getResource("/serviceaccount.properties").getFile()));
                 } catch (Exception e) {
                     this.logger.error("Error in connection" + e.toString());
                     Assert.fail("General Exception:" + e.toString());
@@ -53,6 +53,7 @@ public class BaseTest {
             e.printStackTrace();
         }
     }
+
 
     protected int execute(String sql, boolean prepared) {
         this.logger.info("Running statement:" + sql);

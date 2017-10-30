@@ -122,6 +122,8 @@ public class AchillesTest {
      */
     @Test
     public void runAchillesScript() {
+        /* Long test.  Uncomment to run.
+
         final String replacements_path = "../SqlRender/inst/csv/replacementPatterns.csv";
         Path achilles_path = Paths.get("../achilles-scripts", "output-rendered.sql");
         Path achilles_translated_path = Paths.get("../achilles-scripts", "output-translated.sql");
@@ -157,5 +159,6 @@ public class AchillesTest {
             final int result = executeUpdate(translated_sql);
             Assert.assertTrue(result != -1);
         }
+        */
     }
 }

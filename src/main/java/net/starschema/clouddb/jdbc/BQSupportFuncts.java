@@ -108,7 +108,8 @@ public class BQSupportFuncts {
         } else if (properties.getProperty("type").equals("default-credentials")) {
             if (ProjectId != null) {
                 forreturn = BQDriver.getURLPrefix()
-                        + URLEncoder.encode(ProjectId, "UTF-8");
+                        + URLEncoder.encode(ProjectId, "UTF-8")
+                        + (dataset != null && full ? "/" + URLEncoder.encode(dataset, "UTF-8") : "");
             } else {
                 return null;
             }

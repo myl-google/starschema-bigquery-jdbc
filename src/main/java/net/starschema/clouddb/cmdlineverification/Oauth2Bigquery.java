@@ -211,8 +211,6 @@ public class Oauth2Bigquery {
      */
     public static Bigquery authorizeviadefaultcredentials() throws SQLException {
         LocalServerReceiver rcvr = new LocalServerReceiver();
-        //List<String> Scopes = new ArrayList<String>();
-        //Scopes.add(BigqueryScopes.BIGQUERY);
         Credential credential = null;
         try {
             logger.debug("Authorizing with application default credentials.");
