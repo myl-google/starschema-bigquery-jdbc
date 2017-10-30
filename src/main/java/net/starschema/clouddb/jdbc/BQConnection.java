@@ -80,7 +80,7 @@ public class BQConnection implements Connection {
     }
 
     /** Boolean to determine whether or not to use legacy sql (default: true) **/
-    private boolean useLegacySql = true;
+    private boolean useLegacySql = false;
 
     /** getter for useLegacySql */
     public boolean getUseLegacySql() {
@@ -164,7 +164,7 @@ public class BQConnection implements Connection {
 
         // extract useLegacySql property
         String legacySqlParam = caseInsensitiveProps.getProperty("uselegacysql");
-        this.useLegacySql = (legacySqlParam == null) || Boolean.parseBoolean(legacySqlParam);
+        this.useLegacySql = (legacySqlParam != null) && Boolean.parseBoolean(legacySqlParam);
 
         String readTimeoutString = caseInsensitiveProps.getProperty("readtimeout");
         Integer readTimeout = null;
