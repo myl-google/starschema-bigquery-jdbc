@@ -413,7 +413,9 @@ public abstract class BQStatementRoot {
     protected String normalizeDataDefinitionForParsing(String updateSql) {
         // Remove line comments since the ANTLR parsing transforms the text in a way that breaks the
         // recognition of these in the grammar
-        return updateSql.replaceAll("--[^\\n\\r]*\\r?\\n", "");
+        updateSql = updateSql.replaceAll("--[^\\n\\r]*\\r?\\n", "");
+        // Remove multi-line comments
+        return updateSql.replaceAll("/\\*[^*]*\\*+(?:[^/*][^*]*\\*+)*/", "");
     }
 
     protected boolean isSupportedDML(String sql) {
