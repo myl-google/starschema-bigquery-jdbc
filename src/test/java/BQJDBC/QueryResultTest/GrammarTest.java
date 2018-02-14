@@ -73,10 +73,13 @@ public class GrammarTest {
 
 
     static String input;
+/*
 
-    /**
+    */
+/**
      * to Test the columnresolver from 2 subqueries
-     */
+     *//*
+
     @Test
     public void selectJokerFromSubQueries() {
         input = "SELECT * FROM (SELECT aa.*, bb.* FROM efashion.OUTLET_LOOKUP aa, efashion.OUTLET_LOOKUP bb) LIMIT 10;";
@@ -92,7 +95,9 @@ public class GrammarTest {
         HelperFunctions.printer(queryResult);
     }
 
-    /** a sample query which passed back by Eclipse Birt */
+    */
+/** a sample query which passed back by Eclipse Birt *//*
+
     @Test
     public void twoJoin() {
         input = "SELECT \r\n" +
@@ -120,10 +125,12 @@ public class GrammarTest {
     }
 
 
-    /**
+    */
+/**
      * to test the JOINresolver, it should make a JOIN with it's
      * ONCLAUSE derived by the WHERE clause
-     */
+     *//*
+
     @Test
     public void twoTableWithWhere() {
 
@@ -143,9 +150,11 @@ public class GrammarTest {
         HelperFunctions.printer(queryResult);
     }
 
-    /**
+    */
+/**
      * to test the JOINresolver, where there are multiple WHERE conditions
-     */
+     *//*
+
     @Test
     public void twoTableWithMultipleWhereOne() {
 
@@ -170,9 +179,11 @@ public class GrammarTest {
         HelperFunctions.printer(queryResult);
     }
 
-    /**
+    */
+/**
      * to test the multijoinresolver
-     */
+     *//*
+
     @Test
     public void threeJoinsInChain() {
 
@@ -194,9 +205,11 @@ public class GrammarTest {
         HelperFunctions.printer(queryResult);
     }
 
-    /**
+    */
+/**
      * to test the Joinresolver with 2 where clause
-     */
+     *//*
+
     @Test
     public void twoTableWithMultipleWhere() {
 
@@ -216,11 +229,13 @@ public class GrammarTest {
         HelperFunctions.printer(queryResult);
     }
 
-    /**
+    */
+/**
      * to test the union of the bigquery we'll make 2 subqueries,
      * 1 with 2nd where clause and other with the 3rd where clause
      * both subqueries will contain a join with the onclause from the 1st where clause
-     */
+     *//*
+
     @Test
     public void twoTableWithMultipleWheres() {
 
@@ -239,9 +254,11 @@ public class GrammarTest {
         HelperFunctions.printer(queryResult);
     }
 
-    /**
+    */
+/**
      *
-     */
+     *//*
+
     @Test
     public void twoTableWithMultipleWheresWithOr() {
 
@@ -260,9 +277,11 @@ public class GrammarTest {
         HelperFunctions.printer(queryResult);
     }
 
-    /**
+    */
+/**
      * to test the columnresolving from the joins
-     */
+     *//*
+
     @Test
     public void twoJoinsWithWhere() {
 
@@ -308,10 +327,12 @@ public class GrammarTest {
         HelperFunctions.printer(queryResult);
     }
 
-    /**
+    */
+/**
      * A sample first made by Tamas
      * by default this is a BigQuery compatible query
-     */
+     *//*
+
     @Test
     public void testMultipleSubqueriesWithJoins() {
 
@@ -363,7 +384,9 @@ public class GrammarTest {
         HelperFunctions.printer(queryResult);
     }
 
-    /** A simple query with count(*) */
+    */
+/** A simple query with count(*) *//*
+
     @Test
     public void countJoker() {
 
@@ -381,10 +404,12 @@ public class GrammarTest {
         HelperFunctions.printer(queryResult);
     }
 
-    /**
+    */
+/**
      * A modified query from iReport, original containted: "efahsio"n."ARTICLE
      * we test with "efashion"."ARTICLE
-     */
+     *//*
+
     @Test
     public void iReportTwoColumnsOneTable() {
 
@@ -405,9 +430,11 @@ public class GrammarTest {
         HelperFunctions.printer(queryResult);
     }
 
-    /**
+    */
+/**
      * a publicdatatest
-     */
+     *//*
+
     @Test
     public void publicDataSelectJoker() {
 
@@ -425,7 +452,9 @@ public class GrammarTest {
         HelperFunctions.printer(queryResult);
     }
 
-    /** to test Ticket 56 */
+    */
+/** to test Ticket 56 *//*
+
     @Test
     public void selectDuplicateColumn() {
 
@@ -443,7 +472,9 @@ public class GrammarTest {
         HelperFunctions.printer(queryResult);
     }
 
-    /** A sample made by SQuirrel SQL */
+    */
+/** A sample made by SQuirrel SQL *//*
+
     @Test
     public void selectTableAliasJoker() {
 
@@ -461,10 +492,12 @@ public class GrammarTest {
         HelperFunctions.printer(queryResult);
     }
 
-    /**
+    */
+/**
      * we can't parse the query, since we don't have a table named "notvalidtable"
      * because of that we'll fail to resolve it's columns
-     */
+     *//*
+
     @Test
     public void selectJokerFromNotValidTable() {
 
@@ -481,7 +514,9 @@ public class GrammarTest {
 
     }
 
-    /** A sample made by ireport */
+    */
+/** A sample made by ireport *//*
+
     @Test
     public void ireportSelectColumnsFromInnerJoin() {
 
@@ -509,7 +544,9 @@ public class GrammarTest {
         HelperFunctions.printer(queryResult);
     }
 
-    /** To test the joinresolver */
+    */
+/** To test the joinresolver *//*
+
     @Test
     public void selectFromDuplicateTableWithAliasesWithoutWhere() {
 
@@ -527,7 +564,9 @@ public class GrammarTest {
         HelperFunctions.printer(queryResult);
     }
 
-    /** to test chained joins */
+    */
+/** to test chained joins *//*
+
     @Test
     public void selectJokerFromTwoChainedJoin() {
         input = "Select * from efashion.ARTICLE_LOOKUP_CRITERIA alc \r\n" +
@@ -653,7 +692,9 @@ public class GrammarTest {
         HelperFunctions.printer(queryResult);
     }
 
-    /** A sample made by RazorSQL */
+    */
+/** A sample made by RazorSQL *//*
+
     @Test
     public void selectTwoTableJoinWithWhereAndGroupBy() {
 
@@ -801,5 +842,6 @@ public class GrammarTest {
     //---------------------------------------------------
     //---------------------------------------------------
     //---------------------------------------------------
+*/
 
 }

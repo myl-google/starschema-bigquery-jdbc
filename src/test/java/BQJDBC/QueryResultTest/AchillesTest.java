@@ -30,8 +30,8 @@ import net.starschema.clouddb.jdbc.BQSupportMethods;
 import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
-import org.ohdsi.sql.SqlSplit;
-import org.ohdsi.sql.SqlTranslate;
+//import org.ohdsi.sql.SqlSplit;
+//import org.ohdsi.sql.SqlTranslate;
 
 import java.io.IOException;
 import java.nio.charset.Charset;

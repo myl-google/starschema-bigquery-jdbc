@@ -74,13 +74,20 @@ public class GrammarTestRunningForLong {
 
 
     static String input;
-    /**
-     * to Test the columnresolver from 2 subqueries
-     */
 
-    /**
+/*
+
+    */
+/**
+     * to Test the columnresolver from 2 subqueries
+     *//*
+
+
+    */
+/**
      * to test the Grammars MultiJoin
-     */
+     *//*
+
     @Test
     public void fourJoin() {
 
@@ -117,10 +124,12 @@ public class GrammarTestRunningForLong {
     }
 
 
-    /**
+    */
+/**
      * A simple query with count(*)
      * from Quartezian joined tables
-     */
+     *//*
+
     @Test
     public void countJokerFromTwoTables() {
 
@@ -140,7 +149,9 @@ public class GrammarTestRunningForLong {
     }
 
 
-    /** To test the joinresolver */
+    */
+/** To test the joinresolver *//*
+
     @Test
     public void selectFromDuplicateTableWithoutAlias() {
         input = "SELECT efashion.ARTICLE_LOOKUP.ARTICLE_CODE as ARTICLE_CODE1, efashion.ARTICLE_LOOKUP_CRITERIA.ARTICLE_CODE as ARTICLE_CODE2 FROM efashion.ARTICLE_LOOKUP, efashion.ARTICLE_LOOKUP_CRITERIA limit 10";
@@ -179,9 +190,11 @@ public class GrammarTestRunningForLong {
 
         ResultSet queryResult = null;
         try {
-            /*
+            */
+/*
             Statement stm = con.createStatement(
-                    ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);*/
+                    ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);*//*
+
             Statement stm = con.createStatement();
             queryResult = stm.executeQuery(input);
         } catch (SQLException e) {
@@ -349,5 +362,6 @@ public class GrammarTestRunningForLong {
     //---------------------------------------------------
     //---------------------------------------------------
     //---------------------------------------------------
+*/
 
 }

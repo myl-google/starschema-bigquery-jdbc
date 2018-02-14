@@ -128,7 +128,7 @@ public class JdbcUrlTest {
         // default null
         Assert.assertNull(bqConn.getMaxBillingBytes());
 
-        String newUrl = url + "&maxbillingbytes=1000000000";
+        String newUrl = url + "?maxbillingbytes=1000000000";
         BQConnection bqConn2 = new BQConnection(newUrl, new Properties());
         Assert.assertEquals((long) bqConn2.getMaxBillingBytes(), 1000000000);
     }

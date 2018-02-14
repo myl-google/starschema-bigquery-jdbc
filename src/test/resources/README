@@ -1,0 +1,4 @@
+# TODO - the following should be changed to not use type=application-default
+protectedaccountjson.properties
+protectedaccountp12.properties
+serviceaccount.properties
