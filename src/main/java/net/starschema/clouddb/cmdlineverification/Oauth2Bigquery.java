@@ -210,10 +210,10 @@ public class Oauth2Bigquery {
      * @throws SQLException
      */
     public static Bigquery authorizeviadefaultcredentials() throws SQLException {
-        LocalServerReceiver rcvr = new LocalServerReceiver();
+        //LocalServerReceiver rcvr = new LocalServerReceiver();
         Credential credential = null;
         try {
-            logger.debug("Authorizing with application default credentials.");
+            //logger.debug("Authorizing with application default credentials.");
             credential = GoogleCredential.getApplicationDefault();
         } catch (Exception e) {
             throw new SQLException(e);

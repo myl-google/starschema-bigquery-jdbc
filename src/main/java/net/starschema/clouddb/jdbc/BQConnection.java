@@ -207,13 +207,13 @@ public class BQConnection implements Connection {
         // Create Connection to BigQuery
         if (serviceAccount) {
             try {
+                this.logger.info("Authorizing with service account");
                 // Support for old behavior, passing no actual password, but passing the path as 'password'
                 if (userPath == null) {
                     userPath = userKey;
                     userKey = null;
                 }
                 this.bigquery = Oauth2Bigquery.authorizeviaservice(userId, userPath, userKey, userAgent, connectTimeout, readTimeout);
-                this.logger.info("Authorized with service account");
             } catch (GeneralSecurityException e) {
                 throw new BQSQLException(e);
             } catch (IOException e) {
@@ -222,11 +222,14 @@ public class BQConnection implements Connection {
         }
         //let use Oauth
         else {
-            if (userId == null && userKey == null && userAgent == null) {
+            if ((userId == null || userId.length() == 0) &&
+                    (userKey == null || userKey.length() == 0) &&
+                    (userAgent == null || userAgent.length() == 0)) {
+                this.logger.info("Authorizing with default credentials");
                 this.bigquery = Oauth2Bigquery.authorizeviadefaultcredentials();
             } else {
-                this.bigquery = Oauth2Bigquery.authorizeviainstalled(userId, userKey, userAgent);
                 this.logger.info("Authorized with Oauth");
+                this.bigquery = Oauth2Bigquery.authorizeviainstalled(userId, userKey, userAgent);
             }
         }
         logger.debug("The project id for this connections is: " + this.projectId);
