@@ -27,6 +27,7 @@
 
 package net.starschema.clouddb.jdbc;
 
+import com.google.api.services.bigquery.Bigquery;
 import com.google.api.services.bigquery.model.*;
 import org.antlr.runtime.tree.Tree;
 import net.starschema.clouddb.jdbc.Logger;
@@ -377,9 +378,11 @@ public abstract class BQStatementRoot {
         } catch (IOException e) {
             throw new BQSQLException("Something went wrong with the update: " + updateSql, e);
         }
+
+        Job pollJob = null;
         try {
             do {
-                Job pollJob = BQSupportFuncts.getQueryJob(referencedJob,
+                pollJob = BQSupportFuncts.getQueryJob(referencedJob,
                         this.connection.getBigquery(), this.ProjectId);
                 if (pollJob.getStatus().getState().equals("DONE")) {
                     if (pollJob.getStatus().getErrors() == null) {
@@ -400,7 +403,14 @@ public abstract class BQStatementRoot {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        // TODO(myl): cancel the job or set a timeout on the original request
+
+        if (pollJob != null) {
+            try {
+                BQSupportFuncts.cancelQuery(pollJob, connection.getBigquery(), ProjectId);
+            } catch (IOException e) {
+               // Deliberately skip handling the exception, since we will throw an exception below.
+            }
+        }
         throw new BQSQLException(
                 "Update run took more than the specified timeout");
     }
