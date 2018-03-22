@@ -32,7 +32,11 @@ import com.google.api.services.bigquery.Bigquery;
 import com.google.api.services.bigquery.model.GetQueryResultsResponse;
 import com.google.api.services.bigquery.model.Job;
 import com.google.api.services.bigquery.model.TableRow;
-import net.starschema.clouddb.jdbc.Logger;
+import java.time.DateTimeException;
+import java.time.Instant;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.temporal.ChronoField;
 
 import java.io.*;
 import java.math.BigDecimal;
@@ -53,6 +57,12 @@ import java.util.TimeZone;
  *
  */
 public class BQForwardOnlyResultSet implements java.sql.ResultSet {
+    // Concrete format is documented here:
+    // https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#timestamp-type
+    private static final DateTimeFormatter BQ_STANDARD_TS_FORMATTER = new DateTimeFormatterBuilder()
+        .appendPattern("yyyy-[M][MM]-[d][dd][' ']['T'][H][HH][':'][m][mm][':'][s][ss]")
+        .appendFraction(ChronoField.MICRO_OF_SECOND, 0, 6, true)
+        .appendPattern("[VV][z][zz][zzz][zzzz]").toFormatter();
 
     // Logger logger = new Logger(ScrollableResultset.class.getName());
     Logger logger = Logger.getLogger(BQForwardOnlyResultSet.class.getName());
@@ -192,6 +202,18 @@ public class BQForwardOnlyResultSet implements java.sql.ResultSet {
 
     /** Parse date/time types */
     private Timestamp toTimestamp(String value, Calendar cal) throws SQLException {
+        try {
+            return new Timestamp(
+                Instant.from(BQ_STANDARD_TS_FORMATTER.parse(value)).toEpochMilli());
+        } catch (DateTimeException e) {
+            // Bigquery legacy and standard timestamps differ:
+            // https://cloud.google.com/bigquery/data-types
+            logger.debug("Try legacy timestamp for " + value);
+            return toLegacyTimestamp(value, cal);
+        }
+    }
+
+    private Timestamp toLegacyTimestamp(String value, Calendar cal) throws SQLException {
         try {
             long dbValue = new BigDecimal(value).movePointRight(3).longValue(); // movePointRight(3) =  *1000 (done before rounding) - from seconds (BigQuery specifications) to milliseconds (required by java). Precision under millisecond is discarded (BigQuery supports micro-seconds)
             if (cal == null) {
