@@ -20,7 +20,7 @@ public class Logger {
     }
 
     public void debug(Object message) {
-        logger.log(Level.FINEST, objToMessage(message));
+        logger.log(Level.FINE, objToMessage(message));
     }
 
     public void debug(Object message, Throwable e) {
